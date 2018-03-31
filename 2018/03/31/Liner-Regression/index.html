@@ -17,7 +17,7 @@
 <meta property="og:description" content="引言什么是机器学习来自卡耐基梅隆大学的Tom Mitchell提出，一个程序被认为能从经验E中学习，解决任务T，达到性能度量值P，当且仅有了经验E后，经过评判，程序在处理T时的性能有所提升。">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0Ius06/Lufsw8d5lOzMuu9intk0sB4cq7JZeIJgF58IFJASx54!/m/dGoBAAAAAAAAnull&bo=BgHPAAAAAAADB.o!&rf=photolist&t=5">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0Ius06/aMPUwbe.jVtTvqr14YQAmoDPybZUjsidFx7WIiS1Rrc!/b/dEIBAAAAAAAA&bo=mAFAAQAAAAADB*o!&rf=viewer_4">
-<meta property="og:updated_time" content="2018-03-31T08:38:03.042Z">
+<meta property="og:updated_time" content="2018-03-31T08:38:43.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Liner Regression">
 <meta name="twitter:description" content="引言什么是机器学习来自卡耐基梅隆大学的Tom Mitchell提出，一个程序被认为能从经验E中学习，解决任务T，达到性能度量值P，当且仅有了经验E后，经过评判，程序在处理T时的性能有所提升。">
@@ -195,7 +195,7 @@
 </li>
 </ul>
 <h2 id="代价函数直观理解（Intuition）"><a href="#代价函数直观理解（Intuition）" class="headerlink" title="代价函数直观理解（Intuition）"></a>代价函数直观理解（Intuition）</h2><p>最原始的假设函数是<br>$$h_\theta(x)=\theta_1x$$<br>与之对应的代价函数是<br>$$J(\theta_1)=\frac{1}{2m}\sum_{i=1}^n(h_\theta(x^{(i)}-y^{(i)}))^2$$<br>可以简化为求<br>$$J(\theta_1)=\frac{1}{2m}\sum_{i=1}^n(\theta_1x^{(i)}-y{(i)})^2$$<br>的最小值<br>此处$\theta_1$是才是变量，以一个初中生的视角来看，这个函数的图像是一个开口向上的二次函数，那么它必定存在最小值，如果假设函数加上$\theta_0$，$\theta_0$的变化会让原始代价函数(即开口向上的二次函数)图像在三维空间里发生变化，代价函数的图像会如图所示：</p>
-<p><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0Ius06/aMPUwbe.jVtTvqr14YQAmoDPybZUjsidFx7WIiS1Rrc!/b/dEIBAAAAAAAA&amp;bo=mAFAAQAAAAADB*o!&amp;rf=viewer_4" alt="建模误差" title="代价函数图像"><br></div></p>
+<p><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0Ius06/aMPUwbe.jVtTvqr14YQAmoDPybZUjsidFx7WIiS1Rrc!/b/dEIBAAAAAAAA&amp;bo=mAFAAQAAAAADB*o!&amp;rf=viewer_4" alt="代价函数图像" title="代价函数图像"><br></div></p>
 <h2 id="梯度下降-Gradient-Descent"><a href="#梯度下降-Gradient-Descent" class="headerlink" title="梯度下降(Gradient Descent)"></a>梯度下降(Gradient Descent)</h2><p>梯度下降使用来求函数最小值的算法</p>
 <h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>随机选择一个参数的组合$(\theta_0,\theta_1,…,\theta_n)$，计算代价函数，然后我们寻找下一个能让代价函数值下降最多的参数组合。持续这么做直到得到一个局部最小值（local minimum）。</p>
 <h3 id="直观理解-Intuition"><a href="#直观理解-Intuition" class="headerlink" title="直观理解(Intuition)"></a>直观理解(Intuition)</h3><p>可以理解从山上以小碎步尽快下山，尽快下山的条件是每一个小碎步都是可迈出的步伐中陡峭的一步。<br>怎么才算是最陡峭的呢？回到最原始的代价函数来看，这是一个二次函数，其实只有一种走法，就是按照让代价函数减小的方向去走,这个方向的变化可以定义为<br>$$\theta := \theta-\alpha\frac{\delta}{\delta\theta}J(\theta)$$<br>这样定义的原因：<br>当求导为负，代表随着$\theta$增大，代价函数在减小，在以上定义中$\theta$会变大，达到了目的，若求导为正亦然，另外$\alpha$是学习率，决定了下山每一步的大小。<br>那如果有多个参数$\theta$呢？如何才是最陡峭的呢？可以将每个$\theta$理解为影响下山方向的因素，当每个$\theta$都按照让代价函数减小的方向去变化时，这时下山速度是最快的，即批量梯度下降。<br>repeat until  convergence$\lbrace$<br>$\quad\theta_j = \theta_j - \alpha\frac{\delta}{\delta\theta_j}J(\theta_j)\quad$<br>$\rbrace$</p>
