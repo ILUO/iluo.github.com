@@ -155,6 +155,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Liner-Regression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/31/Liner-Regression/">Liner Regression</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/31/Liner-Regression/" class="archive-article-date">
+  	<time datetime="2018-03-31T01:05:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h2><p>来自卡耐基梅隆大学的Tom Mitchell提出，一个程序被认为能从经验E中学习，解决任务T，达到性能度量值P，当且仅有了经验E后，经过评判，程序在处理T时的性能有所提升。</p>
+<p>##监督学习(Supervised Learning)<br>给学习算法一个由“正确答案”组成的数据集，再根据这些样本做出预测，通常分为回归（连续的输出），分类（离散的结果）。</p>
+<p>##无监督学习(Unsupervised Learning)<br>无监督学习中的数据集没有任何的标签，或者已有的标签都是相同的，其目的是找到数据中的结构，如聚类算法。</p>
+<hr>
+<p>#单变量线性回归(Linear Regression)</p>
+<p>##模型表示(Model Representation)</p>
+<p>###描述回归问题的标记</p>
+<ul>
+<li>m 训练集中实例的数量</li>
+<li>x 输入特征/输入变量</li>
+<li>y 目标变量/输出变量</li>
+<li>(x,y) 训练集中的实例</li>
+<li>$(x^{(i)},x^{(i)})$ 第i个观察实例</li>
+<li>h 学习算法的解决方案，假设(hypothesis)</li>
+</ul>
+<p>###如何表达h<br>对于单变量线性回归问题，一种可能的表达方式为：<br>$$h_\theta(x)=\theta_0 + \theta_1x$$</p>
+<p>##代价函数(Cost Function)<br>建模误差(modeling error)：模型所预测的值与训练集中实际值之间的差距<br><img src="http://a3.qpic.cn/psb?/V12UJCGv0Ius06/Lufsw8d5lOzMuu9intk0sB4cq7JZeIJgF58IFJASx54!/m/dGoBAAAAAAAAnull&amp;bo=BgHPAAAAAAADB.o!&amp;rf=photolist&amp;t=5" alt="此处输入图片的描述"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/31/Liner-Regression/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-second" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -395,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
               <li class="article-tag-list-item">
