@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/04/01/Linear-Regression-Multiple-Variables/index.html">
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="多变量线性回归多变量线性回归的思想与单变量线性回归一致。要想利用数值计算工具方便快速地进行回归分析，则需要各个计算步骤向量化。">
-<meta property="og:updated_time" content="2018-04-01T02:07:04.434Z">
+<meta property="og:updated_time" content="2018-04-01T15:02:05.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linear Regression Multiple Variables">
 <meta name="twitter:description" content="多变量线性回归多变量线性回归的思想与单变量线性回归一致。要想利用数值计算工具方便快速地进行回归分析，则需要各个计算步骤向量化。">
@@ -186,7 +186,7 @@
 <li>$m$ 训练数据的数量</li>
 <li>$n$ 特征的数量</li>
 </ul>
-<h2 id="假设函数向量化"><a href="#假设函数向量化" class="headerlink" title="假设函数向量化"></a>假设函数向量化</h2><p>$$h_\theta(x) = \begin{bmatrix} \theta_0&amp;\theta_1&amp;\cdots &amp; \theta_n\end{bmatrix}\begin{bmatrix} x_0&amp;\ x_1&amp; \ \vdots &amp;\ x_n \end{bmatrix} = \theta^Tx$$<br>备注: $x_0^{(i)} = 1$</p>
+<h2 id="假设函数向量化"><a href="#假设函数向量化" class="headerlink" title="假设函数向量化"></a>假设函数向量化</h2><p>$$h_\theta(x) = \begin{bmatrix} \theta_0&amp;\theta_1&amp;\cdots &amp; \theta_n\end{bmatrix}\begin{bmatrix} x_0  \  x_1 \ \vdots  \ x_n  \end{bmatrix} = \theta^Tx$$<br>备注: $x_0^{(i)} = 1$</p>
 <h2 id="多变量的梯度下降"><a href="#多变量的梯度下降" class="headerlink" title="多变量的梯度下降"></a>多变量的梯度下降</h2><p>repeat until convergence: $\lbrace$<br>$\quad \theta_j := \theta_j - \alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} \quad for \quad j: = 0…n$<br>$\rbrace$</p>
 <h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>当不同参数的尺度范围相差很远时，图像会很扁，需要很多次迭代才能收敛。如果将这些特征的特征都缩放到-1到1之间 或者 -0.5到0.5之间，就能较快地迭代</p>
 <p>常用方法有特征缩放和均值归一化<br>$$x_i := \frac{(x_i - u_i)}{s_i}$$</p>
@@ -483,6 +483,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Linux 基础</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
