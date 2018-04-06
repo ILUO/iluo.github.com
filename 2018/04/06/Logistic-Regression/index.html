@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-04-06T01:37:36.570Z">
+<meta property="og:updated_time" content="2018-04-06T01:41:31.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
@@ -200,11 +200,11 @@
 
 <p>特点：$y=1，h_\theta(x) \neq1 $时误差随$h_\theta(x)变小而增大$，$y=0，h_\theta(x) \neq0 $时误差随$h_\theta(x)变大而增大$</p>
 <h3 id="简化-待证明"><a href="#简化-待证明" class="headerlink" title="简化(待证明)"></a>简化(待证明)</h3><p>基于最大似然估计<br>$$J(\theta)=-\frac{1}{m}\sum_{i=1}{m}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]$$</p>
-<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>$\frac{\delta J(\theta)}{\delta\theta_j}=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{h_\theta(x^{((i))})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j}-(1-y^{(i)})\frac{1}{1-h_\theta(x^{(i)})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j})\$</p>
-<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})})\frac{\delta g(\theta^Tx^{(i)}))}{\delta\theta_j}\$</p>
-<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})}) g(\theta^Tx^{(i)})(1-g(\theta^Tx^{(i)})x_j^{(i)})\$</p>
-<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}(1-g(\theta^Tx^{(i)})-(1-y^{(i)})g(\theta^Tx^{(i)}))x_j^{(i)} \$</p>
-<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}-g(\theta^Tx^{(i)}))x_j^{(i)}\$</p>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>$\frac{\delta J(\theta)}{\delta\theta_j}=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{h_\theta(x^{((i))})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j}-(1-y^{(i)})\frac{1}{1-h_\theta(x^{(i)})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j})$</p>
+<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})})\frac{\delta g(\theta^Tx^{(i)}))}{\delta\theta_j}$</p>
+<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})}) g(\theta^Tx^{(i)})(1-g(\theta^Tx^{(i)})x_j^{(i)})$</p>
+<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}(1-g(\theta^Tx^{(i)})-(1-y^{(i)})g(\theta^Tx^{(i)}))x_j^{(i)} $</p>
+<p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}-g(\theta^Tx^{(i)}))x_j^{(i)}$</p>
 <p>$=\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}$</p>
 <p>第二步到第三步的推导：</p>
 <div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=pQLNAaUCzQEBACc!&amp;vuin=1405591197&amp;tm=1522976400&amp;sce=50-1-1&amp;rf=viewer_311" alt="推导" title="第二步到第三步的推导"><br></div>
