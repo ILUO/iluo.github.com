@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-04-06T01:41:31.086Z">
+<meta property="og:updated_time" content="2018-04-06T01:44:35.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
@@ -219,7 +219,7 @@
 <h2 id="简化代价函数和梯度下降"><a href="#简化代价函数和梯度下降" class="headerlink" title="简化代价函数和梯度下降"></a>简化代价函数和梯度下降</h2><p>$$J(\theta)=-\frac{1}{m}(y^Tlog(g(X\theta))+(1-y)^Tlog(1-g(X\theta)))$$<br>$$grad = \frac{1}{m}.*(X^T(g(X\theta)-y))$$</p>
 <h2 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h2><p>共轭梯度，局部优化，有限内存局部优化的优点：<br>自动选择学习率$\alpha$,但是这些算法实际上在做更复杂的事情，不仅仅是在选择一个好的学习速率。</p>
 <h2 id="多类别分类-one-vs-all"><a href="#多类别分类-one-vs-all" class="headerlink" title="多类别分类(one-vs-all)"></a>多类别分类(one-vs-all)</h2><p>若要将数据集分为n个类，则转化为n个二分类问题，做预测时将所有的分类机都运行一遍。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="过拟合-Overfitting"><a href="#过拟合-Overfitting" class="headerlink" title="过拟合(Overfitting)"></a>过拟合(Overfitting)</h3><p>如果我们有非常多的特征，通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。</p>
+<h2 id="正则化-Regularization"><a href="#正则化-Regularization" class="headerlink" title="正则化(Regularization)"></a>正则化(Regularization)</h2><h3 id="过拟合-Overfitting"><a href="#过拟合-Overfitting" class="headerlink" title="过拟合(Overfitting)"></a>过拟合(Overfitting)</h3><p>如果我们有非常多的特征，通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。</p>
 <h3 id="如何处理过拟合"><a href="#如何处理过拟合" class="headerlink" title="如何处理过拟合"></a>如何处理过拟合</h3><ul>
 <li>丢弃一些不能帮助我们正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来帮忙</li>
 <li>正则化。保留所有的特征，但是减少参数的大小</li>
