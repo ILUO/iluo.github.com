@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Nerual Networks:Learning | ILUO</title>
+  <title>Neural Networks:Learning | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="神经网络：学习(Neural Networks:Learning)">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nerual Networks:Learning">
+<meta property="og:title" content="Neural Networks:Learning">
 <meta property="og:url" content="http://yoursite.com/2018/04/12/Nerual-Networks-Learning/index.html">
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="神经网络：学习(Neural Networks:Learning)">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Z15Z55CqDMNHiR9ndS*tL1ybBKzpAzam7yO1kbS.48Y!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=ggRbAIIEWwABACc!&tm=1523534400&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/bwS4RPUbqdx5dn5olADrxoe9eRjQuq9KFsqpdWjToUo!/b/dG0BAAAAAAAA&ek=1&kp=1&pt=0&bo=dwEYAXcBGAEBACc!&tm=1523530800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/.3OzY5ad7Ly1OpeoNXUgqsJBnzRti5JmlXY.ubcXNrg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=0AKVAdAClQEBACc!&tm=1523530800&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2018-04-12T12:34:01.758Z">
+<meta property="og:updated_time" content="2018-04-12T12:40:11.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nerual Networks:Learning">
+<meta name="twitter:title" content="Neural Networks:Learning">
 <meta name="twitter:description" content="神经网络：学习(Neural Networks:Learning)">
 <meta name="twitter:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Z15Z55CqDMNHiR9ndS*tL1ybBKzpAzam7yO1kbS.48Y!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=ggRbAIIEWwABACc!&tm=1523534400&sce=0-12-12&rf=viewer_311">
   
@@ -169,7 +169,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Nerual Networks:Learning
+      Neural Networks:Learning
     </h1>
   
 
@@ -196,7 +196,7 @@
 <li>K类分类</li>
 </ul>
 <h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>逻辑回归中，只有一个输出，在神经网络中，有很多输出，$h_\theta{(x)}$是一个维度为K的向量</p>
-<p>$$J(\Theta) = -\frac{1}{m} \sum_{i=1}^{m}\sum_{k=1}^{k}[y_k^{(i)}log((h_\theta(x^{(i)}))_k)+(1-y_k^{(i)})log(1-h(_\theta(x^{(i)}))<em>k)]+\frac{\lambda}{2m}\sum</em>{i=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S^{l+1}}$$</p>
+<p>$$J(\Theta) = -\frac{1}{m} \sum_{i=1}^{m}\sum_{k=1}^{k}[ y_k^{(i)} log(( h_\theta( x^{(i)}))_k)+(1-y_k^{(i)})log(1-h(_\theta(x^{(i)}))_k)]+\frac{\lambda}{2m}\sum_{i=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S^{l+1}}$$</p>
 <div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Z15Z55CqDMNHiR9ndS*tL1ybBKzpAzam7yO1kbS.48Y!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ggRbAIIEWwABACc!&amp;tm=1523534400&amp;sce=0-12-12&amp;rf=viewer_311" alt="代价函数" title="代价函数"><br></div>
 
 <p>思想：观察算法预测的结果与真实的情况误差，与之前唯一不同的是，选取可能性<strong>最高</strong>的预测结果与实际数据比较。</p>
@@ -206,7 +206,7 @@
 
 
 <p>在这幅图中，要计算$\delta_2^{(2)}$,</p>
-<p>$$\delta_2^{(2)}=\Theta_{12}^{(2)}<em>\delta_1^{(3)}+\Theta_{22}^{(2)}</em>\delta_2^{(3)}$$</p>
+<p>$$\delta_2^{(2)}=\Theta_{12}^{(2)}\delta_1^{(3)}+\Theta_{22}^{(2)}\delta_2^{(3)}$$</p>
 <p>其实这就是$\Theta^{(2)}$的第三列乘$\delta^{(3)}$</p>
 <h2 id="梯度检验"><a href="#梯度检验" class="headerlink" title="梯度检验"></a>梯度检验</h2><h3 id="Numerical-Gradient-Checking"><a href="#Numerical-Gradient-Checking" class="headerlink" title="Numerical Gradient Checking"></a>Numerical Gradient Checking</h3><p>$$gradApprox = \frac{(J(\theta+\epsilon))-J(\theta-\epsilon))}{2\epsilon}$$</p>
 <p>当$\theta$是一个向量时，我们则需要对偏导数进行检验。因为代价函数的偏导数检验只针对一个参数的改变进行检验，下面是一个只针对 进行检验的示例：</p>
