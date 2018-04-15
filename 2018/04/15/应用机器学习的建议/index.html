@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/c97pVy.64M8IKwC4YKmP3U0HVEXsGGEGL9PPF6qbBa8!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&vuin=1405591197&tm=1523800800&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/13ENEc0OZ3hiXOCdknTsz73KFB1.IY*IsX2aofuuw*g!/b/dOIAAAAAAAAA&ek=1&kp=1&pt=0&bo=uwKUAbsClAEBACc!&tm=1523800800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/iLAiKwHmI4mt*IBTbJa*nOHYFNZe8Oo79XcPG2wlZQI!/b/dA4AAAAAAAAA&ek=1&kp=1&pt=0&bo=5AKZAeQCmQEBACc!&vuin=1405591197&tm=1523800800&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-04-15T15:14:33.830Z">
+<meta property="og:updated_time" content="2018-04-15T15:19:45.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应用机器学习的建议">
 <meta name="twitter:description" content="机器学习应用的建议《数学之美》这本书中有一句让我印象深刻的话：“许多失败并不是因为人不优秀，而是做事情的方法不对，一开始追求大而全的解决方案，之后长时间不能完成。最后不了了之”。在这一周的学习课程中，Andrew Ng同样给我们传达了这样的理念:”研究机器学习的东西，或者构造机器学习应用程序，最好的实践方法不是建立一个非常复杂的系统，拥有多么复杂的变量；而是构建一个简单的算法，这样你可以很快地实现">
@@ -184,7 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机器学习应用的建议"><a href="#机器学习应用的建议" class="headerlink" title="机器学习应用的建议"></a>机器学习应用的建议</h1><p><a href="https://book.douban.com/subject/10750155/" target="_blank" rel="noopener">《数学之美》</a>这本书中有一句让我印象深刻的话：“许多失败并不是因为人不优秀，而是做事情的方法不对，一开始追求大而全的解决方案，之后长时间不能完成。最后不了了之”。在这一周的学习课程中，Andrew Ng同样给我们传达了这样的理念:”研究机器学习的东西，或者构造机器学习应用程序，最好的实践方法不是建立一个非常复杂的系统，拥有多么复杂的变量；而是构建一个简单的算法，这样你可以很快地实现它，然后再在这个基础上决定下一步怎么完善。</p>
+        <h1 id="机器学习应用的建议"><a href="#机器学习应用的建议" class="headerlink" title="机器学习应用的建议"></a>机器学习应用的建议</h1><p><a href="https://book.douban.com/subject/10750155/" target="_blank" rel="noopener">《数学之美》</a>这本书中有一句让我印象深刻的话：“<strong>许多失败并不是因为人不优秀，而是做事情的方法不对，一开始追求大而全的解决方案，之后长时间不能完成。最后不了了之</strong>”。在这一周的学习课程中，Andrew Ng同样给我们传达了这样的理念:”<strong>研究机器学习的东西，或者构造机器学习应用程序，最好的实践方法不是建立一个非常复杂的系统，拥有多么复杂的变量；而是构建一个简单的算法，这样你可以很快地实现它，然后再在这个基础上决定下一步怎么完善</strong>。</p>
 <p><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/2ClE*FVr5bafNw6q81QSzBsk2DIOk6vpQKfzn7c2aNs!/b/dN0AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WAKLAVgCiwEBACc!&amp;tm=1523804400&amp;sce=0-12-12&amp;rf=viewer_311" alt="一把梭" title="一把梭"><br></div><br><a id="more"></a></p>
 <h2 id="决定下一步"><a href="#决定下一步" class="headerlink" title="决定下一步"></a>决定下一步</h2><ul>
 <li>获得更多训练实例</li>
@@ -197,7 +197,7 @@
 <h2 id="评估假设-Evaluating-a-Hypothesis"><a href="#评估假设-Evaluating-a-Hypothesis" class="headerlink" title="评估假设(Evaluating a Hypothesis)"></a>评估假设(Evaluating a Hypothesis)</h2><h3 id="过拟合问题"><a href="#过拟合问题" class="headerlink" title="过拟合问题"></a>过拟合问题</h3><p>将数据分为训练集和测试集。<br>两种方法计算误差：</p>
 <ul>
 <li>线性回归模型：计算代价函数$J$</li>
-<li>逻辑回归模型：计算代价函数$J$或者误分类比率<br>$$err(h_\theta(x),y)==\begin{cases}1 \quad if\quad h(x)\geq0.5 \quad and\quad y=0, of \quad if \quad h(x)&lt;0.5\quad and \quad y=1 \0, Otherwise \end{cases}$$<br>最后对计算结果求平均</li>
+<li>逻辑回归模型：计算代价函数$J$或者误分类比率<br>$$err(h_\theta(x),y)=\begin{cases}1 \quad if\quad h(x)\geq0.5 \quad and\quad y=0, of \quad if \quad h(x)&lt;0.5\quad and \quad y=1 \ 0, Otherwise \end{cases}$$<br>最后对计算结果求平均</li>
 </ul>
 <h2 id="模型选择和交叉验证集-Model-Selection-and-Train-Validation-Test-Sets"><a href="#模型选择和交叉验证集-Model-Selection-and-Train-Validation-Test-Sets" class="headerlink" title="模型选择和交叉验证集(Model Selection and Train Validation Test Sets)"></a>模型选择和交叉验证集(Model Selection and Train Validation Test Sets)</h2><h3 id="交叉验证集"><a href="#交叉验证集" class="headerlink" title="交叉验证集"></a>交叉验证集</h3><p>适应训练数据集不代表能推广到一般情况，使用较差验证集来帮助选择模型：使用60%的数据作为训练集，使用20%数据作为交叉验证集，使用20%的数据作为测试集。</p>
 <h3 id="模型选择方法"><a href="#模型选择方法" class="headerlink" title="模型选择方法"></a>模型选择方法</h3><ul>
@@ -213,22 +213,22 @@
 <p>将训练集和交叉验证集的代价函数误差与多项式次数绘制在同一张图上进行分析</p>
 <p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/xSfR3XclAXKuS4saW.v0MKkT3RQxEqJev4tKPXCOjEE!/b/dOIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;vuin=1405591197&amp;tm=1523800800&amp;sce=50-1-1&amp;rf=viewer_311" alt="diagnosing" title="diagnosing"></div></p>
 <ul>
-<li>训练集误差和交叉验证集误差近似时：高偏差/欠拟合</li>
-<li>交叉验证集误差远大于训练集误差时：高方差/过拟合</li>
+<li><strong>训练集误差和交叉验证集误差近似时：高偏差/欠拟合</strong></li>
+<li><strong>交叉验证集误差远大于训练集误差时：高方差/过拟合</strong></li>
 </ul>
 <h2 id="正则化和偏差-方差"><a href="#正则化和偏差-方差" class="headerlink" title="正则化和偏差/方差"></a>正则化和偏差/方差</h2><h3 id="选择-lambda-的方法"><a href="#选择-lambda-的方法" class="headerlink" title="选择$\lambda$的方法"></a>选择$\lambda$的方法</h3><ul>
 <li>使用训练集训练出12个不同程度正则化的模型；</li>
 <li>用12个模型分别对交叉验证集计算出交叉验证误差；</li>
 <li>选择交叉验证误差最小的模型；</li>
 <li>运用步骤3中选出的模型对测试集计算得出推广误差，我们也可以同时将训练集和交叉验证集模型的代价函数误差与λ的值绘制在一张图表上。<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/c97pVy.64M8IKwC4YKmP3U0HVEXsGGEGL9PPF6qbBa8!/b/dN0AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;vuin=1405591197&amp;tm=1523800800&amp;sce=50-1-1&amp;rf=viewer_311" alt="Regularization" title="Regularization"><br></div></li>
-<li>当λ较小时，训练集误差较小（过拟合）而交叉验证集误差较大</li>
-<li>随着λ的增加，训练集误差不断增加（欠拟合），而交叉验证集误差则是先减小后增加</li>
+<li><strong>当λ较小时，训练集误差较小（过拟合）而交叉验证集误差较大</strong></li>
+<li><strong>随着λ的增加，训练集误差不断增加（欠拟合），而交叉验证集误差则是先减小后增加</strong></li>
 </ul>
 <h2 id="学习曲线-Learning-Curves"><a href="#学习曲线-Learning-Curves" class="headerlink" title="学习曲线(Learning Curves)"></a>学习曲线(Learning Curves)</h2><h3 id="合理检验-sanity-check"><a href="#合理检验-sanity-check" class="headerlink" title="合理检验(sanity check)"></a>合理检验(sanity check)</h3><p>学习曲线是将训练集误差和交叉验证集误差作为训练集实例数量（m）的函数绘制的图表。</p>
 <h3 id="如何利用学习曲线识别高偏差-欠拟合："><a href="#如何利用学习曲线识别高偏差-欠拟合：" class="headerlink" title="如何利用学习曲线识别高偏差/欠拟合："></a>如何利用学习曲线识别高偏差/欠拟合：</h3><p>作为例子，我们尝试用一条直线来适应下面的数据，可以看出，无论训练集有多么大误差都不会有太大改观：</p>
-<p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/13ENEc0OZ3hiXOCdknTsz73KFB1.IY*IsX2aofuuw*g!/b/dOIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=uwKUAbsClAEBACc!&amp;tm=1523800800&amp;sce=0-12-12&amp;rf=viewer_311" alt="high bias" title="high bias"><br></div><br>也就是说在高偏差/欠拟合的情况下，增加数据到训练集不一定能有帮助。</p>
+<p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/13ENEc0OZ3hiXOCdknTsz73KFB1.IY*IsX2aofuuw*g!/b/dOIAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=uwKUAbsClAEBACc!&amp;tm=1523800800&amp;sce=0-12-12&amp;rf=viewer_311" alt="high bias" title="high bias"><br></div><br><strong>也就是说在高偏差/欠拟合的情况下，增加数据到训练集不一定能有帮助。</strong></p>
 <h3 id="如何利用学习曲线识别高方差-过拟合"><a href="#如何利用学习曲线识别高方差-过拟合" class="headerlink" title="如何利用学习曲线识别高方差/过拟合"></a>如何利用学习曲线识别高方差/过拟合</h3><p>假设我们使用一个非常高次的多项式模型，并且正则化非常小，可以看出，当交叉验证集误差远大于训练集误差时，往训练集增加更多数据可以提高模型的效果。</p>
-<p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/iLAiKwHmI4mt*IBTbJa*nOHYFNZe8Oo79XcPG2wlZQI!/b/dA4AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=5AKZAeQCmQEBACc!&amp;vuin=1405591197&amp;tm=1523800800&amp;sce=50-1-1&amp;rf=viewer_311" alt="high variance" title="variance"><br></div><br>也就是说在高方差/过拟合的情况下，增加更多数据到训练集可能可以提高算法效果。</p>
+<p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/iLAiKwHmI4mt*IBTbJa*nOHYFNZe8Oo79XcPG2wlZQI!/b/dA4AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=5AKZAeQCmQEBACc!&amp;vuin=1405591197&amp;tm=1523800800&amp;sce=50-1-1&amp;rf=viewer_311" alt="high variance" title="variance"><br></div><br><strong>也就是说在高方差/过拟合的情况下，增加更多数据到训练集可能可以提高算法效果。</strong></p>
 <h2 id="决定下一步做什么"><a href="#决定下一步做什么" class="headerlink" title="决定下一步做什么"></a>决定下一步做什么</h2><h3 id="六种可选步骤"><a href="#六种可选步骤" class="headerlink" title="六种可选步骤"></a>六种可选步骤</h3><ul>
 <li>获得更多的训练实例——解决高方差(high variance)</li>
 <li>尝试减少特征的数量——解决高方差(high variance)</li>
@@ -262,7 +262,7 @@
 <p>查准率:$\frac{TP}{TP+FP}$<br>召回率:$\frac{TP}{TP+FN}$</p>
 <h3 id="权衡查准率与召回率"><a href="#权衡查准率与召回率" class="headerlink" title="权衡查准率与召回率"></a>权衡查准率与召回率</h3><p>以肿瘤预测为例，如果我们希望只在非常确信的情况下预测为真（肿瘤为恶性），即我们希望更高的查准率，我们可以使用比0.5 更大的阀值，如0.7，0.9。这样做我们会减少错误预测病人为恶性肿瘤的情况，同时却会增加未能成功预测肿瘤为恶性的情况。<br>如果我们希望提高召回率，尽可能地让所有有可能是恶性肿瘤的病人都得到进一步地检查、诊断，我们可以使用比0.5 更小的阀值，如0.3。</p>
 <h3 id="选择阈值的方法"><a href="#选择阈值的方法" class="headerlink" title="选择阈值的方法"></a>选择阈值的方法</h3><p>$F_1Score:2\frac{PR}{P+R}$<br>选择使$F_1$最高的阈值</p>
-<h2 id="机器学习的数据"><a href="#机器学习的数据" class="headerlink" title="机器学习的数据"></a>机器学习的数据</h2><p>取得成功的人不是拥有最好算法的人，而是拥有最多数据的人</p>
+<h2 id="机器学习的数据"><a href="#机器学习的数据" class="headerlink" title="机器学习的数据"></a>机器学习的数据</h2><p><strong>取得成功的人不是拥有最好算法的人，而是拥有最多数据的人</strong></p>
 <h3 id="有用的训练集"><a href="#有用的训练集" class="headerlink" title="有用的训练集"></a>有用的训练集</h3><ul>
 <li>在我们的机器学习问题中，特征值x 包含了足够的信息，这些信息可以帮助我们用来准确地预测 y</li>
 <li>有一个高性能的学习算法，我们希望它不要有高的偏差和方差。</li>
