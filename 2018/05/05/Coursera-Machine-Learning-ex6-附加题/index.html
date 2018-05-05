@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Coursera Machine Learning ex6 附加题 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
+  <meta name="description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。   数据预处理数据下载数据集链接">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Coursera Machine Learning ex6 附加题">
 <meta property="og:url" content="http://yoursite.com/2018/05/05/Coursera-Machine-Learning-ex6-附加题/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
+<meta property="og:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。   数据预处理数据下载数据集链接">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/1DEJ10j6fGwEjUREJjcIqmMWxPyMtQhno4EKLrl3VX8!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=iwK9AYsCvQEBACc!&vuin=1405591197&tm=1525521600&sce=60-2-2&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=WQJbAlkCWwIBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/8DRgtXBunAsFWRQamvwqs2Lmq58ZepcEGdAAL6WzEU8!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAIVAqwCFQIBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/CFGdIHlzND.0MaTI9UIGdt9V45LiPOytTlJZzE1BwYg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAI5AawCOQEBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/2sPnBVy.mdrwbrHXdLB4DmpWrBKey7bIqeVqWOr5eBo!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=6wKJAesCiQEBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-05-05T12:54:20.386Z">
+<meta property="og:updated_time" content="2018-05-05T12:55:42.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera Machine Learning ex6 附加题">
-<meta name="twitter:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
+<meta name="twitter:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。   数据预处理数据下载数据集链接">
 <meta name="twitter:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/1DEJ10j6fGwEjUREJjcIqmMWxPyMtQhno4EKLrl3VX8!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=iwK9AYsCvQEBACc!&vuin=1405591197&tm=1525521600&sce=60-2-2&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
@@ -185,7 +185,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器"><a href="#Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器" class="headerlink" title="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器"></a>Machine Learning编程作业:用自己的数据训练垃圾邮件分类器</h1><p>Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,<a href="https://github.com/ILUO/spamClassifer.git" target="_blank" rel="noopener">先放上实现的github链接</a>。</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/1DEJ10j6fGwEjUREJjcIqmMWxPyMtQhno4EKLrl3VX8!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=iwK9AYsCvQEBACc!&amp;vuin=1405591197&amp;tm=1525521600&amp;sce=60-2-2&amp;rf=viewer_311" alt="大蛇丸" title="大蛇丸"><br></div><br><a id="more"></a><br>## 数据预处理<br><br>### 数据下载<br><a href="http://spamassassin.apache.org/old/publiccorpus/" target="_blank" rel="noopener">数据集链接</a><br><br>我使用了上面链接中的数据，其中名字中带hard是难以分辨是否为垃圾邮件的邮件，带ham的是正常邮件，带spam的是垃圾邮件。我把全部的垃圾邮件解压放到一个文件夹spam里，全部的正常邮件解压放到一个文件夹ham里。<br><br><br>### 邮件预处理<br>运行getProcesseedEmail.m<br>因为邮件中包含各种邮件头、网址、邮箱地址等信息，在对邮件进行词频统计和特征提取前需要先要把内容按照一定规范格式化一下，如去掉邮件头、全部改为小写、处理数字、网址、邮箱地址等。具体操作见代码中给出的myprocessEmail.m，处理结果放在./myDataset/processedSpam和./myDataset/processedHam文件夹中。<br><br><br>### 提取垃圾邮件高频词汇<br>课程中的词汇表是直接给出的，可能不适用于下载的数据集，我们需要自己提取垃圾邮件高频词汇。<br><br>可是octave我不会玩啊(好像很会玩其他一样)，这个时候就要基于github编程了。<br><br> - github启动！<br> - 搜索“词频统计”！<br> - 然后搜到了一个<a href="https://github.com/rocketk/wordcounter" target="_blank" rel="noopener">基于python NLTK的词频统计的实现</a>。<br> - clone!<br> - 好的，稍加修改我们就可以用了<br><br>我在统计时排除掉了一些常见的虚词，因为虚词无论在垃圾邮件中还是在正常邮件中，都挺高频的,<a href="https://github.com/ILUO/wordcounter" target="_blank" rel="noopener">这是稍加修改的实现</a><br><br>统计结果如图所示：<br><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WQJbAlkCWwIBACc!&amp;vuin=1405591197&amp;tm=1525510800&amp;sce=50-1-1&amp;rf=viewer_311" alt="数据集" title="数据集"><br></div>
+<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/1DEJ10j6fGwEjUREJjcIqmMWxPyMtQhno4EKLrl3VX8!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=iwK9AYsCvQEBACc!&amp;vuin=1405591197&amp;tm=1525521600&amp;sce=60-2-2&amp;rf=viewer_311" alt="大蛇丸" title="大蛇丸"><br></div>
+
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><h3 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h3><p><a href="http://spamassassin.apache.org/old/publiccorpus/" target="_blank" rel="noopener">数据集链接</a><br><a id="more"></a><br>我使用了上面链接中的数据，其中名字中带hard是难以分辨是否为垃圾邮件的邮件，带ham的是正常邮件，带spam的是垃圾邮件。我把全部的垃圾邮件解压放到一个文件夹spam里，全部的正常邮件解压放到一个文件夹ham里。</p>
+<h3 id="邮件预处理"><a href="#邮件预处理" class="headerlink" title="邮件预处理"></a>邮件预处理</h3><p>运行getProcesseedEmail.m<br>因为邮件中包含各种邮件头、网址、邮箱地址等信息，在对邮件进行词频统计和特征提取前需要先要把内容按照一定规范格式化一下，如去掉邮件头、全部改为小写、处理数字、网址、邮箱地址等。具体操作见代码中给出的myprocessEmail.m，处理结果放在./myDataset/processedSpam和./myDataset/processedHam文件夹中。</p>
+<h3 id="提取垃圾邮件高频词汇"><a href="#提取垃圾邮件高频词汇" class="headerlink" title="提取垃圾邮件高频词汇"></a>提取垃圾邮件高频词汇</h3><p>课程中的词汇表是直接给出的，可能不适用于下载的数据集，我们需要自己提取垃圾邮件高频词汇。</p>
+<p>可是octave我不会玩啊(好像很会玩其他一样)，这个时候就要基于github编程了。</p>
+<ul>
+<li>github启动！</li>
+<li>搜索“词频统计”！</li>
+<li>然后搜到了一个<a href="https://github.com/rocketk/wordcounter" target="_blank" rel="noopener">基于python NLTK的词频统计的实现</a>。</li>
+<li>clone!</li>
+<li>好的，稍加修改我们就可以用了</li>
+</ul>
+<p>我在统计时排除掉了一些常见的虚词，因为虚词无论在垃圾邮件中还是在正常邮件中，都挺高频的,<a href="https://github.com/ILUO/wordcounter" target="_blank" rel="noopener">这是稍加修改的实现</a></p>
+<p>统计结果如图所示：</p>
+<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WQJbAlkCWwIBACc!&amp;vuin=1405591197&amp;tm=1525510800&amp;sce=50-1-1&amp;rf=viewer_311" alt="数据集" title="数据集"><br></div>
 
 
 <h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><p>运行getFetaures.m<br>统计结果有五万多条，后面大部分都是垃圾邮件为了混淆视听故意拼写错误的单词，我选取了前2000个单词作为特征。<br>现在需要把每封邮件转化为一个特征向量。代码在作业中已经给出了。</p>
