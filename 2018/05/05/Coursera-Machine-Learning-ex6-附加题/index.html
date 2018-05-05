@@ -8,22 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Coursera Machine Learning ex6 附加题 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。 &amp;lt;img width=”50%” height=”50%” src=”http:/">
+  <meta name="description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。     数据预处理数据下载数据集链接 我使用了上图中的数据，其中名字中带hard是难以分辨是否为">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Coursera Machine Learning ex6 附加题">
 <meta property="og:url" content="http://yoursite.com/2018/05/05/Coursera-Machine-Learning-ex6-附加题/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。 &amp;lt;img width=”50%” height=”50%” src=”http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZ">
+<meta property="og:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。     数据预处理数据下载数据集链接 我使用了上图中的数据，其中名字中带hard是难以分辨是否为垃圾邮件的邮件，带ham的是正常邮件，带spam的是垃圾邮件。我把全部的垃圾邮件">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=WQJbAlkCWwIBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/8DRgtXBunAsFWRQamvwqs2Lmq58ZepcEGdAAL6WzEU8!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAIVAqwCFQIBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/CFGdIHlzND.0MaTI9UIGdt9V45LiPOytTlJZzE1BwYg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAI5AawCOQEBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/2sPnBVy.mdrwbrHXdLB4DmpWrBKey7bIqeVqWOr5eBo!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=6wKJAesCiQEBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-05-05T12:10:58.271Z">
+<meta property="og:updated_time" content="2018-05-05T12:15:27.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera Machine Learning ex6 附加题">
-<meta name="twitter:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。 &amp;lt;img width=”50%” height=”50%” src=”http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZ">
-<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=WQJbAlkCWwIBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
+<meta name="twitter:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，github链接。     数据预处理数据下载数据集链接 我使用了上图中的数据，其中名字中带hard是难以分辨是否为垃圾邮件的邮件，带ham的是正常邮件，带spam的是垃圾邮件。我把全部的垃圾邮件">
+<meta name="twitter:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -184,7 +185,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器"><a href="#Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器" class="headerlink" title="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器"></a>Machine Learning编程作业:用自己的数据训练垃圾邮件分类器</h1><p>Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器，<a href="https://github.com/ILUO/spamClassifer.git" target="_blank" rel="noopener">github链接</a>。</p>
-<div align="center"><br>&lt;img width=”50%” height=”50%” src=”<a href="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=3AOtAtwDrQIBACc!&amp;tm=1525514400&amp;sce=0-12-12&amp;rf=viewer_311&quot;/" target="_blank" rel="noopener">http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=3AOtAtwDrQIBACc!&amp;tm=1525514400&amp;sce=0-12-12&amp;rf=viewer_311&quot;/</a>  alt=”title”&gt;<br></div>
+<div align="center"><br><img width="”50%”" height="”50%”" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311" alt="title"><br></div>
 
 
 
