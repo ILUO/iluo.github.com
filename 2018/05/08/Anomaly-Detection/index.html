@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Anomaly Detection | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="异常检测(Anomaly Detection)Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+  <meta name="description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anomaly Detection">
 <meta property="og:url" content="http://yoursite.com/2018/05/08/Anomaly-Detection/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="异常检测(Anomaly Detection)Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+<meta property="og:description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4">
@@ -27,10 +27,10 @@
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4">
-<meta property="og:updated_time" content="2018-05-08T15:14:12.014Z">
+<meta property="og:updated_time" content="2018-05-08T15:16:50.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anomaly Detection">
-<meta name="twitter:description" content="异常检测(Anomaly Detection)Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+<meta name="twitter:description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta name="twitter:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
@@ -191,7 +191,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4"><br></div><br>Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。<br><a id="more"></a><br><br><br>## 动机(Motivation)<br>异常检测主要应用于非监督学习问题，但是却类似于监督学习问题。<br>给定数据集 ，我们假使数据集是正常的，我们希望知道新的数据 xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性$p(x)$。<br><br><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4"><br></div>
+        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4"><br></div>
+
+<p>Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。</p>
+<a id="more"></a>
+<h2 id="动机-Motivation"><a href="#动机-Motivation" class="headerlink" title="动机(Motivation)"></a>动机(Motivation)</h2><p>异常检测主要应用于非监督学习问题，但是却类似于监督学习问题。<br>给定数据集 ，我们假使数据集是正常的，我们希望知道新的数据 xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性$p(x)$。</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4"><br></div>
 
 <p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。<br>这种方法称为<strong>密度估计</strong><br>$$<br>if \quad p(x) \begin{cases} \leq\epsilon, &amp; \text {anomaly} \ &gt;\epsilon, &amp; \text{normal} \end{cases}<br>$$</p>
 <h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布也称为正态分布。变量$x$符合高斯分布$x~N(\mu,\sigma^2)$则其概率密度函数为:<br>$$p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$$<br>可以利用已有数据来预测总体中的$\mu$和$\sigma^2$:<br>$$\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}$$<br>$$\sigma^2 = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^2$$</p>
