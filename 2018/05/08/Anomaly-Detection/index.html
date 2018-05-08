@@ -6,25 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Coursera Machine Learning ex6 附加题 | ILUO</title>
+  <title>Anomaly Detection | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
+  <meta name="description" content="异常检测(Anomaly Detection)">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Coursera Machine Learning ex6 附加题">
-<meta property="og:url" content="http://yoursite.com/2018/05/05/Coursera-Machine-Learning-ex6-附加题/index.html">
+<meta property="og:title" content="Anomaly Detection">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/Anomaly-Detection/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=WQJbAlkCWwIBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/8DRgtXBunAsFWRQamvwqs2Lmq58ZepcEGdAAL6WzEU8!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAIVAqwCFQIBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/CFGdIHlzND.0MaTI9UIGdt9V45LiPOytTlJZzE1BwYg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=rAI5AawCOQEBACc!&tm=1525507200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/2sPnBVy.mdrwbrHXdLB4DmpWrBKey7bIqeVqWOr5eBo!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=6wKJAesCiQEBACc!&vuin=1405591197&tm=1525510800&sce=50-1-1&rf=viewer_311">
-<meta property="og:updated_time" content="2018-05-05T13:35:23.984Z">
+<meta property="og:description" content="异常检测(Anomaly Detection)">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&ek=1&kp=1&pt=0&bo=zgNEAQAAAAARF6g!&vuin=1405591197&tm=1525788000&sce=60-2-2&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-05-08T15:05:15.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coursera Machine Learning ex6 附加题">
-<meta name="twitter:description" content="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,先放上实现的github链接。">
-<meta name="twitter:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311">
+<meta name="twitter:title" content="Anomaly Detection">
+<meta name="twitter:description" content="异常检测(Anomaly Detection)">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -164,68 +171,138 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Coursera-Machine-Learning-ex6-附加题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Anomaly-Detection" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Coursera Machine Learning ex6 附加题
+      Anomaly Detection
     </h1>
   
 
         
-        <a href="/2018/05/05/Coursera-Machine-Learning-ex6-附加题/" class="archive-article-date">
-  	<time datetime="2018-05-05T08:21:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
+        <a href="/2018/05/08/Anomaly-Detection/" class="archive-article-date">
+  	<time datetime="2018-05-08T14:13:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器"><a href="#Machine-Learning编程作业-用自己的数据训练垃圾邮件分类器" class="headerlink" title="Machine Learning编程作业:用自己的数据训练垃圾邮件分类器"></a>Machine Learning编程作业:用自己的数据训练垃圾邮件分类器</h1><p>Andrew Ng的machine learning公开课在支持向量机一章的附加题：自己构建数据集，使用SVM来训练垃圾邮件分类器,<a href="https://github.com/ILUO/spamClassifer.git" target="_blank" rel="noopener">先放上实现的github链接</a>。</p>
-<div align="center"><br><img width="50%" height="50%" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/LTel1RHx10GZgxj1XIlvpinNqOsFnsO90osD0ei.ASU!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=3AOtAtwDrQIBACc!&tm=1525514400&sce=0-12-12&rf=viewer_311"><br></div>
+        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4"><br></div>
 
 <a id="more"></a>
-<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><h3 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h3><p><a href="http://spamassassin.apache.org/old/publiccorpus/" target="_blank" rel="noopener">数据集链接</a></p>
-<p>我使用了上面链接中的数据，其中名字中带hard是难以分辨是否为垃圾邮件的邮件，带ham的是正常邮件，带spam的是垃圾邮件。我把全部的垃圾邮件解压放到一个文件夹spam里，全部的正常邮件解压放到一个文件夹ham里。</p>
-<h3 id="邮件预处理"><a href="#邮件预处理" class="headerlink" title="邮件预处理"></a>邮件预处理</h3><p>运行getProcesseedEmail.m<br>因为邮件中包含各种邮件头、网址、邮箱地址等信息，在对邮件进行词频统计和特征提取前需要先要把内容按照一定规范格式化一下，如去掉邮件头、全部改为小写、处理数字、网址、邮箱地址等。具体操作见代码中给出的myprocessEmail.m，处理结果放在./myDataset/processedSpam和./myDataset/processedHam文件夹中。</p>
-<h3 id="提取垃圾邮件高频词汇"><a href="#提取垃圾邮件高频词汇" class="headerlink" title="提取垃圾邮件高频词汇"></a>提取垃圾邮件高频词汇</h3><p>课程中的词汇表是直接给出的，可能不适用于下载的数据集，我们需要自己提取垃圾邮件高频词汇。</p>
-<p>可是octave我不会玩啊(好像很会玩其他一样)，这个时候就要基于github编程了。</p>
-<ul>
-<li>github启动！</li>
-<li>搜索“词频统计”！</li>
-<li>然后搜到了一个<a href="https://github.com/rocketk/wordcounter" target="_blank" rel="noopener">基于python NLTK的词频统计的实现</a>。</li>
-<li>clone!</li>
-<li>好的，稍加修改我们就可以用了</li>
+<h2 id="动机-Motivation"><a href="#动机-Motivation" class="headerlink" title="动机(Motivation)"></a>动机(Motivation)</h2><p>异常检测主要应用于非监督学习问题，但是却类似于监督学习问题。<br>给定数据集 ，我们假使数据集是正常的，我们希望知道新的数据 xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性$p(x)$。</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4"><br></div>
+
+<p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。<br>这种方法称为<strong>密度估计</strong><br>$$<br>if \quad p(x) \begin{cases} \leq\epsilon, &amp; \text {anomaly} \ &gt;\epsilon, &amp; \text{normal} \end{cases}<br>$$</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布也称为正态分布。变量$x$符合高斯分布$x~N(\mu,\sigma^2)$则其概率密度函数为:<br>$$p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$$<br>可以利用已有数据来预测总体中的$\mu$和$\sigma^2$:<br>$$\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}$$<br>$$\sigma^2 = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^2$$</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>对于给定数据集$x^{(1)},x^{(2)},x^{(3)}$，预测$\mu$和$\sigma^2$的值。给定一个训练实例，根据模型计算$p(x)$。<br>$$p(x) = \prod_{j=1}^np(x_j,u_j,\sigma_j^2)=\prod_{j=1}^n\frac{1}{\sqrt{2\pi}\sigma_j}exp(-\frac{(x_j-u_j)^2}{2\sigma_j^2})$$</p>
+<h2 id="开发异常检测系统"><a href="#开发异常检测系统" class="headerlink" title="开发异常检测系统"></a>开发异常检测系统</h2><ul>
+<li>根据训练集数据，估计特征的平均值和方差并构建$p(x)$函数，一般训练集数据都是正常数据。</li>
+<li>对交叉检验集，尝试使用不同的$\epsilon$作于阈值，根据$F_1$或者查准率、查全率的比例来选择$\epsilon$。</li>
+<li>选出$\epsilon$后，对测试集进行预测，计算异常检测系统的$F_1$或者查全率、查准率之比。</li>
 </ul>
-<p>我在统计时排除掉了一些常见的虚词，因为虚词无论在垃圾邮件中还是在正常邮件中，都挺高频的,<a href="https://github.com/ILUO/wordcounter" target="_blank" rel="noopener">这是稍加修改的实现</a></p>
-<p>统计结果如图所示：</p>
-<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/ZG*GHzutVqaWWQsDUoVaKvpfBSycD9j4XPEcyHdNJ8Q!/b/dIUBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WQJbAlkCWwIBACc!&amp;vuin=1405591197&amp;tm=1525510800&amp;sce=50-1-1&amp;rf=viewer_311" alt="数据集" title="数据集"><br></div>
+<h2 id="异常检测监督学习的比较"><a href="#异常检测监督学习的比较" class="headerlink" title="异常检测监督学习的比较"></a>异常检测监督学习的比较</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">异常检测</th>
+<th style="text-align:center">监督学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">少量正向类，大量负向类</td>
+<td style="text-align:center">同时有大量正向和负向类</td>
+</tr>
+<tr>
+<td style="text-align:center">有许多不同种类的异常，未来遇到的异常可能与已掌握的异常非常不同根据非常少量的正向类数据来训练算法</td>
+<td style="text-align:center">有足够多的正向类实例，足够用于训练算法，未来遇到的正向类实例可能与训练集中的非常近似</td>
+</tr>
+<tr>
+<td style="text-align:center">欺诈行为检测、生产(例如飞机引擎检测)、检测数据中心计算机运行状况</td>
+<td style="text-align:center">邮件过滤、天气预报、肿瘤分类</td>
+</tr>
+</tbody>
+</table>
+<h2 id="选择特征"><a href="#选择特征" class="headerlink" title="选择特征"></a>选择特征</h2><p>异常检测艰涩特征符合高斯分布，如果数据的分布不是高斯分布，异常检测算法也能工作，但是最好将数据转换为高斯分布，常用对数函数$x=log(x+c)$、$x=x^c(c为0-1之间的一个分数)$。</p>
+<p>误差分析：<br>分析那些被算法错误预测为正常的数据，观察能否找出一些问题。我们可能从问题中发现需要增加一些新的特征，增加这些新特征后获得的新算法能够帮助我们更好地进行异常检测。<br>通常可以通过将一些相关的特征进行组合，来获得一些新的更好的特征（异常数据的该特征值异常地大或小。</p>
+<h2 id="多元高斯分布"><a href="#多元高斯分布" class="headerlink" title="多元高斯分布"></a>多元高斯分布</h2><p>假使我们有两个相关的特征，而且这两个特征的值域范围比较宽，这种情况下，一般的高斯分布模型可能不能很好地识别异常数据。其原因在于，一般的高斯分布模型尝试的是去同时抓住两个特征的偏差，因此创造出一个比较大的判定边界。</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4"><br></div>
 
+<p>在一般的高斯分布模型中，我们计算 的方法是： 通过分别计算每个特征对应的几率然后将其累乘起来，在多元高斯分布模型中，我们将构建特征的协方差矩阵，用所有的特征一起来计算 。<br>$$\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}$$<br>$$\Sigma=\frac{1}{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}(X-\mu)^T(X-\mu)$$<br>$$p(x) = \frac{1}{(2\pi^{\frac{n}{2}})|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$$<br>$|\Sigma|$是定矩阵，在Octave中用det(sigma)计算</p>
+<h3 id="协方差矩阵如何影响模型"><a href="#协方差矩阵如何影响模型" class="headerlink" title="协方差矩阵如何影响模型"></a>协方差矩阵如何影响模型</h3><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&ek=1&kp=1&pt=0&bo=zgNEAQAAAAARF6g!&vuin=1405591197&tm=1525788000&sce=60-2-2&rf=viewer_4"><br></div>
 
-<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><p>运行getFetaures.m<br>统计结果有五万多条，后面大部分都是垃圾邮件为了混淆视听故意拼写错误的单词，我选取了前2000个单词作为特征。<br>现在需要把每封邮件转化为一个特征向量。代码在作业中已经给出了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file_contents = readFile(&apos;emailSample1.txt&apos;);</span><br><span class="line">word_indices  = processEmail(file_contents); % 得到单词索引</span><br><span class="line">features      = emailFeatures(word_indices); % 得到特征向量</span><br></pre></td></tr></table></figure>
-<p>上面的代码是提取一封邮件的特征向量，下面的代码是提取所有邮件的特征向量(geneFeatures.m)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function [X,y] = geneFeatures(dataPath,spamPath,hamPath)</span><br><span class="line"></span><br><span class="line">spamPath = strcat(dataPath,spamPath); % 垃圾邮件目录</span><br><span class="line">hamPath = strcat(dataPath,hamPath); % 正常邮件目录</span><br><span class="line"></span><br><span class="line">spamList = dir(spamPath); </span><br><span class="line">hamList = dir(hamPath);  </span><br><span class="line">spamFileNum = size(spamList,1);   </span><br><span class="line">hamFileNum = size(hamList,1); </span><br><span class="line">spamX = zeros(spamFileNum,2001); % 所有垃圾邮件的特征向量，第2001列为标签</span><br><span class="line">hamX = zeros(hamFileNum,2001);  % 所有正常邮件的特征向量，第2001列为标签</span><br><span class="line"></span><br><span class="line">for i = 3:spamFileNum,  % 读取垃圾邮件目录下的所有垃圾邮件</span><br><span class="line">    fprintf(&apos;%d\n&apos;,i);</span><br><span class="line">    filename = [spamPath spamList(i).name];  </span><br><span class="line">    email_contents = readFile(filename);  </span><br><span class="line">    word_indices  = processEmail(email_contents);</span><br><span class="line">    features      = emailFeatures(word_indices);</span><br><span class="line">    spamX(i,:) = [features&apos; 1];</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i = 3:hamFileNum,  % 读取正常邮件目录下的所有正常邮件</span><br><span class="line">    fprintf(&apos;%d\n&apos;,i);</span><br><span class="line">    filename = [hamPath hamList(i).name];  </span><br><span class="line">    email_contents = readFile(filename);  </span><br><span class="line">    word_indices  = processEmail(email_contents);</span><br><span class="line">    features      = emailFeatures(word_indices);</span><br><span class="line">    hamX(i,:) = [features&apos; 0];</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">X = [hamX;spamX]; % 合并两个特征矩阵</span><br><span class="line">rowrank = randperm(size(X, 1)); </span><br><span class="line">Xy = X(rowrank, :) % 打乱顺序</span><br><span class="line">X = Xy(:,1:2000); % 得到特征矩阵</span><br><span class="line">y = Xy(:,2001);  % 得到标签</span><br><span class="line">save myTrainDataset X y; % 将X、y存储为文件myTrainDataset</span><br></pre></td></tr></table></figure>
-<p>经过上面的处理，我们就得到了我们训练需要的输入数据X、y,他们被存进了myTrainDataset文件，使用load命令就可以加载他们。(吐槽一下这个方法好慢，跑了一晚上，而且Octave很奇怪，代码里打印下进度，命令行里却不显示，不知道运行进度很考验耐心)</p>
-<h2 id="训练分类器"><a href="#训练分类器" class="headerlink" title="训练分类器"></a>训练分类器</h2><p>运行MySpam.m<br>本来打算使用LIBSVM库进行训练的，但是发现要<a href="https://flyingpies.wordpress.com/2012/11/20/getting-libsvm-to-work-with-octave-on-windows/" target="_blank" rel="noopener">自己编译</a>，我没有安装Visual Studio，所以就使用作业中自带的训练方法来训练了(代码见MySpam.m)。这里可以使用自带的linearKernel核函数或者gaussianKernel核函数来训练。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">load(&apos;TrainDataset&apos;);</span><br><span class="line"></span><br><span class="line">fprintf(&apos;\nTraining Linear SVM (Spam Classification)\n&apos;)</span><br><span class="line">fprintf(&apos;(this may take 1 to 2 minutes) ...\n&apos;)</span><br><span class="line">X = XTrain(1:4000,:); %提取4000条训练特征 </span><br><span class="line">y= yTrain(1:4000,:);</span><br><span class="line">XTest = XTrain(4001:,:); %剩下的都是验证集</span><br><span class="line">yTest = yTrain(4001:,:);</span><br><span class="line">C = 0.1;</span><br><span class="line">model = svmTrain(X, y, C, @linearKernel); % 训练</span><br><span class="line"></span><br><span class="line">p = svmPredict(model, XTest); %预测</span><br><span class="line">fprintf(&apos;Training Accuracy: %f\n&apos;, mean(double(p == yTest)) * 100); %验证</span><br></pre></td></tr></table></figure>
-<p>使用两个核函数进行训练的准确率如图。<br>使用linearKernel，在训练集和测试集上都表现得不错</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/8DRgtXBunAsFWRQamvwqs2Lmq58ZepcEGdAAL6WzEU8!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rAIVAqwCFQIBACc!&amp;tm=1525507200&amp;sce=0-12-12&amp;rf=viewer_311" alt="结果1" title="结果1"><br></div>
+<p>上图是5个不同的模型，从左往右依次分析：</p>
+<ol>
+<li>是一个一般的高斯分布模型；</li>
+<li>通过协方差矩阵，令特征1拥有较小的偏差，同时保持特征2的偏差；</li>
+<li>通过协方差矩阵，令特征2拥有较大的偏差，同时保持特征1的偏差；</li>
+<li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的正相关性；</li>
+<li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的负相关性 。</li>
+</ol>
+<h3 id="多元高斯分布与原高斯分布模型的比较"><a href="#多元高斯分布与原高斯分布模型的比较" class="headerlink" title="多元高斯分布与原高斯分布模型的比较"></a>多元高斯分布与原高斯分布模型的比较</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">原高斯分布模型</th>
+<th style="text-align:center">多元高斯分布模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">不能捕捉特征之间的相关性，但可以通过将特征进行组合的方法来解决</td>
+<td style="text-align:center">自动捕捉特征之间的相关性</td>
+</tr>
+<tr>
+<td style="text-align:center">计算代价低，能适应大规模的特征</td>
+<td style="text-align:center">计算代价较高 训练集较小时也同样适用</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">必须满足 m&gt;n，不然协方差矩阵不可逆。通常须 m &gt; 10n。另外，特征冗余也会导致协方差矩阵不可逆</td>
+</tr>
+</tbody>
+</table>
+<p><strong>原高斯分布模型被广泛使用着，如果特征之间在某种程度上存在相互关联的情况，我们可以通过构造新新特征的方法来捕捉这些相关性。如果训练集不是太大，并且没有太多的特征，我们可以使用多元高斯分布模型。</strong></p>
+<h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1><h2 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h2><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4"><br></div>
 
-<p>使用guassianKernel，在测试集上表现得不是很好，高方差有过拟合嫌疑，此时的$\sigma=1$</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/CFGdIHlzND.0MaTI9UIGdt9V45LiPOytTlJZzE1BwYg!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rAI5AawCOQEBACc!&amp;tm=1525507200&amp;sce=0-12-12&amp;rf=viewer_311" alt="结果2" title="结果2"><br></div>
+<h3 id="变量描述"><a href="#变量描述" class="headerlink" title="变量描述"></a>变量描述</h3><ul>
+<li>$\theta^{(j)}$用户j的参数向量</li>
+<li>$x^{(i)}$电影i的特征向量</li>
+<li>对于用户j和电影i，我们预测评分为$(\theta^{(j)}x^{(i)})$</li>
+<li>$n_u$用户的数量</li>
+<li>$n_m$电影的数量</li>
+<li>$r(i,j)$评分记录</li>
+<li>$y(i,j)$用户i给电影j评分</li>
+<li>$m_j$用户j评分过的电影总数</li>
+</ul>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>$$min\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^i-y^{(i,j)})^2 + \frac{\lambda}{2}(\theta_k^{(j)})^2$$<br>其中 i :r(i,j) 表示我们只计算那些用户j评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1/2m，在这里我们将m去掉。并且我们不对方差项 进行正则化处理。<br>为了学习所有用户的参数，代价函数为：</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4"><br></div>
 
+<p>梯度下降更新公式为：<br>$$\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} \quad k=0$$<br>$$\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} + \lambda\theta_k^{(j)} \quad k\neq0$$</p>
+<h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h2><p>在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4"><br></div>
 
-<p>调整$\sigma=10$，准确率如下,也都表现得不错。</p>
-<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/2sPnBVy.mdrwbrHXdLB4DmpWrBKey7bIqeVqWOr5eBo!/b/dN0AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=6wKJAesCiQEBACc!&amp;vuin=1405591197&amp;tm=1525510800&amp;sce=50-1-1&amp;rf=viewer_311" alt="结果3" title="结果3"><br></div>
+<p>但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。协同过滤算法可以同时学习这两者。<br>我们的优化目标便改为同时针对$x$和$\theta$进行：</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4"><br></div>
 
+<p>对代价函数求偏导的结果如下：</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4"><br></div><br><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4"><br></div>
 
+<ul>
+<li>初始 $x$,$\theta$为一些随机小值；</li>
+<li>使用梯度下降算法最小化代价函数；</li>
+<li>在训练完算法后，我们预测$(\theta^{(j)})^Tx^{(i)}$为用户 j 给电影 i 的评分。<br> 如果一位用户正在观看电影，我们可以寻找另一部电影 ，依据两部电影的特征向量之间的距离$||x^{(i)}-x^{(j)}||$ 的大小来判断电影的相似度。</li>
+</ul>
+<h2 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h2><p>如果已有数据如图</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4"><br></div>
 
+<p>我们首先需要对结果 Y 矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：</p>
+<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4"><br></div>
 
-
+<p>然后我们利用这个新的 Y，矩阵来训练算法。对于Eve，我们的新模型会认为她给每部电影的评分都是该电影的平均分。</p>
 
       
 
@@ -295,7 +372,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/05/Coursera-Machine-Learning-ex6-附加题/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/08/Anomaly-Detection/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +386,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/08/Anomaly-Detection/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Anomaly Detection
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/01/Clustering/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Clustering</div>
+    <a href="/2018/05/05/Coursera-Machine-Learning-ex6-附加题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Coursera Machine Learning ex6 附加题</div>
       <i class="icon-circle-right"></i>
     </a>
   
