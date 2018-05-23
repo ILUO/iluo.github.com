@@ -155,6 +155,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Large-Scale-Machine-Learning-OCR" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/23/Large-Scale-Machine-Learning-OCR/">Large Scale Machine Learning &amp; OCR</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/23/Large-Scale-Machine-Learning-OCR/" class="archive-article-date">
+  	<time datetime="2018-05-23T07:55:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="大规模机器学习"><a href="#大规模机器学习" class="headerlink" title="大规模机器学习"></a>大规模机器学习</h1><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/weXRzlcCTu9gUSjAYTG16pQQaEhCBHSDkFkJuEZlOa4!/b/dDIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=RgIZAUYCGQEBACc!&amp;tl=1&amp;tm=1527062400&amp;sce=0-12-12&amp;rf=viewer_311" alt="谢谢" title="谢谢"><br></div>
+
+
+<h2 id="大型数据集的学习"><a href="#大型数据集的学习" class="headerlink" title="大型数据集的学习"></a>大型数据集的学习</h2><p>首先检查大规模的训练集是否有必要，通过绘制学习曲线来帮助判断。</p>
+<h2 id="随机梯度下降算法"><a href="#随机梯度下降算法" class="headerlink" title="随机梯度下降算法"></a>随机梯度下降算法</h2><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/K*Ie3GA19xulKVb6FAsiDRvyAjrt4HrCCZqQn45FV*E!/b/dDEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=UgG6AFIBugABACc!&amp;tl=1&amp;vuin=1405591197&amp;tm=1527062400&amp;sce=50-1-1&amp;rf=viewer_311" alt="随机梯度下降" title="随机梯度下降"><br></div><br>随机梯度下降算法在计算一个样本的代价函数倒数之后就更新参数$\theta$，不需要将所有训练集求和，还没有完成一次迭代时，随机梯度下降算法就已经走出了很远，存在的问题是每一步不一定是正确的方向，算法会逐渐走向全局最小的位置，但可能在最小值附近徘徊。<br><br>## 小批量梯度下降<br><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/K*Ie3GA19xulKVb6FAsiDRvyAjrt4HrCCZqQn45FV*E!/b/dDEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=UgG6AFIBugABACc!&amp;tl=1&amp;vuin=1405591197&amp;tm=1527062400&amp;sce=50-1-1&amp;rf=viewer_311" alt="小批量梯度下降" title="小批量梯度下降"><br></div><br>介于批量梯度下降和随机梯度下降算法之间，每计算b次训练实例更新一次参数$\theta$。<br>好处:可以用向量化的方式来循环b个实例。支持并行处理。<br><br>## 随机梯度下降算法的收敛<br>每X次迭代之后，在更新$\theta$之前求出X次的训练实例计算代价的平均值。然后绘制这些平均值与X次迭代次数之间的函数图像。<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/7jBRN*9xP*5qnoVpJnTjgaZwcyg9sjMqHRmoeQjssyg!/b/dDABAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PAI*ATwCPwEBACc!&amp;tl=1&amp;vuin=1405591197&amp;tm=1527062400&amp;sce=50-1-1&amp;rf=viewer_311" alt="随机梯度下降收敛" title="随机梯度下降收敛"><br></div>
+
+<h2 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h2><p>对数据流非离线的静态数据集的学习，与随机梯度下降算法类似，对单一的实例进行学习而不是对提前定义的训练集进行循环。</p>
+<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/ZJF0AfMOSUCyRYUyGXk3eszzBKbQtutNUNykCg2qBTI!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=nQFyAJ0BcgABACc!&amp;tl=1&amp;vuin=1405591197&amp;tm=1527062400&amp;sce=50-1-1&amp;rf=viewer_311" alt="在线学习" title="在线学习"><br></div>
+
+<p>对一个数据进行学习之后就可以丢弃该数据。好处是可以很好适应用户倾向，算法针对用户的当前行为不断更新模型以适应该用户。与随机梯度下降算法类似，其区别是不会使用一个固定的数据集。优点是可以可以对变化中的用户行为进行很好的预测。</p>
+<h2 id="Map-Reduce-and-Data-Parallelism"><a href="#Map-Reduce-and-Data-Parallelism" class="headerlink" title="Map Reduce and Data Parallelism"></a>Map Reduce and Data Parallelism</h2><p>将数据分配给多台计算机，让计算机处理数据集的一个子集，再将结果汇总求和。如果算法能够表述为”对训练结果汇总求和”，就能通过映射化简进行加速处理。</p>
+<h1 id="应用实例：图片文字识别"><a href="#应用实例：图片文字识别" class="headerlink" title="应用实例：图片文字识别"></a>应用实例：图片文字识别</h1><h2 id="问题描述和流程图-Problem-Description-and-Pipeline"><a href="#问题描述和流程图-Problem-Description-and-Pipeline" class="headerlink" title="问题描述和流程图(Problem Description and Pipeline)"></a>问题描述和流程图(Problem Description and Pipeline)</h2><h3 id="图像文字识别"><a href="#图像文字识别" class="headerlink" title="图像文字识别"></a>图像文字识别</h3><ol>
+<li>文字侦测(Text detection)-区别文字与环境</li>
+<li>字符切分(Character segmentation)-将文字分割成单一字符</li>
+<li>字符分类(Character classification)-确定每个字符是什么</li>
+</ol>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>文字侦测：从图像中抽取对象，按不同的窗口大小来循环截取图片，缩放至模型所需大小，交给模型判断。在文字识别中，将识别出的区域进行合并扩展，通过高宽比进行过滤。</p>
+<p>字符切分：滑动窗口抽取对象。</p>
+<p>字符分类：根据切分出来的字符，利用神经网络、支持向量或者逻辑回归算法进行分类。</p>
+<h2 id="获得大量数据和人工数据"><a href="#获得大量数据和人工数据" class="headerlink" title="获得大量数据和人工数据"></a>获得大量数据和人工数据</h2><h3 id="从零开始创造"><a href="#从零开始创造" class="headerlink" title="从零开始创造"></a>从零开始创造</h3><p>例如字体包配上随机背景图片</p>
+<h3 id="处理已有数据"><a href="#处理已有数据" class="headerlink" title="处理已有数据"></a>处理已有数据</h3><p>利用已有数据进行扭曲、旋转、模糊处理</p>
+<h3 id="众包"><a href="#众包" class="headerlink" title="众包"></a>众包</h3><p>找人打标签</p>
+<h2 id="上限分析"><a href="#上限分析" class="headerlink" title="上限分析"></a>上限分析</h2><p>在上限分析中，选取一部分，手工提取100%正确的输出结果，看应用整体效果提升了多少。提升效果多的最需要投入更多的时间的精力。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/23/Large-Scale-Machine-Learning-OCR/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Anomaly-Detection" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -821,82 +917,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/02/Linux-学习Shell/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-误差平方和代价函数的来源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/误差平方和代价函数的来源/">误差平方和代价函数的来源</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/01/误差平方和代价函数的来源/" class="archive-article-date">
-  	<time datetime="2018-04-01T03:17:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="线性回归代价函数的来源"><a href="#线性回归代价函数的来源" class="headerlink" title="线性回归代价函数的来源"></a>线性回归代价函数的来源</h1><p>Andrew Ng在Coursea的machine learning公开课上引入cost function：”And one thing I might do is try to minimize the square difference between the output of the hypothesis and the actual price of a house”<br>那Cost Function是square difference的原因是什么呢？<br>
-        
-          <a class="article-more-a" href="/2018/04/01/误差平方和代价函数的来源/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/01/误差平方和代价函数的来源/">展开全文 >></a>
         </p>
       
 
