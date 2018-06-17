@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: machine learning | ILUO</title>
+  <title>CS229 Note1 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ILUO">
-<meta property="og:url" content="http://yoursite.com/tags/machine-learning/page/2/index.html">
+  <meta name="description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+<meta name="keywords" content="CS229,machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS229 Note1">
+<meta property="og:url" content="http://yoursite.com/2018/06/17/CS229-Note1/index.html">
 <meta property="og:site_name" content="ILUO">
+<meta property="og:description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/156BZcaaGgCCtxx4KNNuS.H.aoe*2w1bX9CFZ3kji.c!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=NgXuAjYF7gIBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M9YP8kIxUWHWBPLMPSPm3mWAQQq5jfWLYrnsUzlTOto!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAKUAYAClAEBACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/DXqgq79YhMENyJPjq1iXKWbUgNmvM3Z18Er9pUSCELQ!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=KQHmACkB5gABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/*Q6p.mYwkBSiKjTRDPWvISaQofNPhOwFuGWsnHaRtgU!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=rQK5AK0CuQABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
+<meta property="og:updated_time" content="2018-06-17T07:07:55.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ILUO">
+<meta name="twitter:title" content="CS229 Note1">
+<meta name="twitter:description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/156BZcaaGgCCtxx4KNNuS.H.aoe*2w1bX9CFZ3kji.c!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=NgXuAjYF7gIBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -153,235 +163,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CS229-Note1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CS229 Note1
+    </h1>
+  
+
+        
+        <a href="/2018/06/17/CS229-Note1/" class="archive-article-date">
+  	<time datetime="2018-06-17T06:32:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CS229-Note1"><a href="#CS229-Note1" class="headerlink" title="CS229 Note1"></a>CS229 Note1</h1><p>这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。</p>
+<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/156BZcaaGgCCtxx4KNNuS.H.aoe*2w1bX9CFZ3kji.c!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=NgXuAjYF7gIBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311"><br></div>
+
+<p>只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。<br><a id="more"></a></p>
+<h2 id="梯度下降算法的数学原理"><a href="#梯度下降算法的数学原理" class="headerlink" title="梯度下降算法的数学原理"></a>梯度下降算法的数学原理</h2><p>算法公式<br>$$\theta=\theta_0-\eta.\Delta f(\theta_0)$$</p>
+<h3 id="一阶泰勒展开"><a href="#一阶泰勒展开" class="headerlink" title="一阶泰勒展开"></a>一阶泰勒展开</h3><p>$$f(\theta) \approx f(\theta_ 0)+(\theta-\theta_0).\Delta f(\theta_0)$$<br>数学思想：曲线函数的线性拟合近似</p>
+<p><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M9YP8kIxUWHWBPLMPSPm3mWAQQq5jfWLYrnsUzlTOto!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAKUAYAClAEBACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311"><br></div><br>$\theta-\theta_0$是微小矢量，其大小是步进长度$\eta$，为标量。$\theta-\theta_0$的单位向量用$v$表示。则<br>$$\theta-\theta_0=\eta v$$<br>$$f(\theta)\approx f(\theta_0)+\eta v.\Delta f(\theta_0)$$</p>
+<p>我们希望每次$\theta$更新让$f(\theta)$变小。也就是说希望$f(\theta) &lt; f(\theta_0)$</p>
+<p>$$f(\theta)-f(\theta_0)\approx \eta v.\Delta f(\theta_0) &lt; 0$$<br>$\eta$是标量<br>$$v.\Delta f(\theta_0) = ||\Delta f(\theta_0)||cos(\alpha)&lt; 0$$<br>其中$v$是$\theta-\theta_0$的单位向量,其方向就是梯度下降算法中要前进的方向，从上式可以看出算法要前进的方向与当前梯度方向(当前梯度方向即当前是在上升还是在下降)完全相反时，即夹角$\alpha$为180度时，$f(\theta)$减小得最快。<br>$$v.\Delta f(\theta_0) = ||\Delta f(\theta_0)||cos(\pi) $$<br>$$v = -\frac{\Delta f(\theta_0)}{||\Delta f(\theta_0)||}$$<br>因为$$||\Delta f(\theta_0)||$$是标量，可以并入$\eta$。所以<br>$$\theta = \theta_0-\eta \Delta f(\theta_0)$$</p>
+<h2 id="局部加权线性回归"><a href="#局部加权线性回归" class="headerlink" title="局部加权线性回归"></a>局部加权线性回归</h2><p>最小化<br>$$\sum_i w^{(i)}(y^{(i)}-\theta^Tx^{(i)})^2$$<br>$$w^{(i)}=exp(-\frac{(x^{(i)}-x)^2}{2\tau^2})$$<br>上式中参数$x$为新预测的样本特征数据，它是一个向量，参数控制了权值变化的速率<br>离$x$很近的样本，权值接近于1，而对于离$x$很远的样本，此时权值接近于0，这样就是在局部构成线性回归，它依赖的也只是周边的点</p>
+<p><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/DXqgq79YhMENyJPjq1iXKWbUgNmvM3Z18Er9pUSCELQ!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=KQHmACkB5gABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311"><br></div><br>对于局部加权线性回归算法，每次进行预测都需要全部的训练数据（每次进行的预测得到不同的参数$\theta$)，没有固定的参数，是非参数算法</p>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h3><p>$$h_{\theta}(x)=g(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}$$<br>$$g(z)=\frac{1}{1+e^{-z}}$$<br>该函数的实用属性：<br>$$<br>\begin{align}<br>g’(z)&amp;=\frac{d}{dz}\frac{1}{1+e^{-z}}\<br>&amp;=\frac{1}{(1+e^{-z})^2}(e^{-z})\<br>&amp;=\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})\<br>&amp;=g(z)(1-g(z))<br>\end{align}<br>$$</p>
+<h3 id="拟合参数"><a href="#拟合参数" class="headerlink" title="拟合参数"></a>拟合参数</h3><p>概率假设<br>$$p(y|x;\theta)=(h_{\theta}(x))^y(1-h_{\theta}(x))^{1-y}$$<br>对于所有训练集，最大似然估计<br>$$<br>\begin{align}<br>L(\theta) &amp;= p(\overrightarrow{y}|X;\theta)\<br>&amp;=\prod_{i=1}^m p(y^{(i)}|x^{(i)};\theta)\<br>&amp;=\prod_{i=1}^m (h_\theta(x^{(i)}))^{y^{(i)}}(1-h_\theta(x^{(i)}))^{1-y^{(i)}}<br>\end{align}<br>$$<br>对似然函数取log进行最大化<br>$$\ell(\theta)=log(L(\theta))=\sum_{i=1}^{m}y^{(i)}logh(x^{(i)})+(1-y^{(i)})log(1-h(x^{(i)}))$$<br>使用梯度上升<br>$$<br>\begin{align}<br>\frac{\delta}{\delta\theta_j}\ell(\theta)&amp;=(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(\theta^Tx)})\<br>&amp;=(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(\theta^Tx)})g(\theta^Tx)(1-g(\theta^Tx))\frac{\delta}{\delta\theta_j}\theta^Tx\<br>&amp;=(y(1-g(\theta^Tx))-(1-y)g(\theta^Tx))x_j\<br>&amp;=(y-h_\theta(x))x_j<br>\end{align}<br>$$</p>
+<p>$$\theta_j:=\theta_j + \alpha(y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}$$</p>
+<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><p>求函数的零点</p>
+<p><div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/*Q6p.mYwkBSiKjTRDPWvISaQofNPhOwFuGWsnHaRtgU!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=rQK5AK0CuQABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311"><br></div><br>$$\theta:=\theta-\frac{f(\theta)}{f’(\theta)}$$</p>
+<p>当我们想最大化似然函数$\ell(\theta)$(如逻辑回归)，即求$\ell’(\theta)$的零点。所以<br>$$\theta:=\theta-\frac{\ell’(\theta)}{\ell’’(\theta)}$$</p>
+<p>在逻辑回归里，$\theta$是一个向量。 牛顿法在多维环境下的泛化为：<br>$$\theta:=\theta-H^{-1}\Delta \ell(\theta)$$<br>$$H_{ij}=\frac{\delta^2\ell(\theta)}{\delta\theta_i\delta\theta_j}$$<br>其中，$\Delta\ell(\theta)$是$\ell(\theta)$在$\theta_i$维的偏导数的向量，H是$\ell(\theta)$对每一维求二阶导数的矩阵。</p>
+<h2 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h2><h3 id="指数分布族"><a href="#指数分布族" class="headerlink" title="指数分布族"></a>指数分布族</h3><p>$$p(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))$$<br>$\eta$是自然参数(natural parameter)<br>$T(y)$是充分统计量(sufficient statistic)<br>伯努利分布和高斯分布都是指数分布族的特例</p>
+<h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>\begin{align}<br>p(y;\phi)&amp;=\phi^y(1-\phi)^{1-y}\<br>&amp;=exp(ylog\phi+(1-y)log(1-\phi))\<br>&amp;=exp((log(\frac{\phi}{1-\phi}))y+log(1-\phi))<br>\end{align}</p>
+<p>$$\eta=log(\frac{\phi}{1-\phi})$$<br>$$T(y)=y$$<br>$$a(\eta)=-log(1-\phi)=log(1+e^\eta)$$<br>$$b(y)=1$$</p>
+<h3 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h3><p>\begin{align}<br>p(y;u)&amp;=\frac{1}{\sqrt{2\pi}}exp(-\frac{1}{2}(y-u)^2)\<br>&amp;=\frac{1}{\sqrt{2\pi}}exp(-\frac{1}{2}y^2).exp(uy-\frac{1}{2}u^2)<br>\end{align}<br>注:$\sigma$的值不影响最终的参数收敛，所以这里取1方便理解<br>$$\eta=u$$<br>$$T(y)=y$$<br>$$a(\eta)=\frac{u^2}{2}=\frac{\eta^2}{2}$$<br>$$b(y)=(\frac{1}{\sqrt{2\pi}})exp(-y^2/2)$$</p>
+<h2 id="构造广义线性模型"><a href="#构造广义线性模型" class="headerlink" title="构造广义线性模型"></a>构造广义线性模型</h2><p>对于通过f(x)来预测随机变量y的值的问题（分类或者回归），要构造广义线性模型，y给定x的条件分布要满足以下三个条件。</p>
+<ol>
+<li>$y|x;\theta $~ExponentialFamily$(\eta)$,给定$x$和$\theta$，$y$的分布遵从指数族分布，自然参数为$\eta$</li>
+<li>给定$x$，目标是预测$T(y)$，在大多数例子里$T(y)=y$，这意味着$h(x)=E[y|x]$（预测$h(x)$是x条件下y发生的期望）</li>
+<li>自然参数$\eta$与输入$x$是线性相关的：$\eta=\theta^Tx$<br>第三个条件通常被认为是“构造GLM的选择”而不是“构造GLM的假设”(PS：我也没从讲义里看到这个的推导)</li>
+</ol>
+<h3 id="普通最小二乘-线性回归"><a href="#普通最小二乘-线性回归" class="headerlink" title="普通最小二乘(线性回归)"></a>普通最小二乘(线性回归)</h3><p>给定x，y服从高斯分布$N(u,\sigma^2)$，前面已证明高斯分布是指数分布族的特例，满足了广义线性模型第一个条件。有$u=\eta$<br> $$h_\theta(x)=E(y|x;\theta)=u=\eta=\theta^T x$$<br> 第一个等式满足了广义线性模型的第二个条件。<br> 第二个等式是高斯分布的特性，第三个等式是之前(高斯分布是指数分布族)推导出来的，第四个等式满足第三个条件。</p>
+<h3 id="逻辑回归-1"><a href="#逻辑回归-1" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><p>给定x，y服从伯努利分布，$\phi=\frac{1}{1+e^{-\eta}}$,$E[y|x;\theta]=\phi$<br>\begin{align}<br>h_\theta(x) &amp;= E[y|x;\theta]\<br>&amp;=\phi \<br>&amp;= \frac{1}{1+e^{-\eta}}\<br>&amp;= \frac{1}{1+e^{-\theta^Tx}}<br>\end{align}<br>所以，逻辑回归sigmod函数的形式是广义线性模型与指数分布族的定义的结果。</p>
+<h3 id="Softmax-Regression"><a href="#Softmax-Regression" class="headerlink" title="Softmax Regression"></a>Softmax Regression</h3><p>多分类问题，response variable仍然是离散的，但是不止两个，首先推导这个分布属于指数分布族。<br>使用k个参数$\phi_1,…,\phi_k$来指定每一个输出的概率。实际上只需要k-1个参数，因为他们的概率都是相互独立的且和为1.<br>$$\phi_k=1-\sum_{i=1}^{k-1}\phi_i$$<br>定义$T(y)$为$T(y)\in R^{k-1}$,只有$T[y]_i=1$，其余元素都为0($i$代表$T(y)$属于哪一类的序号).<br>引入符号$1\lbrace True\rbrace =1,1\lbrace False\rbrace =0$<br>所以$T(y)$与$y$之间的关系可以描述为<br>$$(T(y))_i=1\lbrace y=i \rbrace$$<br>即$T(y)$属于第$i$类时（即第$i$个元素为1），$i$与$y$相等<br>现在开始推导该分布属于指数分布族<br>$$<br>\begin{align}<br>p(y;\phi) &amp;= \phi_i^{1\lbrace y=1 \rbrace}\phi_2^{1\lbrace y=2 \rbrace}…\phi_k^1{\lbrace y=k \rbrace}\<br>&amp;=\phi_1^{(T(y))_1}…\phi_k^{1-\sum_{i=1}^{k-1}(T(y))_i}\<br>&amp;=exp((T(y))_1log(\phi_1)+(T(y))_2log(\phi_2)+…+(1-\sum_{i=1}^{k-1}(T(y))_i)+log(\phi_k))\<br>&amp;=exp((T(y))_1log(\phi_1/\phi_k)+…+(T(y))<em>{k-1}log(\phi</em>{k-1}{\phi_k})+log(\phi_k))\<br>&amp;=b(y)exp(\eta^T T(y)-a\eta)<br>\end{align}<br>$$</p>
+<p>$$<br>      \eta =<br>       \begin{bmatrix}<br>        log(\phi_1/\phi_k) \<br>        … \<br>        log(\phi_{k-1}/\phi_k) \<br>        \end{bmatrix}<br>$$<br>$$a(\eta)=-log(\phi_k)$$<br>$$b(y)=1$$</p>
+<p>link function<br>$$\eta_i=log\frac{\phi_i}{\phi_k}$$<br>$$e^{\eta_i} = \frac{\phi_i}{\phi_k}$$<br>$$\phi_k\sum_{i=1}^ke^{n_i}=\sum_{i=1}^k\phi_i=1$$</p>
+<p>response(softmax) function<br>$$\phi_i=\frac{e^{\eta_i}}{\sum_{j=1}^ke^{\eta_j}}=\frac{e^{\theta_i^{T}x}}{\sum_{j=1}^{k}e^{\theta_j^Tx}}=p(y=i|x;\theta)$$</p>
+<h3 id="参数拟合"><a href="#参数拟合" class="headerlink" title="参数拟合"></a>参数拟合</h3><p>$$<br>\begin{align}<br>\ell(\theta) &amp;= \sum_{i=1}^{m}logp(y^{(i)}|x^{(i)};\theta)\<br>&amp;= \sum_{i=1}^{m}log\prod_{i=1}^k(\frac{e^{\theta_l^Tx^{(i)}}}{\sum_{j=1}^{k}e^{\theta_l^{T}x^{(i)}}})^{1\lbrace y^{(i)}=l \rbrace}<br>\end{align}<br>$$<br>然后使用梯度上升或者牛顿法来解决。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/08/Neural-Networks-Representation/" class="archive-article-date">
-  	<time datetime="2018-04-08T13:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/Neural-Networks-Representation/">Neural Networks:Representation</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CS229</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/17/CS229-Note1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/06/Logistic-Regression/" class="archive-article-date">
-  	<time datetime="2018-04-06T01:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/02/最小二乘损失函数的概率解释/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最小二乘损失函数的概率解释</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/06/Logistic-Regression/">Logistic Regression</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/误差平方和代价函数的来源/" class="archive-article-date">
-  	<time datetime="2018-04-01T03:17:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/误差平方和代价函数的来源/">误差平方和代价函数的来源</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/01/Linear-Regression-Multiple-Variables/" class="archive-article-date">
-  	<time datetime="2018-04-01T02:02:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/01/Linear-Regression-Multiple-Variables/">Linear Regression Multiple Variables</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/Liner-Regression/" class="archive-article-date">
-  	<time datetime="2018-03-31T01:05:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/Liner-Regression/">Liner Regression</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/machine-learning/">&laquo; Prev</a><a class="page-number" href="/tags/machine-learning/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -405,9 +363,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
