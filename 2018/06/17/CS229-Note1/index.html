@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CS229 Note1 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+  <meta name="description" content="CS229 Note1  只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。 这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。">
 <meta name="keywords" content="machine learning,CS229">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS229 Note1">
 <meta property="og:url" content="http://yoursite.com/2018/06/17/CS229-Note1/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+<meta property="og:description" content="CS229 Note1  只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。 这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/gn7wUnebegZpr0nk3soRLgdFsTfH4AzUjJV2qoSEVDY!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=XwI2AV8CNgEBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M9YP8kIxUWHWBPLMPSPm3mWAQQq5jfWLYrnsUzlTOto!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAKUAYAClAEBACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/DXqgq79YhMENyJPjq1iXKWbUgNmvM3Z18Er9pUSCELQ!/b/dOkAAAAAAAAA&ek=1&kp=1&pt=0&bo=KQHmACkB5gABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/*Q6p.mYwkBSiKjTRDPWvISaQofNPhOwFuGWsnHaRtgU!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=rQK5AK0CuQABACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2018-06-17T07:25:06.840Z">
+<meta property="og:updated_time" content="2018-06-17T07:29:05.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS229 Note1">
-<meta name="twitter:description" content="CS229 Note1这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。   只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。">
+<meta name="twitter:description" content="CS229 Note1  只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。 这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。">
 <meta name="twitter:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/gn7wUnebegZpr0nk3soRLgdFsTfH4AzUjJV2qoSEVDY!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=XwI2AV8CNgEBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
@@ -183,10 +183,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CS229-Note1"><a href="#CS229-Note1" class="headerlink" title="CS229 Note1"></a>CS229 Note1</h1><p>这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。</p>
-<div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/gn7wUnebegZpr0nk3soRLgdFsTfH4AzUjJV2qoSEVDY!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=XwI2AV8CNgEBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311"><br></div>
+        <h1 id="CS229-Note1"><a href="#CS229-Note1" class="headerlink" title="CS229 Note1"></a>CS229 Note1</h1><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/gn7wUnebegZpr0nk3soRLgdFsTfH4AzUjJV2qoSEVDY!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=XwI2AV8CNgEBACc!&tl=1&tm=1529218800&sce=0-12-12&rf=viewer_311"><br></div>
 
-<p>只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。<br><a id="more"></a></p>
+<p>只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。</p>
+<p>这篇文章的主要内容包括梯度下降算法的数学原理，逻辑回归的推导，牛顿法的应用，如何构造一个广义线性模型。</p>
+<a id="more"></a>
 <h2 id="梯度下降算法的数学原理"><a href="#梯度下降算法的数学原理" class="headerlink" title="梯度下降算法的数学原理"></a>梯度下降算法的数学原理</h2><p>算法公式<br>$$\theta=\theta_0-\eta.\Delta f(\theta_0)$$</p>
 <h3 id="一阶泰勒展开"><a href="#一阶泰勒展开" class="headerlink" title="一阶泰勒展开"></a>一阶泰勒展开</h3><p>$$f(\theta) \approx f(\theta_ 0)+(\theta-\theta_0).\Delta f(\theta_0)$$<br>数学思想：曲线函数的线性拟合近似</p>
 <p><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M9YP8kIxUWHWBPLMPSPm3mWAQQq5jfWLYrnsUzlTOto!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAKUAYAClAEBACc!&tl=1&tm=1529215200&sce=0-12-12&rf=viewer_311"><br></div><br>$\theta-\theta_0$是微小矢量，其大小是步进长度$\eta$，为标量。$\theta-\theta_0$的单位向量用$v$表示。则<br>$$\theta-\theta_0=\eta v$$<br>$$f(\theta)\approx f(\theta_0)+\eta v.\Delta f(\theta_0)$$</p>
