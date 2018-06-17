@@ -194,7 +194,7 @@
 <p>$h_\theta(x)$的作用是，对于给定的输入变量，根据参数计算输出变量为1 的可能性。<br>$$h_\theta(x)=P(y=1|x;\theta)$$</p>
 <h2 id="判定边界-Decision-Boundary"><a href="#判定边界-Decision-Boundary" class="headerlink" title="判定边界(Decision Boundary)"></a>判定边界(Decision Boundary)</h2><p>即$z=\theta^TX=0$</p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>若沿用线性回归的定义，得到的代价函数是一个非凸函数，这将会影响梯度下降算法寻找全局最小值</p>
-<h3 id="重新定义-待证明"><a href="#重新定义-待证明" class="headerlink" title="重新定义(待证明)"></a>重新定义(待证明)</h3><p>$$J(\theta) =  \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))$$<br>$$<br>        Cost(h_\theta(x),y) =<br>        \begin{cases}<br>        -log(h_\theta(x)),  &amp; \text{if $y$=1} \<br>        -log(1-h_\theta(x)), &amp; \text{if $y=0$}<br>        \end{cases}<br>$$</p>
+<h3 id="重新定义-待证明"><a href="#重新定义-待证明" class="headerlink" title="重新定义(待证明)"></a>重新定义(待证明)</h3><p>$$J(\theta) =  \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))$$<br>$$<br>        Cost(h_\theta(x),y) =<br>        \begin{cases}<br>        -log(h_\theta(x)),  &amp; \text{if $y$=1} \\<br>        -log(1-h_\theta(x)), &amp; \text{if $y=0$}<br>        \end{cases}<br>$$</p>
 <p>$h_\theta(x)$与$Cost(h_\theta(x),y)$之间的关系如图：</p>
 <div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=5gHdAOYB3QABACc!&amp;vuin=1405591197&amp;tm=1522976400&amp;sce=50-1-1&amp;rf=viewer_311" alt="theta与代价函数之间的关系" title="变量与代价函数之间的关系"><br></div>
 
@@ -228,7 +228,7 @@
 <h3 id="惩罚"><a href="#惩罚" class="headerlink" title="惩罚"></a>惩罚</h3><p>在尝试最小化代价时将惩罚纳入考虑<br>$$J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{i=1}^{n}\theta_j^{2}]$$<br>$\lambda$称为正规化参数，根据惯例，不对$\theta_0$进行惩罚</p>
 <p>$\lambda$过大，主要受$\theta_0$影响，欠拟合</p>
 <h2 id="正则化线性回归"><a href="#正则化线性回归" class="headerlink" title="正则化线性回归"></a>正则化线性回归</h2><h3 id="根据正则化代价函数求偏导"><a href="#根据正则化代价函数求偏导" class="headerlink" title="根据正则化代价函数求偏导"></a>根据正则化代价函数求偏导</h3><p>$$\theta_j := \theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
-<h3 id="正规方程也可以"><a href="#正规方程也可以" class="headerlink" title="正规方程也可以"></a>正规方程也可以</h3><p>$\theta = (X^TX+\lambda   \begin{bmatrix}0 &amp;  &amp;  &amp;  &amp;  \ &amp; 1 &amp;  &amp; &amp;  \&amp;  &amp;  &amp; \ddots &amp;  \&amp;  &amp;  &amp;  &amp; 1 \ \end{bmatrix})^-1X^Ty$</p>
+<h3 id="正规方程也可以"><a href="#正规方程也可以" class="headerlink" title="正规方程也可以"></a>正规方程也可以</h3><p>$\theta = (X^TX+\lambda   \begin{bmatrix}0 &amp;  &amp;  &amp;  &amp;  \ &amp; 1 &amp;  &amp; &amp;  \\&amp;  &amp;  &amp; \ddots &amp;  \\&amp;  &amp;  &amp;  &amp; 1 \ \end{bmatrix})^-1X^Ty$</p>
 
       
 
@@ -474,10 +474,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CS229</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
@@ -486,7 +482,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Linux 基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">CS229</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,11 +490,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">概率论基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">Linux 基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">概率论基础</a>
               </li>
             
             <div class="clearfix"></div>
