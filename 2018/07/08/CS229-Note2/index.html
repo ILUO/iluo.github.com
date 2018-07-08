@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CS229-Note2 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型   生成学习算法与使用决策边界进行分类的方法不同(逻辑回归与感知机算法)，生成学习算法对不同的类别分别建立分类模型，将要预测的样本与不同的模型进行匹配，观察新样本更符合哪一个类别。 试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签">
+  <meta name="description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型">
 <meta name="keywords" content="CS229,machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS229-Note2">
 <meta property="og:url" content="http://yoursite.com/2018/07/08/CS229-Note2/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型   生成学习算法与使用决策边界进行分类的方法不同(逻辑回归与感知机算法)，生成学习算法对不同的类别分别建立分类模型，将要预测的样本与不同的模型进行匹配，观察新样本更符合哪一个类别。 试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签${0,1}$之间的直接映射的算法叫做判别学习算法(discriminative">
+<meta property="og:description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/dUZe.Hk*cqFogUJiwZaWs10rF3NEyF*TWS6.5VNHCMI!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=FQIsARUCLAEBACc!&tl=1&tm=1531029600&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tSeZr3z0kXXTF9o7gAdmc0a5iTr4eSzoeBqa5MyhSI!/b/dOAAAAAAAAAA&ek=1&kp=1&pt=0&bo=0AK8ANACvAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/wtqnzqHyiHP3VoNZm4g7eYd7PqmM*OK8CIo7EmvSoTU!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=ggJLAIICSwABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/qqTGRDy*x2EBgFhagyyZzrcNMDd2gXcty.hpMQ*AT4Y!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=sALEALACxAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xIwrDWaQRG2F2Lvs9e*64O9aefL0ynpy7xNvFpfWzmY!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=ugK0ALoCtAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/BvrvoX5B*FTdJA7F9bCDjipQBlORyra7HFjeDqvZ*b0!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=UAJIAFACSAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2018-07-08T06:31:40.504Z">
+<meta property="og:updated_time" content="2018-07-08T06:32:17.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS229-Note2">
-<meta name="twitter:description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型   生成学习算法与使用决策边界进行分类的方法不同(逻辑回归与感知机算法)，生成学习算法对不同的类别分别建立分类模型，将要预测的样本与不同的模型进行匹配，观察新样本更符合哪一个类别。 试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签${0,1}$之间的直接映射的算法叫做判别学习算法(discriminative">
+<meta name="twitter:description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型">
 <meta name="twitter:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/dUZe.Hk*cqFogUJiwZaWs10rF3NEyF*TWS6.5VNHCMI!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=FQIsARUCLAEBACc!&tl=1&tm=1531029600&sce=0-12-12&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
@@ -188,6 +188,7 @@
         <h1 id="CS229-Note2"><a href="#CS229-Note2" class="headerlink" title="CS229 Note2"></a>CS229 Note2</h1><p>本章主要内容是生成学习算法与朴素贝叶斯模型</p>
 <div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/dUZe.Hk*cqFogUJiwZaWs10rF3NEyF*TWS6.5VNHCMI!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=FQIsARUCLAEBACc!&tl=1&tm=1531029600&sce=0-12-12&rf=viewer_311"><br></div>
 
+<a id="more"></a>
 <h2 id="生成学习算法"><a href="#生成学习算法" class="headerlink" title="生成学习算法"></a>生成学习算法</h2><p>与使用决策边界进行分类的方法不同(逻辑回归与感知机算法)，生成学习算法对不同的类别分别建立分类模型，将要预测的样本与不同的模型进行匹配，观察新样本更符合哪一个类别。</p>
 <p>试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签${0,1}$之间的直接映射的算法叫做<strong>判别学习算法(discriminative learning algorithms)</strong>。对于对$p(x|y)$以及$p(y)$进行建模的算法，叫做<strong>生成学习算法(generative learning algorithms)</strong>，$p(x|y=1)$模拟了类别1的特征分布，$p(x|y=0)$同理。</p>
 <p>在对$p(y)$(<strong>class priors</strong>)以及$p(x|y)$进行建模之后，使用贝叶斯法则推导给定$x$时$y$的后分布。<br>$$p(y|x)=\frac{p(x|y)p(y)}{p(x)}$$<br>$$p(x)=p(x|y=1)p(y=1)+p(x|y=0)p(y=0)$$<br>进行预测时，其实不用计算分子，因为可以认为每种输入特征发生的概率可以认为是一样的，当$p(y)$为0.5，该项相同也可以省去。<br>$$<br>\begin{align}<br>\mathop{\arg\max}_{y}   p(y|x)&amp;=\mathop{\arg\max}_{y}\frac{p(x|y)p(y)}{p(x)} \\<br>&amp;= \mathop{\arg\max}_{y}p(x|y)p(y)<br>\end{align}<br>$$</p>
