@@ -66,6 +66,8 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
+				<li><a href="/tags/machine learning/">ML</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -124,6 +126,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -141,12 +145,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/machine learning/">ML</a></li>
 		        
 				</ul>
 			</nav>
@@ -362,6 +368,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#神经网络：学习-Neural-Networks-Learning"><span class="toc-number">1.</span> <span class="toc-text">神经网络：学习(Neural Networks:Learning)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代价函数"><span class="toc-number">1.1.</span> <span class="toc-text">代价函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标记方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">标记方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-number">1.1.2.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公式"><span class="toc-number">1.1.3.</span> <span class="toc-text">公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向传播算法-Backpropagation-Algorithm"><span class="toc-number">1.2.</span> <span class="toc-text">反向传播算法(Backpropagation Algorithm)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">1.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记"><span class="toc-number">1.2.2.</span> <span class="toc-text">标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-number">1.2.3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法表示"><span class="toc-number">1.2.4.</span> <span class="toc-text">算法表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权重在Octave的处理"><span class="toc-number">1.2.5.</span> <span class="toc-text">权重在Octave的处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#直观理解-Intuition"><span class="toc-number">1.3.</span> <span class="toc-text">直观理解(Intuition)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯度检验"><span class="toc-number">1.4.</span> <span class="toc-text">梯度检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Numerical-Gradient-Checking"><span class="toc-number">1.4.1.</span> <span class="toc-text">Numerical Gradient Checking</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机初始化"><span class="toc-number">1.5.</span> <span class="toc-text">随机初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#综合起来：训练步骤"><span class="toc-number">1.6.</span> <span class="toc-text">综合起来：训练步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择网络结构"><span class="toc-number">1.6.1.</span> <span class="toc-text">选择网络结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练神经网络"><span class="toc-number">1.6.2.</span> <span class="toc-text">训练神经网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作业回顾"><span class="toc-number">1.7.</span> <span class="toc-text">作业回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数初始化"><span class="toc-number">1.7.1.</span> <span class="toc-text">参数初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正向传播算法"><span class="toc-number">1.7.2.</span> <span class="toc-text">正向传播算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算代价函数"><span class="toc-number">1.7.3.</span> <span class="toc-text">计算代价函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向传播算法"><span class="toc-number">1.7.4.</span> <span class="toc-text">反向传播算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数值检验"><span class="toc-number">1.7.5.</span> <span class="toc-text">数值检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化算法"><span class="toc-number">1.7.6.</span> <span class="toc-text">优化算法</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

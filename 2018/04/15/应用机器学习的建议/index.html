@@ -69,6 +69,8 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
+				<li><a href="/tags/machine learning/">ML</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -127,6 +129,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -144,12 +148,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/machine learning/">ML</a></li>
 		        
 				</ul>
 			</nav>
@@ -392,6 +398,19 @@ end
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习应用的建议"><span class="toc-number">1.</span> <span class="toc-text">机器学习应用的建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#决定下一步"><span class="toc-number">1.1.</span> <span class="toc-text">决定下一步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评估假设-Evaluating-a-Hypothesis"><span class="toc-number">1.2.</span> <span class="toc-text">评估假设(Evaluating a Hypothesis)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#过拟合问题"><span class="toc-number">1.2.1.</span> <span class="toc-text">过拟合问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型选择和交叉验证集-Model-Selection-and-Train-Validation-Test-Sets"><span class="toc-number">1.3.</span> <span class="toc-text">模型选择和交叉验证集(Model Selection and Train Validation Test Sets)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉验证集"><span class="toc-number">1.3.1.</span> <span class="toc-text">交叉验证集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型选择方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">模型选择方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#诊断偏差和方差"><span class="toc-number">1.4.</span> <span class="toc-text">诊断偏差和方差</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法不理想的两种情况"><span class="toc-number">1.4.1.</span> <span class="toc-text">算法不理想的两种情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则化和偏差-方差"><span class="toc-number">1.5.</span> <span class="toc-text">正则化和偏差/方差</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择-lambda-的方法"><span class="toc-number">1.5.1.</span> <span class="toc-text">选择$\lambda$的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习曲线-Learning-Curves"><span class="toc-number">1.6.</span> <span class="toc-text">学习曲线(Learning Curves)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#合理检验-sanity-check"><span class="toc-number">1.6.1.</span> <span class="toc-text">合理检验(sanity check)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何利用学习曲线识别高偏差-欠拟合："><span class="toc-number">1.6.2.</span> <span class="toc-text">如何利用学习曲线识别高偏差/欠拟合：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何利用学习曲线识别高方差-过拟合"><span class="toc-number">1.6.3.</span> <span class="toc-text">如何利用学习曲线识别高方差/过拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#决定下一步做什么"><span class="toc-number">1.7.</span> <span class="toc-text">决定下一步做什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#六种可选步骤"><span class="toc-number">1.7.1.</span> <span class="toc-text">六种可选步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#神经网络的方差和偏差"><span class="toc-number">1.7.2.</span> <span class="toc-text">神经网络的方差和偏差</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习系统的设计"><span class="toc-number">1.8.</span> <span class="toc-text">机器学习系统的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾邮件分类器算法"><span class="toc-number">1.8.1.</span> <span class="toc-text">垃圾邮件分类器算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#误差分析"><span class="toc-number">1.8.2.</span> <span class="toc-text">误差分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类偏斜的误差度量"><span class="toc-number">1.9.</span> <span class="toc-text">类偏斜的误差度量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#偏斜类-skewed-classes"><span class="toc-number">1.9.1.</span> <span class="toc-text">偏斜类(skewed classes)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查准率-perecision-和召回率-recall"><span class="toc-number">1.9.2.</span> <span class="toc-text">查准率(perecision)和召回率(recall)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权衡查准率与召回率"><span class="toc-number">1.9.3.</span> <span class="toc-text">权衡查准率与召回率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择阈值的方法"><span class="toc-number">1.9.4.</span> <span class="toc-text">选择阈值的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习的数据"><span class="toc-number">1.10.</span> <span class="toc-text">机器学习的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有用的训练集"><span class="toc-number">1.10.1.</span> <span class="toc-text">有用的训练集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作业回顾-Regularized-Linear-Regression-and-Bias-Variance"><span class="toc-number">1.11.</span> <span class="toc-text">作业回顾(Regularized Linear Regression and Bias-Variance)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代价函数-linearRegCostFunction"><span class="toc-number">1.11.1.</span> <span class="toc-text">代价函数(linearRegCostFunction)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习曲线-learning-curve"><span class="toc-number">1.11.2.</span> <span class="toc-text">学习曲线(learning curve)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多项式回归-Polynomial-regression"><span class="toc-number">1.11.3.</span> <span class="toc-text">多项式回归(Polynomial regression)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用交叉验证集选择-lambda"><span class="toc-number">1.11.4.</span> <span class="toc-text">使用交叉验证集选择$\lambda$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机选择实例来画学习曲线"><span class="toc-number">1.11.5.</span> <span class="toc-text">随机选择实例来画学习曲线</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
