@@ -6,27 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Support Vector Machines | ILUO</title>
+  <title>CS229 Note3 SVM(2) | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="支持向量机(Support Vector Machines)优化目标监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。">
-<meta name="keywords" content="machine learning,Coursera笔记">
+  <meta name="description" content="CS229 Note3 SVM(2)这一部分的内容：  使用拉格朗日对偶解决线性可分支持向量机的最优化问题。 当样本空间线性不可分时，将原始特征空间映射到高维特征空间，再使用线性支持向量机算法求解。核函数是用于解决空间映射后维度爆炸的问题的。 当样本空间存在特异点时，引入松弛变量减少算法对特异点的敏感性。 求解拉格朗日">
+<meta name="keywords" content="machine learning,SVM,CS229">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Support Vector Machines">
-<meta property="og:url" content="http://yoursite.com/2018/04/24/Support-Vector-Machines/index.html">
+<meta property="og:title" content="CS229 Note3 SVM(2)">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/CS229-Note3-SVM-2/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="支持向量机(Support Vector Machines)优化目标监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M48gDFWba9uzQRzRSp43xmgDq06qfLSCbypRUwWic3o!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uzT2Q6tCsWhWhKTEFlNqEY9SMa.x411gRbbIFiImQGA!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/kKJP5u5ZvTPIugeZGznxpenFDwTo6GKJX3oQw92W0Eo!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/mPyfQKciu4c6Fersg3UXT0o.nrMKifiTDXrryetvB5k!/b/dHMBAAAAAAAA&ek=1&kp=1&pt=0&bo=vAH.ALwB*gABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/V5HZMUe5saE0x*qfK.qCzV0m3jNMNxW385ny4KrYEao!/b/dGwBAAAAAAAA&ek=1&kp=1&pt=0&bo=rwEZAa8BGQEBACc!&vuin=1405591197&tm=1524538800&sce=50-1-1&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tOzmghqsA7utPUhcmO4yIvMjKNmbvulyWPisy7uotQ!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=9AGcAPQBnAABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2018-05-25T02:25:02.324Z">
+<meta property="og:description" content="CS229 Note3 SVM(2)这一部分的内容：  使用拉格朗日对偶解决线性可分支持向量机的最优化问题。 当样本空间线性不可分时，将原始特征空间映射到高维特征空间，再使用线性支持向量机算法求解。核函数是用于解决空间映射后维度爆炸的问题的。 当样本空间存在特异点时，引入松弛变量减少算法对特异点的敏感性。 求解拉格朗日优化问题的有效算法：SMO算法">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/e5JCyT39PICV2l0pa*46ZFzkUqD3m6HywV9PEqgo.O4!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=yAEXAcgBFwEBACc!&tl=1&tm=1532311200&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/ajHlD6iwIUBB5lvjkDdkeZFN4kmiXEmhMOtxcjtPSps!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=NgEJATYBCQEBACc!&tl=1&vuin=1405591197&tm=1532311200&sce=50-1-1&rf=viewer_311">
+<meta property="og:updated_time" content="2018-07-23T06:22:38.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Support Vector Machines">
-<meta name="twitter:description" content="支持向量机(Support Vector Machines)优化目标监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
+<meta name="twitter:title" content="CS229 Note3 SVM(2)">
+<meta name="twitter:description" content="CS229 Note3 SVM(2)这一部分的内容：  使用拉格朗日对偶解决线性可分支持向量机的最优化问题。 当样本空间线性不可分时，将原始特征空间映射到高维特征空间，再使用线性支持向量机算法求解。核函数是用于解决空间映射后维度爆炸的问题的。 当样本空间存在特异点时，引入松弛变量减少算法对特异点的敏感性。 求解拉格朗日优化问题的有效算法：SMO算法">
+<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/e5JCyT39PICV2l0pa*46ZFzkUqD3m6HywV9PEqgo.O4!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=yAEXAcgBFwEBACc!&tl=1&tm=1532311200&sce=0-12-12&rf=viewer_311">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -172,80 +167,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Support-Vector-Machines" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CS229-Note3-SVM-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Support Vector Machines
+      CS229 Note3 SVM(2)
     </h1>
   
 
         
-        <a href="/2018/04/24/Support-Vector-Machines/" class="archive-article-date">
-  	<time datetime="2018-04-24T02:31:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+        <a href="/2018/07/23/CS229-Note3-SVM-2/" class="archive-article-date">
+  	<time datetime="2018-07-23T02:40:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="支持向量机-Support-Vector-Machines"><a href="#支持向量机-Support-Vector-Machines" class="headerlink" title="支持向量机(Support Vector Machines)"></a>支持向量机(Support Vector Machines)</h1><h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><p>监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。</p>
-<a id="more"></a>
-<h3 id="从逻辑回归来修改"><a href="#从逻辑回归来修改" class="headerlink" title="从逻辑回归来修改"></a>从逻辑回归来修改</h3><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="逻辑回归" title="逻辑回归"><br></div>
-
-<p>在逻辑回归中，每个样本$(x,y)$都会为总代价函数增加一项。忽略$\frac{1}{m}$，当$y=1$,代价函数项为$-log(\frac{1}{1+e^{-\theta^Tx}})$，随着$Z$增大而减小，当$y=0$，代价函数项为$-log(1-\frac{1}{1+e^{-\theta^Tx}})$，随着$Z$增大而增大。在这个基础上支持向量机的代价函数，做了如图变换，即对于正样本的代价函数，$Z&gt;1$时代价函数为0，对于负样本的代价函数,$Z &lt; -1$时代价函数为0，其他时候为线性函数，暂时可以不必考虑其斜率如何。</p>
-<p><strong>左边的函数为$cost_1^{(z)}$,右边的函数为$cost_0^{(z)}$</strong></p>
-<h3 id="构建支持向量机"><a href="#构建支持向量机" class="headerlink" title="构建支持向量机"></a>构建支持向量机</h3><p>有了代价函数形式，最小化问题为<br>$$\frac{1}{m}(\sum_{i=1}^{m}y^{(i)}(-logh_\theta{(x^{(i)})})+(1-y^{(i)})(-log(1-h_\theta(x^{(i)}))))$$<br>然后再加上正则化参数<br>由于$\frac{1}{m}$不影响优化，可以先不考虑。<br>不同于逻辑回归中$A+\lambda B$的正则化优化形式，这里采用$CA+B$的正则化优化形式。<br>所以，代价函数的形式为:<br>$$min_\Theta C\sum_{i=1}{m}[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{i=1}^n\theta_j^{2}$$</p>
-<p>假设函数的形式为:<br>$$ h_\theta{(x)} =\begin{cases} 1,  &amp; \text{if $\theta^Tx\geq0$ } \ 0, &amp; \text{otherwise}\end{cases}$$</p>
-<p><strong>与逻辑回归输出概率不同，SVM的假设函数直接预测y是1还是0</strong></p>
-<h2 id="大边界的直观理解-Large-Margin-Intuition"><a href="#大边界的直观理解-Large-Margin-Intuition" class="headerlink" title="大边界的直观理解(Large Margin Intuition)"></a>大边界的直观理解(Large Margin Intuition)</h2><p>支持向量机不仅要求正确分开输入样本，还引入了安全的间距因子，即$y=1$,我们希望$\theta^Tx \geq 1$,$y=0$，我们希望$\theta^Tx \leq -1$</p>
-<h3 id="常数C的影响"><a href="#常数C的影响" class="headerlink" title="常数C的影响"></a>常数C的影响</h3><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M48gDFWba9uzQRzRSp43xmgDq06qfLSCbypRUwWic3o!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="常数C的影响" title="常数C的影响"><br></div><br>若C非常大，我们希望在使第一项为0的前提下优化问题。要想让第一项为0，则要遵从以下约束，如果$y^{(i)}=1$,$\theta^Tx^{(i)} \geq 1$，如果$y^{(i)}=0$,$\theta^Tx^{(i)} \leq -1$。在这个基础上求解关于$\theta$的函数，会得到一个有趣的决策边界。<br><br>###    间距<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uzT2Q6tCsWhWhKTEFlNqEY9SMa.x411gRbbIFiImQGA!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="间距" title="间距"><br></div><br>上图可以有很多决策边界进行分割，但是支持向量机会选择黑色这条决策边界，它在分离正负样本上显得更好，就是这个黑线具有更大的<strong>间距</strong>。<br><br><strong>支持向量机的间距，是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本</strong><br><br>在代价函数最小化的过程中，我们希望找出$y=1$和$y=0$两种情况下都使得代价函数中左边一项尽量为0的参数。如果找到这样的参数，最小化问题变为。<br>$$min\frac{1}{2}\sum_{j=1}^n\theta_j^2$$<br>参数遵从的约束见“常数C的影响”<br><br>使用大间距分类器，学习算法会受<strong>异常点</strong>的影响。这样就需要考虑$C=\frac{1}{\lambda}$，回顾$\lambda$对过拟合和欠拟合的影响。<br>因此：<br>$C$较大时，$\lambda$较小，可能会导致过拟合，高方差<br>$C$较小时，$\lambda$较大，可能会导致欠拟合，高偏差<br><br>##   大边界分类的数学原理<br><br>###    向量内积<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/kKJP5u5ZvTPIugeZGznxpenFDwTo6GKJX3oQw92W0Eo!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="向量内积" title="向量内积"><br></div>
-
-<p>$u^Tv$是向量$u$和$v$的内积，$||u||=\sqrt{u_1^2+u_2^2}$，再看向量$v$，已知$v_1$和$v_2$这两个分量，将向量$v$投影到$u$上，长度为$p$,那么另外一种计算内积的方法是$p||u||$(PS:我怎么觉得需要证明一下,想想原来是三角函数emmm)<br>有了向量内积的知识，再来理解支持向量机中的目标函数。</p>
-<h3 id="决策边界需要满足的条件"><a href="#决策边界需要满足的条件" class="headerlink" title="决策边界需要满足的条件"></a>决策边界需要满足的条件</h3><p>假如仅有两个特征,忽略截距$\theta_0$，那么$\theta=[\theta_1 \quad \theta_2]$，目标函数为$\frac{1}{2}||\theta||^2$,所以支持向量机所要做的就是极小化参数$\theta$长度的平方。</p>
-<div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/mPyfQKciu4c6Fersg3UXT0o.nrMKifiTDXrryetvB5k!/b/dHMBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vAH.ALwB*gABACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="决策边界" title="决策边界"><br></div><br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/V5HZMUe5saE0x*qfK.qCzV0m3jNMNxW385ny4KrYEao!/b/dGwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rwEZAa8BGQEBACc!&amp;vuin=1405591197&amp;tm=1524538800&amp;sce=50-1-1&amp;rf=viewer_311" alt="决策边界" title="决策边界"><br></div><br>加入我们有很多决策边界都能把训练集分开，即满足上面讲的约束，那应该怎样选择参数$\theta$呢?事实上,参数$\theta$向量和决策边界是正交的(因为决策边界的斜率就和参数$\theta$的方向垂直)<br><br>所以要想尽量满足约束条件$p||\theta||\geq1$或者$p||\theta||\leq-1$，而且要让$||\theta||$尽量小，那么就要让$p$的绝对值尽量大，而如何让让$p$尽量大呢？就要让$x$与$\theta$之间的余弦值的绝对值越大，如何才能做到呢？支持向量机就会选择下边的决策边界，它试图极大化这些$p^{(i)}$的范数，即训练样本到决策边界的距离。<br><br>##     核函数(Kernels)<br>给定一个训练实例$x$，我们利用$x$的各个特征与预先选定的地标(landmarks)$l^{(1)}$，$l^{(2)}$，$l^{(3)}$的近似程度来选取新的特征$f_1,f_2,f_3$。<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tOzmghqsA7utPUhcmO4yIvMjKNmbvulyWPisy7uotQ!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=9AGcAPQBnAABACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="核函数" title="核函数"><br></div>
-
-<p>例如:<br>$$f_1 = similarity(x,l^{(l)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})$$<br>其中$||x-l^{(1)}||^2=\sum_{j=1}^n(x_j-l_j^{(1)})^2$，为实例$x$中所有特征与地标$l^{(1)}$之间的距离的核。<br>具体而言,$similarity(x,l^{(1)})$就是核函数，高斯核函数(Gaussian Kernel)。如果训练实例与地标距离越短，则$f$近似于1，如果越长，则近似于0。$f$随$x$改变的速率受$\sigma$控制。</p>
-<p>$f$是特征，所以$\theta^Tf$决定着假设函数预测的值</p>
-<h3 id="如何选择地标"><a href="#如何选择地标" class="headerlink" title="如何选择地标"></a>如何选择地标</h3><p>根据训练集数量选择地标数量，令$l^{(n)}=x^{(n)}$，新特征建立在原有特征与训练集中所有其他特征之间的距离的基础之上。<br>$$f^{(i)}=[f_0^{(i)}=1\quad… f_m^{(i)}=sim(x^{(i)},l^{(m)})]$$</p>
-<h3 id="支持向量机假设"><a href="#支持向量机假设" class="headerlink" title="支持向量机假设"></a>支持向量机假设</h3><ul>
-<li>给定$x$，计算新特征$f$，当$\theta^T f\geq0$，预测$y=1$,反之</li>
-<li>相应的代价函数为:<br> $$minC\sum_{i=1}^{m}[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum_{j=1}^{n=m}\theta_j^{2}$$</li>
-</ul>
-<p>其中$\sum_{j=1}^{n=m}\theta_j^{2}=\theta^T\theta$,需要用$\theta^T M\theta$代替,$M$是根据核函数不同选择的一个矩阵，这是为了简化计算。</p>
-<p>没有介绍代价函数的计算方法，可以使用鲜有软件报进行计算(如liblinear,libsvm)。使用之前需要编写核函数，如果使用高斯核函数，使用之前进行特征缩放是必要的。</p>
-<p>支持向量机也可以不适用核函数，或者成为线性核函数。</p>
-<h3 id="C-和-sigma-的影响"><a href="#C-和-sigma-的影响" class="headerlink" title="$C$和$\sigma$的影响"></a>$C$和$\sigma$的影响</h3><p>$C=\frac{1}{\lambda}$</p>
+        <h1 id="CS229-Note3-SVM-2"><a href="#CS229-Note3-SVM-2" class="headerlink" title="CS229 Note3 SVM(2)"></a>CS229 Note3 SVM(2)</h1><p>这一部分的内容：</p>
 <ul>
-<li>C 较大时，相当于λ较小，可能会导致过拟合，高方差；</li>
-<li>C 较小时，相当于λ较大，可能会导致低拟合，高偏差；</li>
-<li>$\sigma$较大时，可能会导致低方差，高偏差；</li>
-<li>$\sigma$较小时，可能会导致低偏差，高方差。</li>
+<li>使用拉格朗日对偶解决线性可分支持向量机的最优化问题。</li>
+<li>当样本空间线性不可分时，将原始特征空间映射到高维特征空间，再使用线性支持向量机算法求解。核函数是用于解决空间映射后维度爆炸的问题的。</li>
+<li>当样本空间存在特异点时，引入松弛变量减少算法对特异点的敏感性。</li>
+<li>求解拉格朗日优化问题的有效算法：SMO算法<a id="more"></a>
+</li>
 </ul>
-<h2 id="使用支持向量机"><a href="#使用支持向量机" class="headerlink" title="使用支持向量机"></a>使用支持向量机</h2><h3 id="高斯核函数之外的其他选择"><a href="#高斯核函数之外的其他选择" class="headerlink" title="高斯核函数之外的其他选择"></a>高斯核函数之外的其他选择</h3><ul>
-<li>多项式核函数（Polynomial Kernel）</li>
-<li>字符串核函数（String kernel）</li>
-<li>卡方核函数（ chi-square kernel）</li>
-<li>直方图交集核函数（histogram intersection kernel）</li>
+<h2 id="最优边缘分类器-线性可分支持向量机"><a href="#最优边缘分类器-线性可分支持向量机" class="headerlink" title="最优边缘分类器(线性可分支持向量机)"></a>最优边缘分类器(线性可分支持向量机)</h2><h3 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h3><p>寻找最优边缘分类器的原始问题<br>$$<br>min_{\gamma,w,b}\frac{1}{2}||w^2|| \\<br>s.t. \quad y^{(i)}(w^Tx^{(i)}+b) \geq 1,i=1,…,m<br>$$<br>约束条件可以被写为拉格朗日函数中的形式：<br>$$g_i(w)=-y^{(i)}(w^Tx^{(i)}+b)+1\leq0$$<br>考虑到KKT对偶互补条件$\alpha_ig_i(w)=0$，仅仅对于函数间距等于1的训练样本有$\alpha_i&gt;0$.在下图中，最大间距分离超平面用实线表示。</p>
+<div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/e5JCyT39PICV2l0pa*46ZFzkUqD3m6HywV9PEqgo.O4!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=yAEXAcgBFwEBACc!&tl=1&tm=1532311200&sce=0-12-12&rf=viewer_311"><br></div><br>有着最小间距的点是离决策边界最近的点，在上图中只有三个点存在于与决策边界平行的虚线上，因此，只有这三个训练样本对应的$\alpha_i$在优化问题中是非0的，这三个点也叫做<strong>支持向量</strong>，这也是支持向量的数量远远小于训练样本数量的原因。<br><br>之所以列出优化问题的对偶形式，一个关键的思想是试图根据特征空间中点之间的内积形式($&lt;x^{(i)},x^{(j)}&gt;$)来构造算法,向量化的表示是$((x^{(i)})^Tx^{(j)})$，这正是接下来可以使用核技巧的关键。<br><br>现在根据优化问题构造拉格朗日函数：<br>$$\mathcal{L}(w,b,\alpha)=\frac{1}{2}||w^2||=-\sum_{i=1}^m\alpha_i[y^{(i)}(w^Tx^{(i)}+b)-1]$$<br>没有$\beta_i$这个拉格朗日乘子，是因为没有不等约束条件。<br>### 对偶问题<br>考虑拉格朗日函数$\mathcal{L}(w,b,\alpha)$，首先将拉格朗日乘子$\alpha_i$看作常数，再对该函数进行最小化（固定$\alpha_i$后，求$w$和$b$的偏导为0）<br>$$<br>\Delta_w\mathcal{L}(w,b,\alpha)=w-\sum_{i=1}^m\alpha_iy^{(i)}x^{(i)}=0 \\<br>w = \sum_{i=1}^m\alpha_iy^{(i)}x^{(i)} \\<br>$$<br>$$<br>\frac{\partial}{\partial_b}\mathcal{L}(w,b,\alpha) = \sum_{i=1}^{m}\alpha_iy^{(i)}=0<br>$$<br>将$w$的值代入原始问题，通过化简可以得到<br>$$\mathcal{L}(w,b,\alpha)=\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j(x^{(i)})^Tx^{(j)}-b\sum_{i=1}^m\alpha_iy^{(i)}.$$<br>上式最后一项为0，得到<br>$$\mathcal{L}(w,b,\alpha)=\sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j(x^{(i)})^Tx^{(j)}$$<br>现在对偶优化问题如下：<br>$$<br>max_\alpha \quad W(\alpha) = \sum_{i=1}^m\alpha_i -\frac{1}{2}\sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_j&lt;x^{(i)},x^{(j)}&gt;. \\<br>s.t. \alpha \geq 0,i=1,…,m \\<br>\sum_{i=1}^m\alpha_iy^{(i)}=0<br>$$<br>由于原始问题满足拉格朗日对偶问题中“存在$w^{\ast}$是原始问题的解,$\alpha^{\ast}$,$\beta^{\ast}$是对偶问题的解”的条件，因此求解原始问题可以转化为求解对偶问题。<br>假如我们能求解该优化问题，得到$\alpha^{\ast}$,那么$$w^{\ast}=\sum_{i}\alpha_i^{\ast}y_ix_i$$<br>这其中至少有一个$\alpha_j^{\ast}&gt;0$,对此$j$有<br>$$y_j(w^{\ast}.x_j+b^{\ast})-1=0$$<br>将$w^{\ast}$的值代入上式，得到<br>$$b^{\ast}=y_j-\sum_{i=1}^{N}\alpha_i^{\ast}y_i&lt;x_i,x_j&gt;$$<br>上式是在《统计学习方法》中的计算方法，在CS229中，$b^{\ast}$的计算方法是<br>$$b^{\ast}=-\frac{max_{i:y^{(i)}=-1}{w^{\ast}}^Tx^{(i)}+min_{i:y^{(i)}=1}{w^{\ast}}^Tx^{(i)}}{2}$$<br>考虑在决策边界上，$b = -w^Tx$,因此分别假设间距最小的正样本或者负样本在决策边界上，再将他们对应的$b$取平均值，就是一个最合理的$b*$。<br>假如我们已经拟合出$\alpha$，现在要对一个新样本进行预估，那么就要计算<br>$$\sum_{i=1}^m\alpha_iy^{(i)}&lt;x^{(i)},x&gt;+b$$<br>由于只有支持向量的$\alpha_i$是非0的，因此我们其实只需要计算支持向量与样本之间的内积。接下来将核函数应用到支持向量机中，使其在高维空间中依然高效。<br><br>## Kernels<br>### 特征空间的映射<br>之前所讨论的情况都是在训练样本线性可分的条件下进行的，如果训练样本如下图所示，要使用之前的线性可分支持向量机算法，就需要把当前特征空间映射到新的特征空间使训练样本线性可分。<br><div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/ajHlD6iwIUBB5lvjkDdkeZFN4kmiXEmhMOtxcjtPSps!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=NgEJATYBCQEBACc!&tl=1&vuin=1405591197&tm=1532311200&sce=50-1-1&rf=viewer_311"><br></div>
+
+
+<p>在上图的二维空间中，决策边界可以用一个圆表示，其方程为<br>$$a_1X_1+a_2X1^2+a_3X_2+a_4X2^2+a_5X_1X_2+a_6=0$$<br>观察上式的结构，可以构造一个五维的空间，五个坐标的值为$Z_1=X_1$,$Z_2=X_1^2$,$Z_3=X_2$,$Z_4=X_2^2$,$Z_5=X_1X_2$,在新坐标系下，决策边界可以写作：<br>$$\sum_{i=1}^5a_iZ_i+a_6=0$$<br>上面的思路就是核方法处理非线性问题的基本思想。</p>
+<p>通过映射$\phi(.)$将样本属性映射到一个高维空间中，使数据变得线性可分。但是映射空间的维度会随着原始空间的维度指数上升，还可能会出现新空间是无穷维导致无法计算的情况(高斯核函数)。此时就需要使用Kernel</p>
+<h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><p>假设有两个向量$x_1=(\eta_1,\eta_2)^T$和$x_2=(\xi_1,\xi_2)^T$,$\phi(.)$是之前所说的五维空间的映射。<br>这两个向量映射后的内积为：<br>$$&lt;\phi(x_1),\phi(x_2)&gt;=\eta_1\xi_1+\eta_1^2\xi_1^2+\eta_2\xi_2+\eta_2^2\xi_2^2+\eta_1\eta_2\xi_1\xi_2$$<br>另外<br>$$(&lt;x_1,x_2&gt;+1)^2=2\eta_1\xi_1+\eta_1^2\xi_1^2+2\eta_2\xi_2+\eta_2^2\xi_2^2+2\eta_1\eta_2\xi_1\xi_2+1$$<br>以上两个式子具有很多相似的地方，实际上如果把原始映射$\phi(.)$某几个维度线性缩放,再加上一个常数维度，定义为$Z_1=\sqrt2 X_1$,$Z_2=X_1^2$,$Z_3=\sqrt2 X_2$,$Z_4=X_2^2$,$Z_5=X_1X_2$,$Z_6=1$。这样定义映射之后。$&lt;\phi(x_1),\phi(x_2)&gt;$的内积与上式是相等的。他们的区别在于：定义映射$\phi(.)$后，需要将映射结果放到高维空间中计算内积，而$(&lt;x_1,x_2&gt;+1)^2$就在原来的低维空间中进行计算，不需要知道映射$\phi(.)$。<br>所以在维度爆炸的情况下第一种方式无法计算，而第二种方法仍然能够从容处理。第一种的时间复杂度是$O(n^2)$,第二个的时间复杂度是$O(n)$,$n$为样本的属性数量。</p>
+<p>计算两个向量在映射后空间中内积的函数叫做核函数(Kernel Function),在上面的例子中，核函数为:<br>$$K(X_1,X_2)=(&lt;x_1,x_2&gt;+1)^2$$</p>
+<p>在支持向量机中正好有需要计算映射后空间中的内积的地方<br>在分类函数中：<br>$$\sum_{i=1}^{n}\alpha_iy_iK(x_i,x)+b$$<br>在优化对偶问题中的$\alpha$时：<br>$$<br>max_\alpha \quad W(\alpha) = \sum_{i=1}^m\alpha_i -\frac{1}{2}\sum_{i,j=1}^my^{(i)}y^{(j)}\alpha_i\alpha_jK(x_i,x). \\<br>s.t. \alpha \geq 0,i=1,…,m \\<br>\sum_{i=1}^m\alpha_iy^{(i)}=0<br>$$<br>通过运用核函数，就避免了空间映射时在高维空间中进行计算，但是计算结果却是等价的。</p>
+<h3 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h3><ul>
+<li>多项式核函数$K(x_1,x_2)=(&lt;x_1，x_2&gt;+R)^d$，映射后的空间维度是$\bigl( \begin{smallmatrix} m+d \ d \end{smallmatrix} \bigr)$,$m$是原始空间的维度</li>
+<li>高斯核函数$K(x_1,x_2)=exp(-\frac{||x_1-x_2||^2}{2\sigma^2})$，当$\sigma$取值大，高次特征权重衰减很快，实际上映射的是一个低维子空间，反过来$\sigma$取值小时，可以将任意数据线性可分，但是会带来过拟合问题。</li>
+<li>字符串核函数        </li>
 </ul>
-<p>这些核函数都要满足莫塞尔定理</p>
-<h3 id="多类分类"><a href="#多类分类" class="headerlink" title="多类分类"></a>多类分类</h3><p>一对多方法，k个类需要k个模型，k个参数向量$\theta$</p>
-<h3 id="需要做的事"><a href="#需要做的事" class="headerlink" title="需要做的事"></a>需要做的事</h3><ul>
-<li>参数C的选择</li>
-<li>选择核函数或相似函数</li>
+<h3 id="正定核"><a href="#正定核" class="headerlink" title="正定核"></a>正定核</h3><p>如果一个核函数能够符合特征映射$\phi(.)$，那么它的Kernel martix <strong>K</strong>是一个半正定对称矩阵，$K_{ij}=K(x^{(i)},x^{(j)})=\phi(x^{(i)})^T\phi(x^{(j)})=\phi(x^{(j)})^T\phi(x^{(i)})=K(x^{(j)},x^{(i)})$</p>
+<h2 id="线性支持向量机与软间隔最大化"><a href="#线性支持向量机与软间隔最大化" class="headerlink" title="线性支持向量机与软间隔最大化"></a>线性支持向量机与软间隔最大化</h2><p>现实情况中，训练数据中会有一些特异点(outlier)，这些特异点去除后，剩下的样本点组成的几何是线性可分的。<br>这些特异点的存在会使样本点线性不可分，因为他们不满足最优边缘分类器$y^{(i)}(w^Tx^{(i)}+b) \geq 1,i=1,…,m$的约束条件。因此对每个样本点引入松弛变量$\xi_i\geq0$，使函数间隔加上松弛变量大于等于1，这样约束条件变为：<br>$$y_i(w.x_i+b)\geq1-\xi_i$$<br>对于每个松弛变量$\xi_i$，在优化问题中支付一个代价$\xi_i$，目标函数由$\frac{1}{2}||w||^2$变为:<br>$$\frac{1}{2}||w||^2+C\sum_{i=1}^{N}\xi_i$$<br>C值大时，对误分类的惩罚大，该优化目标的含义有两层：即使间隔尽量大并且误分类的点的个数尽量小。对于存在特异点的样本集，这种方法称为软间隔最大化。</p>
+<h3 id="原始问题-1"><a href="#原始问题-1" class="headerlink" title="原始问题"></a>原始问题</h3><p>$$<br>min_{w,b,\xi} \quad \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i \\<br>s.t. \quad y_i(w.x_i+b) \geq 1-\xi_i, i=1,..,N \\<br>\xi_i \geq 0 \quad i=1,2,…,N<br>$$<br>可以证明$w$的解是唯一的，但是$b$的解不唯一，存在于一个区间。</p>
+<h3 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h3><p>通过构造拉格朗日函数求极大极小问题，得到对偶问题<br>$$<br>min_\alpha \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i.x_j)-\sum_{i=1}^N\alpha_i \\<br>s.t. \sum_{i=1}^N \alpha_iy_i = 0 \\<br>0 \leq \alpha_i \leq C, i=1,2,…,N<br>$$</p>
+<p>求得最优解$\alpha^{\ast}$后,计算$w^{\ast}=\sum_{i=1}^N\alpha_iy_ix_i$，再选择一个合适的分量$\alpha_j$,计算$b^{\ast}=y_j-\sum_{i=1}^Ny_i\alpha_i^{\ast}$。最后得到分离超平面。</p>
+<h2 id="序列最小优化算法-SMO"><a href="#序列最小优化算法-SMO" class="headerlink" title="序列最小优化算法(SMO)"></a>序列最小优化算法(SMO)</h2><p>支持向量机问题可以形式化为求解凸二次规划问题，具有全局最优解，但是当训练样本很大时，很多优化方法都很低效，SMO算法就是一种快速求解拉格朗日对偶问题最优解$\alpha^{\ast}$的算法。</p>
+<p>基本思路：每次选择两个$\alpha$的分量作为变量，其余分量作为固定的量，构建一个二次规划问题，该问题关于这两个分量的解会更接近于原始问题中这两个分量的解，因为这两个分量会使对偶问题的函数值越来越小，使整体越来越接近满足KKT条件。重要的是这样分解出来的问题能够通过解析方法求解，所以可以大大提高速度，子问题有两个变量，一个是违反KKT条件最严重那个$\alpha$的分量，另一个变量由优化问题的约束条件自动确定，因此不断将该问题分解为子问题求解，可以逐步求出$\alpha$的。</p>
+<p>SMO算法包括两部分：求解子问题的解析方法与及选择子问题合适变量的启发式方法。</p>
+<h3 id="求解子问题的解析方法"><a href="#求解子问题的解析方法" class="headerlink" title="求解子问题的解析方法"></a>求解子问题的解析方法</h3><p>基本思路：<br>由于选择了两个分量$\alpha_1,\alpha_2$作为变量，可以从约束条件$\sum_{i=1}^N\alpha_iy_i=0$得到：<br>$$\alpha_1y_1+\alpha_2y_2=-\sum_{i=3}^{N}y_i\alpha_i=\varsigma$$<br>在以$\alpha_1,\alpha_2$为变量的平面上，上式是一条斜率为1或者-1的直线</p>
+<p>另外，$\alpha_2$本身处于$[0,C]$区间内，加上$\alpha_2$在一条直线上，运用线性规划的值，可以进一步细分$\alpha_2$的取值范围。</p>
+<p>现在先求解出没有对$\alpha_2$进行取值范围约束时的解(将$\alpha_1$用$\alpha_2$表示，代入目标函数子问题，对$\alpha_2$求导置为0，解得此时$\alpha_2$的值)。</p>
+<p>最后与约束条件进行比较，确定$\alpha_2$的值,再确定$\alpha_1$的值</p>
+<h3 id="变量的选择方法"><a href="#变量的选择方法" class="headerlink" title="变量的选择方法"></a>变量的选择方法</h3><ul>
+<li>选择第一个变量：外层循环，首先检验支持向量是否满足是否满足KKT条件，如果都满足，再遍历整个训练集，检验他们是否满足。</li>
+<li>选择第二个变量：内层循环，假设已经找到不满足KKT条件的$\alpha_1$，寻找第二个变量$\alpha_2$的标准是希望$\alpha_2$的有足够大的变化($\alpha_2$的变化越快，$\alpha_1$的变化也越快，也越接近于最优解)，这里$\alpha_2$的变化受$E_1-E2$影响(这是在前面求解$\alpha_2$过程中得到的)，$E_i=g(x_i)-y_i$,即预测值与真实值的差。有了以上度量$\alpha_2$变化的标准，就可以确定该选择谁作为$\alpha_2$了，</li>
+<li>计算阈值$b$和差值$E_i$:每次优化子问题的两个变量后，都要更新$b$,对于$\alpha1和\alpha_2$,根据KKT条件，观察形式可以代入$E_1,E_2$求得$b_1^{new},b_2^{new}$，如果$\alpha_1^{new},\alpha_2^{new}$在区间(0,C),那么两个b是相等的(此时这两个点都是支持向量),如果$\alpha_1^{new},\alpha_2^{new}$为0或者C，那么两个b之间的书都符合KKT条件的阈值，此时选择它们的中点，完成变量的优化后，还要更新对应的$E_i$，避免之后重复计算。</li>
 </ul>
-<h3 id="逻辑回归与支持向量机的使用准则"><a href="#逻辑回归与支持向量机的使用准则" class="headerlink" title="逻辑回归与支持向量机的使用准则"></a>逻辑回归与支持向量机的使用准则</h3><p>n为特征数，m为训练样本数。</p>
-<ul>
-<li>如果相较于m而言，n要大许多，即训练集数据量不够支持我们训练一个复杂的非线性模型，我们选用逻辑回归模型或者不带核函数的支持向量机。</li>
-<li>如果n较小，而且m大小中等，例如n在 1-1000 之间，而m在10-10000 之间，使用高斯核函数的支持向量机。</li>
-<li>如果n较小，而m较大，例如n在1-1000之间，而m大于50000，则使用支持向量机会非常慢，解决方案是创造、增加更多的特征，然后使用逻辑回归或不带核函数的支持向量机。</li>
-</ul>
-<p>值得一提的是，神经网络在以上三种情况下都可能会有较好的表现，但是训练神经网络可能非常慢，选择支持向量机的原因主要在于它的代价函数是凸函数，不存在局部最小值。</p>
-<p>当你有非常非常大的训练集，且用高斯核函数是在这种情况下，我经常会做的是尝试手动地创建，拥有更多的特征变量，然后用逻辑回归或者不带核函数的支持向量机</p>
-<p>但是通常更加重要的是，你有多少数据，你有多熟练是否擅长做误差分析和排除学习算法，指出如何设定新的特征变量和找出其他能决定你学习算法的变量等方面。通常这些方面会比你使用逻辑回归还是SVM这方面更加重要。</p>
 
       
 
@@ -263,7 +243,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Coursera笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CS229</a>
         		</li>
       		
 		</ul>
@@ -319,7 +303,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/24/Support-Vector-Machines/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/CS229-Note3-SVM-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,18 +317,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/01/Clustering/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Clustering
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/15/应用机器学习的建议/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">应用机器学习的建议</div>
+    <a href="/2018/07/18/CS229-Note3-SVM-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS229 Note3 SVM(1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -371,7 +346,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#支持向量机-Support-Vector-Machines"><span class="toc-number">1.</span> <span class="toc-text">支持向量机(Support Vector Machines)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#优化目标"><span class="toc-number">1.1.</span> <span class="toc-text">优化目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从逻辑回归来修改"><span class="toc-number">1.1.1.</span> <span class="toc-text">从逻辑回归来修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建支持向量机"><span class="toc-number">1.1.2.</span> <span class="toc-text">构建支持向量机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大边界的直观理解-Large-Margin-Intuition"><span class="toc-number">1.2.</span> <span class="toc-text">大边界的直观理解(Large Margin Intuition)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常数C的影响"><span class="toc-number">1.2.1.</span> <span class="toc-text">常数C的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#决策边界需要满足的条件"><span class="toc-number">1.2.2.</span> <span class="toc-text">决策边界需要满足的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何选择地标"><span class="toc-number">1.2.3.</span> <span class="toc-text">如何选择地标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#支持向量机假设"><span class="toc-number">1.2.4.</span> <span class="toc-text">支持向量机假设</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-和-sigma-的影响"><span class="toc-number">1.2.5.</span> <span class="toc-text">$C$和$\sigma$的影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用支持向量机"><span class="toc-number">1.3.</span> <span class="toc-text">使用支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高斯核函数之外的其他选择"><span class="toc-number">1.3.1.</span> <span class="toc-text">高斯核函数之外的其他选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多类分类"><span class="toc-number">1.3.2.</span> <span class="toc-text">多类分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要做的事"><span class="toc-number">1.3.3.</span> <span class="toc-text">需要做的事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑回归与支持向量机的使用准则"><span class="toc-number">1.3.4.</span> <span class="toc-text">逻辑回归与支持向量机的使用准则</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CS229-Note3-SVM-2"><span class="toc-number">1.</span> <span class="toc-text">CS229 Note3 SVM(2)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最优边缘分类器-线性可分支持向量机"><span class="toc-number">1.1.</span> <span class="toc-text">最优边缘分类器(线性可分支持向量机)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原始问题"><span class="toc-number">1.1.1.</span> <span class="toc-text">原始问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#核函数"><span class="toc-number">1.1.2.</span> <span class="toc-text">核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用核函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">常用核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正定核"><span class="toc-number">1.1.4.</span> <span class="toc-text">正定核</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性支持向量机与软间隔最大化"><span class="toc-number">1.2.</span> <span class="toc-text">线性支持向量机与软间隔最大化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原始问题-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">原始问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对偶问题"><span class="toc-number">1.2.2.</span> <span class="toc-text">对偶问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列最小优化算法-SMO"><span class="toc-number">1.3.</span> <span class="toc-text">序列最小优化算法(SMO)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#求解子问题的解析方法"><span class="toc-number">1.3.1.</span> <span class="toc-text">求解子问题的解析方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量的选择方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">变量的选择方法</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -396,7 +371,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2018/04/24/Support-Vector-Machines/",
+  id: "http://yoursite.com/2018/07/23/CS229-Note3-SVM-2/",
   owner: 'ILUO',
   repo: 'iluo.github.io',
   oauth: {
