@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: SVM | ILUO</title>
+  <title>CS229 Note4 Learning Theory | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ILUO">
-<meta property="og:url" content="http://yoursite.com/tags/SVM/index.html">
+  <meta name="description" content="CS229 Note4 Learning Theory这一部分的内容：  引入偏差和方差(泛化误差) 引入训练误差、经验风险最小化(ERM) 在有限假设类以及无限假设类中进行ERM时，需要考虑的问题(样本复杂度以及假设类大小对总体训练误差的影响)">
+<meta name="keywords" content="machine learning,CS229,Learning Theory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS229 Note4 Learning Theory">
+<meta property="og:url" content="http://yoursite.com/2018/07/27/CS229-Note4-Learning-Theory/index.html">
 <meta property="og:site_name" content="ILUO">
+<meta property="og:description" content="CS229 Note4 Learning Theory这一部分的内容：  引入偏差和方差(泛化误差) 引入训练误差、经验风险最小化(ERM) 在有限假设类以及无限假设类中进行ERM时，需要考虑的问题(样本复杂度以及假设类大小对总体训练误差的影响)">
+<meta property="og:updated_time" content="2018-07-27T02:56:11.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ILUO">
+<meta name="twitter:title" content="CS229 Note4 Learning Theory">
+<meta name="twitter:description" content="CS229 Note4 Learning Theory这一部分的内容：  引入偏差和方差(泛化误差) 引入训练误差、经验风险最小化(ERM) 在有限假设类以及无限假设类中进行ERM时，需要考虑的问题(样本复杂度以及假设类大小对总体训练误差的影响)">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -159,36 +164,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CS229-Note4-Learning-Theory" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/23/CS229-Note3-SVM-2/" class="archive-article-date">
-  	<time datetime="2018-07-23T02:40:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/CS229-Note3-SVM-2/">CS229 Note3 SVM(2)</a>
+    <h1 class="article-title" itemprop="name">
+      CS229 Note4 Learning Theory
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/27/CS229-Note4-Learning-Theory/" class="archive-article-date">
+  	<time datetime="2018-07-27T02:37:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CS229-Note4-Learning-Theory"><a href="#CS229-Note4-Learning-Theory" class="headerlink" title="CS229 Note4 Learning Theory"></a>CS229 Note4 Learning Theory</h1><p>这一部分的内容：</p>
+<ul>
+<li>引入偏差和方差(泛化误差)</li>
+<li>引入训练误差、经验风险最小化(ERM)</li>
+<li>在有限假设类以及无限假设类中进行ERM时，需要考虑的问题(样本复杂度以及假设类大小对总体训练误差的影响)</li>
+</ul>
+<a id="more"></a>
+<h2 id="偏差-方差-平衡-bias-variance"><a href="#偏差-方差-平衡-bias-variance" class="headerlink" title="偏差/方差 平衡(bias/variance)"></a>偏差/方差 平衡(bias/variance)</h2><h3 id="泛化误差"><a href="#泛化误差" class="headerlink" title="泛化误差"></a>泛化误差</h3><p>模型假设对于不一定在训练集内的样本进行预测的误差</p>
+<h3 id="偏差-bias"><a href="#偏差-bias" class="headerlink" title="偏差(bias)"></a>偏差(bias)</h3><p>即使使用大量数据进行训练，模型也不能很好的捕捉到数据的规律，存在很大的泛化误差。(对训练集中的样本和非训练集样本都不能很好预测，欠拟合)</p>
+<h3 id="方差-variance"><a href="#方差-variance" class="headerlink" title="方差(variance)"></a>方差(variance)</h3><p>方差是泛化误差的另一种表现形式，即模型可能只是碰巧与当前有限的训练集的规律相符合，但是对于更大的训练集中的数据，可能存在相应的预测误差。(对训练集中的样本能够很好预测，对于非训练集样本不能很好预测，过拟合)</p>
+<p>一个好的模型，需要在以上两种泛化误差之间寻求一个平衡</p>
+<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><h3 id="union-bound"><a href="#union-bound" class="headerlink" title="union bound"></a>union bound</h3><p>设$A_1$,$A_2$,$A_3$,$…$,$A_k$是K个不相同事件(不一定互相独立)，那么<br>$$P(A_1\cup…\cup A_k)\leq P(A_1)+…+P(A_k)$$</p>
+<h3 id="Hoeffding-inequality"><a href="#Hoeffding-inequality" class="headerlink" title="Hoeffding inequality"></a>Hoeffding inequality</h3><p>设$Z_1$,$…$,$Z_m$是从伯努利分布$\phi$中抽取的m个独立同分布的随机变量，即$P(Z_i=1)=\phi$,$p(Z_i=0)=1-\phi$。令$\hat\phi=(1/m)\sum_{i=1}^mZ_i$,即随机变量的平均值，当m很大时，$\hat\phi$可以很好的估计真实的$\phi$值，令$\gamma&gt;0$，那么有<br>$$P(|\phi-\hat\phi|&gt;\gamma)\leq2exp(-2\gamma^2m)$$<br>该引理也被称作Chernoff bound。</p>
+<h3 id="training-error-empirical-error"><a href="#training-error-empirical-error" class="headerlink" title="training error(empirical error)"></a>training error(empirical error)</h3><p>给定训练集$S$，大小为m,训练样本$(x^{(i)},y^{(i)})$遵从某种独立同分布的概率分布$\mathcal{D}$，对于一个假设$h$,定义训练误差或者经验风险(empirical risk)为：<br>$$\hat{\mathcal{E}}(h)=\frac{1}{m}\sum_{i=1}^m1{h{x^{(i)}}\neq y^{(i)}}$$<br>上式表示：如果从分布$\mathcal{D}$中取出一个新样本$(x,y)$，$h$预测失误的概率。</p>
+<p>如果有一个线性分类器$h_\theta(x)=1{\theta^Tx\geq0}$，如何去拟合参数$\theta$？一种方式就是最小化训练误差，选择使训练误差最小那个参数$\hat\theta$<br>$$\hat\theta =  arg \quad \min_\theta \hat{\mathcal{E}}(h_\theta)$$</p>
+<p>这个过程就是<strong>经验风险最小化，empirical risk minmization(ERM)</strong>，学习算法输出的假设是$\hat{h}=h_{\hat{\theta}}$,ERM算法是最“基础”的算法，逻辑回归算法也可以看作是ERM算法的近似。</p>
+<p>我们把学习算法的所有假设的集合记作假设类$\mathcal{H}$,$\mathcal{X}$是所有输入特征的取值域，ERM现在是在假设类$\mathcal{H}$上进行最小化，学习算法将会选取风险最小那个假设$\hat{h}$：<br>$$\hat{h}=arg\quad min_{h \in \mathcal{H}}\hat{\mathcal{E}}(h)$$</p>
+<h2 id="有限假设类-mathcal-H"><a href="#有限假设类-mathcal-H" class="headerlink" title="有限假设类$\mathcal{H}$"></a>有限假设类$\mathcal{H}$</h2><p>设假设类$\mathcal{H}={h_1,…,h_k}$包含$k$个假设。假设函数$h$是将输入$x$到${0,1}$的映射。EMR将要选取具有最小风险的$\hat{h}$</p>
+<p>设伯努利所及变量$Z$的分布如下，样本点$(x,y)$服从分布$\mathcal{D}$，设$Z=1{h_i(x)\neq y}$，$Z_j = 1{h_i(x^{(j)})\neq y^{(j)}}$,因为训练集是独立同分布的，因此$Z$和$Z_j$也是一样的分布。</p>
+<p>误分类概率$\mathcal{E}(h)$恰好是$Z$(和$Z_j$)的期望，训练误差写作如下：<br>$$\hat{\mathcal{E}}(h_i)=\frac{1}{m}\sum_{i=1}^mZ_j$$</p>
+<p>现在对这个概率应用Hoeffding inequality<br>$$P(|\mathcal{E}(h_i)-\hat{\mathcal{E}}(h_i)|&gt;\gamma)\leq 2exp(-2\gamma^2m)$$</p>
+<p>从上式可以可以得到，假如m足够大，那么对于特定的$h_i$，训练误差与泛化误差有很大概率接近。要证明其对于所有$h$的一般性，令$A_i$代表事件$|\mathcal{E}(h_i)-\hat{\mathcal{E}}(h_i)|&gt;\gamma$，由于已经有了不等式$P(A_i)\leq2exp(-2\gamma^2m)$，那么使用union bound。<br>$$<br>\begin{align}<br>P(\exists h\in \mathcal{H}.|\mathcal{E}(h_i)-\hat{\mathcal{E}(h_i)}|&gt;\gamma) &amp;= P(A_1 \cup … \cup A_k)\\<br>&amp;\leq \sum_{i=1}^{k}P(A_i) \\<br>&amp;\leq\sum_{i=1}^k2exp(-2\gamma^2m) \\<br>&amp;= 2kexp(-2\gamma^2m)<br>\end{align}<br>$$</p>
+<p>如果上式两边同时被1所减<br>$$<br>\begin{align}<br>P(\neg h \in \mathcal{H}.|\mathcal{E}(h_i)-\hat{\mathcal{E}}(h_i)|&gt;\gamma) &amp;= P(\forall h \in \mathcal{H}.|\mathcal{E}(h_i)-\hat{\mathcal{E}}(h_i)|\leq\gamma|)  \\<br>\geq 1-2kexp(-2\gamma^2m)<br>\end{align}<br>$$</p>
+<p>上式表示，对于所有假设$h$,$\mathcal{E}(h)$比$\hat{\mathcal{E}}(h)$小$\gamma$的概率至少是$1-2kexp(-2\gamma^2m)$,这叫做<strong>一致收敛(union convergence)</strong></p>
+<p>在上式中，给定$m$,$\gamma$和误差概率(即所有泛化误差-训练误差小于等于$\gamma$的概率)，可以对剩余的一个变量进行边界限定。</p>
+<p>令$\delta = 2kexp(-2\gamma^2m)$，解以上不等式可以得到：</p>
+<p>$$m \geq \frac{1}{2\gamma^2}log\frac{2k}{\delta}$$<br>$m$被称为样本复杂度，这个边界表示已知误差概率和$\gamma$时，至少需要多少个训练样本。</p>
+<p>当$m$和误差概率固定时，可以解得<br>$$|\hat{\mathcal{E}}(h)-\mathcal{E}(h)| \leq \sqrt{\frac{1}{2m}log\frac{2k}{\delta}}$$</p>
+<p>那么，如何最去最小化训练误差并选取合适的$\hat{h}$呢？<br>设$h^{\ast}$是使泛化误差最小的假设，$\hat{h}$是使训练误差最小的$h$，有：<br>$$<br>\begin{align}<br>\mathcal{E}(\hat{h})&amp;\leq\hat{\mathcal{E}}(\hat{h}) + \gamma \\<br>&amp;\leq \hat{\mathcal{E}}(h^{\ast}) + \gamma \\<br>&amp;\leq {\mathcal{E}}(h^{\ast}) + 2\gamma<br>\end{align}<br>$$<br>第一行使用了一致收敛假设$|\mathcal{E}(\hat{h})-\hat{\mathcal{E}}(\hat{h})| \leq \gamma$</p>
+<p>对于第二行，因为对于所有$h$，有$\hat{\mathcal{E}}(\hat{h}) \leq \hat{\mathcal{E}}(h)$。</p>
+<p>对于第三行，再一次使用了一致收敛假设。</p>
+<p>现在，有以下定理：<br>给定$|\mathcal{H}|=k$,以及$m$,$\delta$，误差概率至少是$1-\delta$,于是有：<br>$$\mathcal{E}(\hat{h})\leq (min_{h\in \mathcal{H}}\mathcal{E}(h))+2\sqrt{\frac{1}{2m}log\frac{2k}{\delta}}$$</p>
+<p>当假设类的假设变多，上式的第一项代表偏差只会变小，但是第二项代表方差，k会变大,整体也会变大，因此在需要在这两者之间寻求平衡。</p>
+<h2 id="无穷假设类-mathcal-H"><a href="#无穷假设类-mathcal-H" class="headerlink" title="无穷假设类$\mathcal{H}$"></a>无穷假设类$\mathcal{H}$</h2><p>在无穷假设类中，我们能够得到类似于有限假设类中的结论吗？<br>首先来看一个看似不那么“正确”的论证。<br>假如假设有d个参数，在电脑中，每个参数采用双精度浮点数存储，每个双精度浮点数的大小为64bit，那么参数的总共大小为64dbit,每个bit可以取值0或者1，那么总共有$k=2^{64d}$种假设。根据上一节的推论有<br>$$m\geq O(\frac{1}{\gamma^2}log\frac{2^{64d}}{\delta})=O(\frac{d}{\gamma^2}log\frac{1}{\delta})=O_{\gamma,\delta}(d)$$<br>所以，m至少与参数个数是线性关系。</p>
+<p>上述论点存在缺陷，为了得到更令人满意的论点，引入以下概念</p>
+<h3 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h3><p>给定一个集合$S={x^{(1)},…,x^{(i)}}$,$x^{(i)} \in \mathcal{X}$,如果在假设类中存在假设$h$，使S中的点具有的标签$y^{(i)}$都能被$h(x^{(i)})=y^{(i)}$正确预测，那么表述为$\mathcal{H}$能够分散$S$。<br>VC维就是，假设类$\mathcal{H}$能分散的集合$S$中,具有最大的size。<br>具体的,如果$\mathcal{X}$是n维空间，那么对于能够分散$S$的假设类$\mathcal{H}$,$VC(\mathcal{H})=n+1$。</p>
+<p>下面是学习理论中最重要的定理(待证明)</p>
+<p>给定假设类$\mathcal{H}$,$VC(\mathcal{H})=d$,当误差概率至少为$1-\delta$时，对于所有假设$h$有<br>$$||\mathcal{E}(h)-\hat{\mathcal{E}}(h)||\leq O(\sqrt{\frac{d}{m}log\frac{m}{d}+\frac{1}{m}log\frac{1}{\delta}})$$<br>同时还有：<br>$$\mathcal{E}(\hat{h})\leq \mathcal{E}(h^{\ast}) +O(\sqrt{\frac{d}{m}log\frac{m}{d}+\frac{1}{m}log\frac{1}{\delta}}) $$<br>换句话说，当一个假设类具有有限的假设维时，随着m变大，一致收敛就会发生。<br>同时还有，当所有假设满足$|\mathcal{E}(h)-\hat{\mathcal{E}}(h)|\leq\gamma$，概率误差至少为$1-\delta$,那么$m=O_{\gamma,\delta}(d)$</p>
+<p>换句话说，一个好的学习过程中，训练样本的数量与假设类的VC维线性相关，而VC维又与参数个数线性相关，所以可以得到试图最小化训练误差的算法，训练集的数目与假设的参数的数目线性相关。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -202,71 +244,141 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Learning Theory</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/27/CS229-Note4-Learning-Theory/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/18/CS229-Note3-SVM-1/" class="archive-article-date">
-  	<time datetime="2018-07-18T08:35:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/23/CS229-Note3-SVM-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CS229 Note3 SVM(2)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/18/CS229-Note3-SVM-1/">CSS229 Note3 SVM(1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CS229</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CS229-Note4-Learning-Theory"><span class="toc-number">1.</span> <span class="toc-text">CS229 Note4 Learning Theory</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#偏差-方差-平衡-bias-variance"><span class="toc-number">1.1.</span> <span class="toc-text">偏差/方差 平衡(bias/variance)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#泛化误差"><span class="toc-number">1.1.1.</span> <span class="toc-text">泛化误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏差-bias"><span class="toc-number">1.1.2.</span> <span class="toc-text">偏差(bias)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方差-variance"><span class="toc-number">1.1.3.</span> <span class="toc-text">方差(variance)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引理"><span class="toc-number">1.2.</span> <span class="toc-text">引理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#union-bound"><span class="toc-number">1.2.1.</span> <span class="toc-text">union bound</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hoeffding-inequality"><span class="toc-number">1.2.2.</span> <span class="toc-text">Hoeffding inequality</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#training-error-empirical-error"><span class="toc-number">1.2.3.</span> <span class="toc-text">training error(empirical error)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有限假设类-mathcal-H"><span class="toc-number">1.3.</span> <span class="toc-text">有限假设类$\mathcal{H}$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无穷假设类-mathcal-H"><span class="toc-number">1.4.</span> <span class="toc-text">无穷假设类$\mathcal{H}$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VC维"><span class="toc-number">1.4.1.</span> <span class="toc-text">VC维</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2018/07/27/CS229-Note4-Learning-Theory/",
+  owner: 'ILUO',
+  repo: 'iluo.github.io',
+  oauth: {
+    client_id: '1d887ff797fcb2f184cb',
+    client_secret: 'd79a7eab8d566c63108867b6fce6d85592f96aa3',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -289,9 +401,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
