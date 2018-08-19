@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CS229 Note5 Learning Theory 2 | ILUO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。 模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最大">
+  <meta name="description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。  模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最">
 <meta name="keywords" content="CS229,Learning Theory,概率论基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS229 Note5 Learning Theory 2">
 <meta property="og:url" content="http://yoursite.com/2018/08/19/CS229-Note5-Learning-Theory-2/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。 模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频率">
-<meta property="og:updated_time" content="2018-08-19T04:32:12.374Z">
+<meta property="og:description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。  模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频">
+<meta property="og:updated_time" content="2018-08-19T04:36:00.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS229 Note5 Learning Theory 2">
-<meta name="twitter:description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。 模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频率">
+<meta name="twitter:description" content="规则化与模型选择这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。  模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。 特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法） 最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频">
   
     <link rel="alternative" href="/atom.xml" title="ILUO" type="application/atom+xml">
   
@@ -185,9 +185,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="规则化与模型选择"><a href="#规则化与模型选择" class="headerlink" title="规则化与模型选择"></a>规则化与模型选择</h1><p>这部分的内容主要是模型选择、特征选择以及使用参数的最大后验概率来规避最大似然估计可能出现的过拟合问题。</p>
-<p>模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。</p>
-<p>特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法）</p>
-<p>最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频率学派与贝叶斯学派的代表，目前内容所涉及到的区别主要是频率学派认为模型的参数是一个固定不变的未知值，而贝叶斯学派认为参数是一个具有先验分布的未知值，在知乎上看到一个<a href="https://www.zhihu.com/question/20587681/answer/23124365" target="_blank" rel="noopener">回答</a>很有趣，其大意为你打麻将的时候，根据麻将规则，某人P有一张牌A，如果他出了胜算更大，但是根据观察他没有出这张牌，如果你是是频率学派，那么你会单纯的根据你所已经观察到的牌去推断你摸到牌A的概率，即P是没有这张牌的，没有出现的牌一定还在剩余的牌里，如果你是贝叶斯学派，除了观察已经出现的牌，你还会根据别人所打出的牌（对方是否有什么套路，有牌但是还没打出），打牌人之间的关系(是否有喂牌情况，故意让别人所以不出)去得到摸出牌A的先验概率，不断修正你摸到牌A的概率。当然，这些估计方法与学派之间的区别不仅是这样，有必要专门学习一下。</p>
+<ul>
+<li>模型选择的主要方法有保留交叉验证、k重交叉验证、留1交叉验证。</li>
+<li>特征选择的主要方法有封装特征选择（前向搜索与后向搜索的启发式算法）、过滤特征选择（计算特征与标签之间的互信息进行排名的启发式算法）</li>
+<li>最大后验概率是最大似然估计与贝叶斯估计融合的产物，最大似然估计与贝叶斯估计分别是频率学派与贝叶斯学派的代表，目前内容所涉及到的区别主要是频率学派认为模型的参数是一个固定不变的未知值，而贝叶斯学派认为参数是一个具有先验分布的未知值，在知乎上看到一个<a href="https://www.zhihu.com/question/20587681/answer/23124365" target="_blank" rel="noopener">回答</a>很有趣，其大意为你打麻将的时候，根据麻将规则，某人P有一张牌A，如果他出了胜算更大，但是根据观察他没有出这张牌，如果你是是频率学派，那么你会单纯的根据你所已经观察到的牌去推断你摸到牌A的概率，即P是没有这张牌的，没有出现的牌一定还在剩余的牌里，如果你是贝叶斯学派，除了观察已经出现的牌，你还会根据别人所打出的牌（对方是否有什么套路，有牌但是还没打出），打牌人之间的关系(是否有喂牌情况，故意让别人所以不出)去得到摸出牌A的先验概率，不断修正你摸到牌A的概率。当然，这些估计方法与学派之间的区别不仅是这样，有必要专门学习一下。</li>
+</ul>
 <a id="more"></a>
 <h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><p>如果给定训练集$S$,模型集合$M$中有着不同的假设，选取经验风险最小化的假设不是合理的解决办法，因为存在过拟合的情况。为了避免出现这种情况，有以下几种模型选择方法。</p>
 <h3 id="保留交叉验证"><a href="#保留交叉验证" class="headerlink" title="保留交叉验证"></a>保留交叉验证</h3><p><strong>保留交叉验证(hold-out cross validation)</strong>又叫做简单交叉验证，算法步骤如下：</p>
@@ -208,7 +210,7 @@
 <h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>对模型给定n个特征，有$2^n$中可能的特征子集，当$n$非常大的时候，对每一种特征子集都训练一遍的代价是非常大的，因此使用一种启发式的方式去寻找合适的特征子集。</p>
 <h3 id="foward-search算法"><a href="#foward-search算法" class="headerlink" title="foward search算法"></a>foward search算法</h3><ul>
 <li>初始化$\mathcal{F}=\phi$</li>
-<li>Repeat<br>${  \(a)for \quad i=1,…,n,如果i \notin \mathcal{F}，令\mathcal{F_i}=\mathcal{F}\cup{i}使用交叉验证去评估特征\mathcal{F_i}\(b)将上一步得到的最好的特征子集赋值给\mathcal{F}\\}$</li>
+<li>Repeat<br>${  \ (a)for \quad i=1,…,n,如果i \notin \mathcal{F}，令\mathcal{F_i}=\mathcal{F}\cup{i}使用交叉验证去评估特征\mathcal{F_i}\ (b)将上一步得到的最好的特征子集赋值给\mathcal{F}\ }$</li>
 <li>选择并输出整个过程中最好的特征子集</li>
 </ul>
 <p>在该算法中，外部循环停止的条件可以是当$\mathcal{|F|}=n$时，也可以是自己设定的一个界限。<br>该算法的实例化被称作<strong>封装特征选择(wrapper model feature selection)</strong>,除了foward search，还有一种被称作backward search的算法，其将$\mathcal{F}$初始化为包含全部特征的全集，每次循环从中去除一个特征，直到$\mathcal{F}=\phi$。</p>
