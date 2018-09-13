@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。 引入给定训练集${x^{(1)},…,x^{m}}$，根据无监督学习的定义，这些数据不带有任何标签。现在通过一个联合分布对数据进行建模:$$p(x^{(i)},z^{(i)})=p(x^{(i)}|">
-<meta name="keywords" content="CS229,machine learning,EM算法">
+  <meta name="description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。">
+<meta name="keywords" content="machine learning,CS229,EM算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="混合高斯模型与EM算法">
 <meta property="og:url" content="http://yoursite.com/2018/09/13/混合高斯模型与EM算法/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。 引入给定训练集${x^{(1)},…,x^{m}}$，根据无监督学习的定义，这些数据不带有任何标签。现在通过一个联合分布对数据进行建模:$$p(x^{(i)},z^{(i)})=p(x^{(i)}|z^{(i)})p(z^{(i)})$$其中  $z^{(i)}\sim Mul">
+<meta property="og:description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-13T08:34:50.534Z">
+<meta property="og:updated_time" content="2018-09-13T08:40:11.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="混合高斯模型与EM算法">
-<meta name="twitter:description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。 引入给定训练集${x^{(1)},…,x^{m}}$，根据无监督学习的定义，这些数据不带有任何标签。现在通过一个联合分布对数据进行建模:$$p(x^{(i)},z^{(i)})=p(x^{(i)}|z^{(i)})p(z^{(i)})$$其中  $z^{(i)}\sim Mul">
+<meta name="twitter:description" content="Mixtures of Gaussians这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。">
 
 
 
@@ -382,7 +382,7 @@
                 
               
 
-              <time title="Created: 2018-09-13 16:22:25 / Modified: 16:34:50" itemprop="dateCreated datePublished" datetime="2018-09-13T16:22:25+08:00">2018-09-13</time>
+              <time title="Created: 2018-09-13 16:22:25 / Modified: 16:40:11" itemprop="dateCreated datePublished" datetime="2018-09-13T16:22:25+08:00">2018-09-13</time>
             
 
             
@@ -441,7 +441,7 @@
       
 
       
-        <h2 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h2><p>这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。</p>
+        <h2 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h2><p>这一部分引入了高斯混合模型和EM算法的定义，但是没有进一步证明EM算法的导出。<br><a id="more"></a></p>
 <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>给定训练集${x^{(1)},…,x^{m}}$，根据无监督学习的定义，这些数据不带有任何标签。现在通过一个联合分布对数据进行建模:<br>$$p(x^{(i)},z^{(i)})=p(x^{(i)}|z^{(i)})p(z^{(i)})$$<br>其中</p>
 <ul>
 <li>$z^{(i)}\sim Multinomial(\phi),p(z^{(i)}=j)=\phi_j \ge 0,\sum_{j=1}^{k}\phi_j=1$</li>
@@ -474,9 +474,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS229/" rel="tag"># CS229</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
             <a href="/tags/EM算法/" rel="tag"># EM算法</a>
           
