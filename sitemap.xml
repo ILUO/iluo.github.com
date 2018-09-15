@@ -1,176 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://iluo.github.io/2018/09/13/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B%E4%B8%8EEM%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://iluo.github.io/2018/09/15/EM%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2018-09-15T12:01:33.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iluo.github.io/2018/09/13/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B%E4%B8%8EEM%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2018-09-13T08:40:11.097Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/07/08/CS229-Note2/</loc>
+    <loc>https://iluo.github.io/2018/07/08/CS229-Note2/</loc>
     
     <lastmod>2018-09-13T04:52:30.746Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/about/index.html</loc>
+    <loc>https://iluo.github.io/about/index.html</loc>
     
     <lastmod>2018-09-08T09:59:05.892Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/05/08/Anomaly-Detection/</loc>
+    <loc>https://iluo.github.io/2018/05/08/Anomaly-Detection/</loc>
     
     <lastmod>2018-09-08T09:33:26.164Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/tags/index.html</loc>
+    <loc>https://iluo.github.io/tags/index.html</loc>
     
     <lastmod>2018-09-08T09:31:08.325Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/03/31/Liner-Regression/</loc>
+    <loc>https://iluo.github.io/2018/03/31/Liner-Regression/</loc>
     
     <lastmod>2018-08-20T07:22:38.034Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/08/19/CS229-Note5-Learning-Theory-2/</loc>
+    <loc>https://iluo.github.io/2018/08/19/CS229-Note5-Learning-Theory-2/</loc>
     
     <lastmod>2018-08-19T04:36:00.476Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/07/27/CS229-Note4-Learning-Theory/</loc>
+    <loc>https://iluo.github.io/2018/07/27/CS229-Note4-Learning-Theory/</loc>
     
     <lastmod>2018-07-27T02:56:11.112Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/07/23/CS229-Note3-SVM-2/</loc>
+    <loc>https://iluo.github.io/2018/07/23/CS229-Note3-SVM-2/</loc>
     
     <lastmod>2018-07-23T06:50:04.203Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/07/18/CS229-Note3-SVM-1/</loc>
+    <loc>https://iluo.github.io/2018/07/18/CS229-Note3-SVM-1/</loc>
     
     <lastmod>2018-07-20T07:54:13.133Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/06/20/try-to-try-again/</loc>
+    <loc>https://iluo.github.io/2018/06/20/try-to-try-again/</loc>
     
     <lastmod>2018-07-04T10:54:31.815Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/06/17/CS229-Note1/</loc>
+    <loc>https://iluo.github.io/2018/06/17/CS229-Note1/</loc>
     
     <lastmod>2018-06-17T07:29:05.871Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</loc>
+    <loc>https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</loc>
     
     <lastmod>2018-06-04T07:06:51.932Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/05/23/%E6%80%BB%E7%BB%93%EF%BC%9ACoursera-Machine-Learning-By-Andrew-Ng/</loc>
+    <loc>https://iluo.github.io/2018/05/23/%E6%80%BB%E7%BB%93%EF%BC%9ACoursera-Machine-Learning-By-Andrew-Ng/</loc>
     
     <lastmod>2018-05-25T02:26:06.388Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/15/%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/</loc>
+    <loc>https://iluo.github.io/2018/04/15/%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/</loc>
     
     <lastmod>2018-05-25T02:25:40.727Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/01/%E8%AF%AF%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%9D%A5%E6%BA%90/</loc>
+    <loc>https://iluo.github.io/2018/04/01/%E8%AF%AF%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%9D%A5%E6%BA%90/</loc>
     
     <lastmod>2018-05-25T02:25:27.636Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/24/Support-Vector-Machines/</loc>
+    <loc>https://iluo.github.io/2018/04/24/Support-Vector-Machines/</loc>
     
     <lastmod>2018-05-25T02:25:02.324Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/08/Neural-Networks-Representation/</loc>
+    <loc>https://iluo.github.io/2018/04/08/Neural-Networks-Representation/</loc>
     
     <lastmod>2018-05-25T02:24:47.518Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/12/Nerual-Networks-Learning/</loc>
+    <loc>https://iluo.github.io/2018/04/12/Nerual-Networks-Learning/</loc>
     
     <lastmod>2018-05-25T02:24:33.332Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/06/Logistic-Regression/</loc>
+    <loc>https://iluo.github.io/2018/04/06/Logistic-Regression/</loc>
     
     <lastmod>2018-05-25T02:24:20.591Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/01/Linear-Regression-Multiple-Variables/</loc>
+    <loc>https://iluo.github.io/2018/04/01/Linear-Regression-Multiple-Variables/</loc>
     
     <lastmod>2018-05-25T02:23:55.364Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/05/23/Large-Scale-Machine-Learning-OCR/</loc>
+    <loc>https://iluo.github.io/2018/05/23/Large-Scale-Machine-Learning-OCR/</loc>
     
     <lastmod>2018-05-25T02:23:41.791Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
+    <loc>https://iluo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
     
     <lastmod>2018-05-25T02:23:30.343Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/05/01/Clustering/</loc>
+    <loc>https://iluo.github.io/2018/05/01/Clustering/</loc>
     
     <lastmod>2018-05-25T02:22:48.145Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://iluo.github.io/2018/04/02/Linux-%E5%AD%A6%E4%B9%A0Shell/</loc>
+    <loc>https://iluo.github.io/2018/04/02/Linux-%E5%AD%A6%E4%B9%A0Shell/</loc>
     
     <lastmod>2018-04-03T09:21:52.049Z</lastmod>
     
