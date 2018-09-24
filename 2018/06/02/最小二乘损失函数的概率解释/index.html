@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="最小二乘损失函数的概率解释概率论与统计学基础求“概率”时，已知模型和参数，预测结果。进行“统计”时，已知数据，推测模型与参数(明天要答辩了，希望不要被锤)。">
-<meta name="keywords" content="CS229,machine learning,概率论基础">
+<meta name="keywords" content="machine learning,CS229,概率论基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小二乘损失函数的概率解释">
 <meta property="og:url" content="http://yoursite.com/2018/06/02/最小二乘损失函数的概率解释/index.html">
@@ -456,17 +456,22 @@
 
       
         <h1 id="最小二乘损失函数的概率解释"><a href="#最小二乘损失函数的概率解释" class="headerlink" title="最小二乘损失函数的概率解释"></a>最小二乘损失函数的概率解释</h1><h2 id="概率论与统计学基础"><a href="#概率论与统计学基础" class="headerlink" title="概率论与统计学基础"></a>概率论与统计学基础</h2><p>求“概率”时，已知模型和参数，预测结果。进行“统计”时，已知数据，推测模型与参数(明天要答辩了，希望不要被锤)。</p>
-<p><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/v5r1GiRooZDP4ekSm82rD4j*9r39pEuk.5FztCvLoa8!/b/dA0BAAAAAAAA&ek=1&kp=1&pt=0&bo=QgRYAUIEWAEBACc!&tl=1&tm=1528092000&sce=0-12-12&rf=viewer_311"><br></div><br><a id="more"></a></p>
+<p><div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/v5r1GiRooZDP4ekSm82rD4j*9r39pEuk.5FztCvLoa8!/b/dA0BAAAAAAAA&ek=1&kp=1&pt=0&bo=QgRYAUIEWAEBACc!&tl=1&tm=1528092000&sce=0-12-12&rf=viewer_311">
+</div><br><a id="more"></a></p>
 <h3 id="先验概率-Apriori"><a href="#先验概率-Apriori" class="headerlink" title="先验概率(Apriori)"></a>先验概率(Apriori)</h3><p>Apriori，拉丁文意为“来自先前的东西”，即在未考虑“观测数据”之前，根据以往经验和分析得到的概率，如“抛均匀硬币时正面向上的概率为0.5”。</p>
-<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><p>在样本空间$\Omega$中的两个事件A、B，那么在事件B发生的条件下，事件A发生的概率是<br>$$P(A|B)=\frac{P(A\cap B)}{P(B)}$$</p>
-<h3 id="后验概率"><a href="#后验概率" class="headerlink" title="后验概率"></a>后验概率</h3><p>基于观测数据（经验）$X$，修正原来的先验概率后所获得的更接近实际情况的概率估计。是给定证据$X$后参数$\theta$的概率$$p(\theta|X)$$，如“已知不透明袋子里的黑白球数目，连续两次不放回取出小球，知道第二次取出了白球，求第一次取出白球的概率”，此时证据$X$为“第二次取出白球”，参数$\theta$为“第一次取出白球”。<strong>后验概率是一种条件概率，但条件概率不一定是后验概率</strong>。</p>
-<h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><p>对于观测数据$X$，在参数集合$\theta$上的似然，就是在给定参数值的基础上，观测到某一个结果的可能性$$L(\theta|x)=p(x|\theta)$$，也就是说似然是是关于参数的函数，对于参数给定的条件，观察到的$X$的值的条件分布(我认为参数给定并不是指参数不变，似然中不变的应是观察到的证据$X$,而似然函数就是用可能的$\theta$参数去求证据$X$的概率分布)。</p>
+<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><p>在样本空间$\Omega$中的两个事件A、B，那么在事件B发生的条件下，事件A发生的概率是</p>
+<script type="math/tex; mode=display">P(A|B)=\frac{P(A\cap B)}{P(B)}</script><h3 id="后验概率"><a href="#后验概率" class="headerlink" title="后验概率"></a>后验概率</h3><p>基于观测数据（经验）$X$，修正原来的先验概率后所获得的更接近实际情况的概率估计。是给定证据$X$后参数$\theta$的概率<script type="math/tex">p(\theta|X)</script>，如“已知不透明袋子里的黑白球数目，连续两次不放回取出小球，知道第二次取出了白球，求第一次取出白球的概率”，此时证据$X$为“第二次取出白球”，参数$\theta$为“第一次取出白球”。<strong>后验概率是一种条件概率，但条件概率不一定是后验概率</strong>。</p>
+<h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><p>对于观测数据$X$，在参数集合$\theta$上的似然，就是在给定参数值的基础上，观测到某一个结果的可能性<script type="math/tex">L(\theta|x)=p(x|\theta)</script>，也就是说似然是是关于参数的函数，对于参数给定的条件，观察到的$X$的值的条件分布(我认为参数给定并不是指参数不变，似然中不变的应是观察到的证据$X$,而似然函数就是用可能的$\theta$参数去求证据$X$的概率分布)。</p>
 <p><strong>似然函数的重要性不是它的具体取值，而是当参数变化时似然函数的值在如何变化。</strong></p>
 <p>考虑连续两次抛掷一枚硬币，每次抛掷正面向上的概率都为$\theta$,若观测到抛掷结果为正正，则其似然函数可以定义为$\theta^2$，此时$\theta$的值越大越符合我们观测到的$X$(似然性越大)，即两次都正面向上。若观测到抛掷结果为正反，则其似然函数可以定义为$\theta(1-\theta)$，此时$\theta=0.5$时似然函数值最大，最符合我们观测到的结果。</p>
 <h3 id="概率与似然的区别"><a href="#概率与似然的区别" class="headerlink" title="概率与似然的区别"></a>概率与似然的区别</h3><p>似然函数在统计推测中发挥重要的作用，因为它是关于统计参数的函数，所以可以用来评估一组统计的参数，也就是说在一组统计方案的参数中，可以用似然函数做筛选。在非正式的语境下，“似然”会和“概率”混着用；但是严格区分的话，在统计上，二者是有不同。</p>
 <p>概率是给定参数值$\theta$的情况下观察值$X$的函数,似然是给定观察值$X$时，描述参数$\theta$的情况。</p>
-<h3 id="贝叶斯定理-Bayes’s-Theorem"><a href="#贝叶斯定理-Bayes’s-Theorem" class="headerlink" title="贝叶斯定理(Bayes’s Theorem)"></a>贝叶斯定理(Bayes’s Theorem)</h3><p>根据条件概率：<br>$$p(A|B) = \frac{P(A \cap B)}{P(B)}$$<br>$$p(B|A) = \frac{P(A \cap B)}{P(A)}$$<br>整理这两个方程式，可以得到乘法公式:<br>$$P(A|B)P(B) = p(B|A)P(A)$$<br>两边同时除以$P(A)$:<br>$$P(B|A) = \frac{p(A|B)P(B)}{P(A)}$$<br>将这个式子进一步推广：<br>随机试验的样本空间为$\Omega$,$A\subset\Omega$,$B_i(i=1,2,…,n)$是$\Omega$的一个有限划分，$P(A)&gt;0,P(B_i)&gt;0$。<br>$$P(B_i|A)=\frac{P(AB_i)}{P(A)}=\frac{P(B_i)P(A|B_i)}{P(A)}$$</p>
-<p>由全概率公式$$P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^n P(B_j)P(A|B_j)}$$</p>
+<h3 id="贝叶斯定理-Bayes’s-Theorem"><a href="#贝叶斯定理-Bayes’s-Theorem" class="headerlink" title="贝叶斯定理(Bayes’s Theorem)"></a>贝叶斯定理(Bayes’s Theorem)</h3><p>根据条件概率：</p>
+<script type="math/tex; mode=display">p(A|B) = \frac{P(A \cap B)}{P(B)}</script><script type="math/tex; mode=display">p(B|A) = \frac{P(A \cap B)}{P(A)}</script><p>整理这两个方程式，可以得到乘法公式:</p>
+<script type="math/tex; mode=display">P(A|B)P(B) = p(B|A)P(A)</script><p>两边同时除以$P(A)$:</p>
+<script type="math/tex; mode=display">P(B|A) = \frac{p(A|B)P(B)}{P(A)}</script><p>将这个式子进一步推广：<br>随机试验的样本空间为$\Omega$,$A\subset\Omega$,$B_i(i=1,2,…,n)$是$\Omega$的一个有限划分，$P(A)&gt;0,P(B_i)&gt;0$。</p>
+<script type="math/tex; mode=display">P(B_i|A)=\frac{P(AB_i)}{P(A)}=\frac{P(B_i)P(A|B_i)}{P(A)}</script><p>由全概率公式<script type="math/tex">P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\sum_{j=1}^n P(B_j)P(A|B_j)}</script></p>
 <h3 id="后验概率与似然函数的关系"><a href="#后验概率与似然函数的关系" class="headerlink" title="后验概率与似然函数的关系"></a>后验概率与似然函数的关系</h3><p>后验概率是基于观测到的证据$X$，参数$\theta$的概率：$p(\theta|X)$。<br>似然函数是给定参数$\theta$的集合，证据$X$的概率分布:$p(X|\theta)$。</p>
 <p>后验概率：“已知不透明袋子里的黑白球数目，连续两次不放回取出小球，知道第二次取出了白球，求第一次取出白球的概率”，此时证据为“第二次取出白球”，参数为“第一次取出白球”。</p>
 <p>似然函数：“已知不透明袋子里的黑白球数目，连续两次不放回取出小球，知道第二次取出了白球，给定参数集合{第一次取出白球，第一次取出黑球}，求在该集合上的似然”，此时证据$X$为“第二次取出白球”，求似然即求在不同的参数下，结果(证据)$X$出现的可能性，这个可能性不代表出现的概率，事实上，一个似然函数乘以一个正的常数之后仍然是似然函数。</p>
@@ -475,9 +480,16 @@
 <li>先验分布$P(\Theta)$</li>
 <li>条件分布$P(X|\Theta)$</li>
 </ul>
-<p>则我们得到X的观测值后，就可以运用贝叶斯法则计算后验分布列。<br>$$p\Theta|X(\theta|x)=\frac{p\Theta(\theta)pX|\Theta(x|\theta)}{\sum_{\theta^{‘}p\Theta(\theta^{‘})pX|\Theta(x|\theta^{‘})}}$$</p>
-<h2 id="最小二乘损失函数的概率解释-1"><a href="#最小二乘损失函数的概率解释-1" class="headerlink" title="最小二乘损失函数的概率解释"></a>最小二乘损失函数的概率解释</h2><p>前面写了这么多，其实我在看CS229的讲义时发现里面的相关定义在我脑海里已经成了一团浆糊，于是稍微回顾了一下，现在回到正轨来看最初疑惑的问题。</p>
-<p>目标变量和输入变量的关系：<br>$$y^{(i)}=\theta^{T}x^{(i)}+\epsilon^{(i)}$$<br>$\epsilon^{(i)}$是未建模影响或者随机噪声的误差项。同时$\epsilon^{(i)}$是<strong>独立同分布</strong>的，并且满足均值为0方差为$\sigma^2$的高斯分布。<br>$$p(\epsilon^{(i)})=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})$$<br>$$\epsilon^{(i)}=y^{(i)}-\theta^Tx^{(i)}$$<br>$$p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})$$<br>这样书写公式后，如果$\theta$和$x^{(i)}$已知，则上式就是$y^{(i)}$的分布了，它的值越大，代表这个$\theta$描述目标变量与输入变量越准确。<br>给定$X$和$\theta$,数据的概率(这里是原文，我想应该是指$y^{(i)}$的分布)为$p(\overrightarrow y|X;\theta)$<br>但当我们把上式看作$\theta$的函数时，我们称之为似然函数。<br>$$L(\theta)=L(\theta;X,\overrightarrow y)=p(\overrightarrow y|X;\theta)$$<br>注意到$\epsilon^{(i)}$的独立假设，上式可以书写为<br>$$\prod_{i=1}^{m}\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})$$<br>最大似然估计就是要将似然函数最大化。<br>对该式取自然数为底数的对数。<br>$$\sum_{i=1}^{m}log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})$$<br>得到<br>$$mlog\frac{1}{\sqrt{2\pi}\sigma}-\frac{1}{\sigma^2}.\frac{1}{2}\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$$<br>所以，问题就变成了最小化<br>$$\frac{1}{2}\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$$,这时的$\theta$能够最好的描述输入变量与输出变量的关系。</p>
+<p>则我们得到X的观测值后，就可以运用贝叶斯法则计算后验分布列。</p>
+<script type="math/tex; mode=display">p\Theta|X(\theta|x)=\frac{p\Theta(\theta)pX|\Theta(x|\theta)}{\sum_{\theta^{'}p\Theta(\theta^{'})pX|\Theta(x|\theta^{'})}}</script><h2 id="最小二乘损失函数的概率解释-1"><a href="#最小二乘损失函数的概率解释-1" class="headerlink" title="最小二乘损失函数的概率解释"></a>最小二乘损失函数的概率解释</h2><p>前面写了这么多，其实我在看CS229的讲义时发现里面的相关定义在我脑海里已经成了一团浆糊，于是稍微回顾了一下，现在回到正轨来看最初疑惑的问题。</p>
+<p>目标变量和输入变量的关系：</p>
+<script type="math/tex; mode=display">y^{(i)}=\theta^{T}x^{(i)}+\epsilon^{(i)}</script><p>$\epsilon^{(i)}$是未建模影响或者随机噪声的误差项。同时$\epsilon^{(i)}$是<strong>独立同分布</strong>的，并且满足均值为0方差为$\sigma^2$的高斯分布。</p>
+<script type="math/tex; mode=display">p(\epsilon^{(i)})=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})</script><script type="math/tex; mode=display">\epsilon^{(i)}=y^{(i)}-\theta^Tx^{(i)}</script><script type="math/tex; mode=display">p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})</script><p>这样书写公式后，如果$\theta$和$x^{(i)}$已知，则上式就是$y^{(i)}$的分布了，它的值越大，代表这个$\theta$描述目标变量与输入变量越准确。<br>给定$X$和$\theta$,数据的概率(这里是原文，我想应该是指$y^{(i)}$的分布)为$p(\overrightarrow y|X;\theta)$<br>但当我们把上式看作$\theta$的函数时，我们称之为似然函数。</p>
+<script type="math/tex; mode=display">L(\theta)=L(\theta;X,\overrightarrow y)=p(\overrightarrow y|X;\theta)</script><p>注意到$\epsilon^{(i)}$的独立假设，上式可以书写为</p>
+<script type="math/tex; mode=display">\prod_{i=1}^{m}\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})</script><p>最大似然估计就是要将似然函数最大化。<br>对该式取自然数为底数的对数。</p>
+<script type="math/tex; mode=display">\sum_{i=1}^{m}log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^(i)-\theta^Tx^{(i)})^2}{2\sigma^2})</script><p>得到</p>
+<script type="math/tex; mode=display">mlog\frac{1}{\sqrt{2\pi}\sigma}-\frac{1}{\sigma^2}.\frac{1}{2}\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2</script><p>所以，问题就变成了最小化</p>
+<p><script type="math/tex">\frac{1}{2}\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2</script>,这时的$\theta$能够最好的描述输入变量与输出变量的关系。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a href="https://zh.wikipedia.org/wiki/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87" target="_blank" rel="noopener">先验概率</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87" target="_blank" rel="noopener">后验概率</a></li>
@@ -504,9 +516,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS229/" rel="tag"># CS229</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
             <a href="/tags/概率论基础/" rel="tag"># 概率论基础</a>
           

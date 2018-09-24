@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="CS229 因子分析(Factor Analysis)因子分析的本质是一种降维算法，即现有特征向量是由维度更小的因子经过映射得到的。当原有特征维度过高，甚至超过了样本数目，这时要运用高斯模型来建模是不可行的，因为特征的协方差矩阵是奇异的，所以可以利用因子分析对数据进行降维，即将隐变量(因子)和观测到的样本的联合分布进行">
-<meta name="keywords" content="CS229,machine learning">
+<meta name="keywords" content="machine learning,CS229">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS229 因子分析(Factor Analysis)">
 <meta property="og:url" content="http://yoursite.com/2018/09/24/CS229-因子分析-Factor-Analysis/index.html">
@@ -450,21 +450,99 @@
       
         <h1 id="CS229-因子分析-Factor-Analysis"><a href="#CS229-因子分析-Factor-Analysis" class="headerlink" title="CS229 因子分析(Factor Analysis)"></a>CS229 因子分析(Factor Analysis)</h1><p>因子分析的本质是一种降维算法，即现有特征向量是由维度更小的因子经过映射得到的。当原有特征维度过高，甚至超过了样本数目，这时要运用高斯模型来建模是不可行的，因为特征的协方差矩阵是奇异的，所以可以利用因子分析对数据进行降维，即将隐变量(因子)和观测到的样本的联合分布进行建模，得到样本的边缘分布，由于直接求解边缘分布的最大似然估计没有封闭解(参数是因子到样本的映射中涉及到的系数)，所以运用EM算法得到一个关于因子到样本映射的参数的解，得到映射的参数后，就可以将所有样本还原为维度更小的因子了。</p>
 <a id="more"></a>
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>给定一个数据集$x^{(i)}\in{R^n}$，假设它们是来自几个高斯分布的组合。那么就可以使用上一篇文章的EM算法来对数据建模。假如$n &gt;&gt; m$，应用到一个高斯模型可能比较困难，更不用说应用到高斯分模型，对于一个高斯分模型,如果使用最大似然估计。(这里开一个坑，就是这个最大似然估计好像涉及到关于矩阵求导，我想试一下，最后还是放弃了，不过第一个结果没有涉及到矩阵，很容易就出来了)<br>$$\mu = \frac{1}{m}\sum_{i=1}^mx^{(i)}$$<br>$$\Sigma = \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T$$<br>现在观察这个结果，可以发现当$m &lt;&lt; n$时，协方差矩阵$\Sigma$是奇异的，奇异矩阵是不可逆的，为什么不可逆呢？因为它的行列式为0，而行列式为0的在几何中的直观意义是什么呢？考虑有如下矩阵：<br>$$<br>\begin{bmatrix}<br>a &amp; b \ <br>c &amp; d \ <br>\end{bmatrix}<br>$$<br>现在要求他们的逆，设逆矩阵为:<br>$$<br>\begin{bmatrix}<br>A &amp; B \ <br>C &amp; D \ <br>\end{bmatrix}<br>$$<br>所以有<br>$$<br>\begin{align}<br>aA + bC = 1\\<br>aB + bD = 0 \\<br>cA + dC = 0 \\<br>cB + dD = 1<br>\end{align}<br>$$<br>将(1)(3),(2)(4)分别联立就可以进行求解。<br>而如果原矩阵行列式为0，则有$ad = bc$，即$\frac{a}{c}=\frac{b}{d}$，那么上面联立的方程所表示的线在几何空间中肯定是平行的，所以这个方程肯定无解或者有无数解，所以行列式为0的矩阵肯定不可逆。(不过我在这里只列举了2*2矩阵的情况，泛化还需要进一步证明)。另外，为什么$m &lt;&lt; n$时，行列式为0呢？这一点我也想了很久，但是google也google不到详细的证明过程，网上的博客都很自然引出了这个结论，最后我还是只有举例验证了一下，最后发现真的是这样(菜到安详.jpg)。</p>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>给定一个数据集$x^{(i)}\in{R^n}$，假设它们是来自几个高斯分布的组合。那么就可以使用上一篇文章的EM算法来对数据建模。假如$n &gt;&gt; m$，应用到一个高斯模型可能比较困难，更不用说应用到高斯分模型，对于一个高斯分模型,如果使用最大似然估计。(这里开一个坑，就是这个最大似然估计好像涉及到关于矩阵求导，我想试一下，最后还是放弃了，不过第一个结果没有涉及到矩阵，很容易就出来了)</p>
+<script type="math/tex; mode=display">\mu = \frac{1}{m}\sum_{i=1}^mx^{(i)}</script><script type="math/tex; mode=display">\Sigma = \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T</script><p>现在观察这个结果，可以发现当$m &lt;&lt; n$时，协方差矩阵$\Sigma$是奇异的，奇异矩阵是不可逆的，为什么不可逆呢？因为它的行列式为0，而行列式为0的在几何中的直观意义是什么呢？考虑有如下矩阵：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a & b \\ 
+c & d \\ 
+\end{bmatrix}</script><p>现在要求他们的逆，设逆矩阵为:</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix} 
+A & B \\ 
+C & D \\ 
+\end{bmatrix}</script><p>所以有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+aA + bC = 1\\
+aB + bD = 0 \\
+cA + dC = 0 \\
+cB + dD = 1
+\end{align}</script><p>将(1)(3),(2)(4)分别联立就可以进行求解。<br>而如果原矩阵行列式为0，则有$ad = bc$，即$\frac{a}{c}=\frac{b}{d}$，那么上面联立的方程所表示的线在几何空间中肯定是平行的，所以这个方程肯定无解或者有无数解，所以行列式为0的矩阵肯定不可逆。(不过我在这里只列举了2*2矩阵的情况，泛化还需要进一步证明)。另外，为什么$m &lt;&lt; n$时，行列式为0呢？这一点我也想了很久，但是google也google不到详细的证明过程，网上的博客都很自然引出了这个结论，最后我还是只有举例验证了一下，最后发现真的是这样(菜到安详.jpg)。</p>
 <p>好的，绕了这么大一个圈子，终于理清了为什么$m &lt;&lt; n$的情况下矩阵的奇异的。现在回过头来看高斯模型中，参数$\Sigma$参与了什么，观察公式可以发现正是要用到$\Sigma^{-1}$以及$\frac{1}{|\Sigma|^{1/2}}$，如果$\Sigma$奇异，那么这两个都没有办法得到。所以，在$m &lt;&lt; n$这种情况下，就可以使用<strong>因子分析</strong>对数据进行降维<del>打击</del>处理，然后就可以继续快乐地进行建模了。<br>在这之前，还可以对$\Sigma$进行限制来建模，即将其限制为对角矩阵，甚至还把对角元素的值都设为一样的，有了这样的限制，因为协方差矩阵反映的就是各个维度之间的相关性，非对角元素为0，特征的各个维度之间在高斯模型中已经是互相独立的了，所以可以看到高斯分布的对称轴和坐标轴平行，如果对角元素还是一致的，高斯分布的轮廓就是一个圆形(二维中)了，通常情况下这种方式都是有效的，但是如果不使用这个方法呢，就要用因子分析模型了。</p>
-<h2 id="高斯模型的边缘分布和条件分布"><a href="#高斯模型的边缘分布和条件分布" class="headerlink" title="高斯模型的边缘分布和条件分布"></a>高斯模型的边缘分布和条件分布</h2><p>这是推导算法所需要的数学工具<br>考虑有一个随机向量<br>$$<br>\begin{bmatrix}<br>x_1 \ <br>x_2 \ <br>\end{bmatrix}<br>$$<br>$x_1 \in R^r,x_2 \in R^s,x \in R^{r+s}$<br>假设$$x \sim \mathcal{N}(\mu,\Sigma)$$<br>$$<br>\mu = \begin{bmatrix} \mu_1 \ \mu_2 \ <br>\end{bmatrix},<br>\Sigma = \begin{bmatrix}<br>\Sigma_{11}  &amp;\Sigma_{12}\ \Sigma_{21} &amp; \Sigma_{22} \ <br>\end{bmatrix}<br>$$<br>有$\mu_1 \in R^r,\mu_2 \in R^s,\Sigma_{11} \in R^{r*r}，\Sigma_{12} \in R^{r*s}$，以此类推。另外，协方差矩阵是对称的，$\Sigma_{12} = \Sigma_{21}^T$<br>对于$x_1,x_2$这个联合多元高斯分布的的边缘分布和条件分布，姑且作为结论性的东西直接用吧，贴图片啦：</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/gvJgauu3rHVCNaz2zALJp.FzDZoHz8gDPsAs42nSO7g!/b/dDABAAAAAAAA&ek=1&kp=1&pt=0&bo=OALOADgCzgABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311"><br></div><br>其边缘分布为：$x_1 \sim \mathcal{N}(\mu_1,\Sigma_{11})$<br>条件分布为:$x_1|x_2 \sim \mathcal{N}(\mu_{1|2},\Sigma_{1|2})$<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uqHw0PIzdHfRFh5OxWzvRURgVDq75KMjWzrza8eAJlc!/b/dDQBAAAAAAAA&ek=1&kp=1&pt=0&bo=OwFTADsBUwABACc!&tl=1&vuin=1405591197&tm=1537783200&sce=50-1-1&rf=viewer_311"><br></div>
+<h2 id="高斯模型的边缘分布和条件分布"><a href="#高斯模型的边缘分布和条件分布" class="headerlink" title="高斯模型的边缘分布和条件分布"></a>高斯模型的边缘分布和条件分布</h2><p>这是推导算法所需要的数学工具<br>考虑有一个随机向量</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix} 
+x_1 \\ 
+x_2 \\ 
+\end{bmatrix}</script><p>$x_1 \in R^r,x_2 \in R^s,x \in R^{r+s}$<br>假设<script type="math/tex">x \sim \mathcal{N}(\mu,\Sigma)</script></p>
+<script type="math/tex; mode=display">
+\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \\ 
+\end{bmatrix},
+\Sigma = \begin{bmatrix} 
+\Sigma_{11}  &\Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \\ 
+\end{bmatrix}</script><p>有$\mu_1 \in R^r,\mu_2 \in R^s,\Sigma_{11} \in R^{r*r}，\Sigma_{12} \in R^{r*s}$，以此类推。另外，协方差矩阵是对称的，$\Sigma_{12} = \Sigma_{21}^T$<br>对于$x_1,x_2$这个联合多元高斯分布的的边缘分布和条件分布，姑且作为结论性的东西直接用吧，贴图片啦：</p>
+<div align="center">
+<img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/gvJgauu3rHVCNaz2zALJp.FzDZoHz8gDPsAs42nSO7g!/b/dDABAAAAAAAA&ek=1&kp=1&pt=0&bo=OALOADgCzgABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311">
+</div>
+其边缘分布为：$x_1 \sim \mathcal{N}(\mu_1,\Sigma_{11})$
+条件分布为:$x_1|x_2 \sim \mathcal{N}(\mu_{1|2},\Sigma_{1|2})$
+<div align="center">
+<img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uqHw0PIzdHfRFh5OxWzvRURgVDq75KMjWzrza8eAJlc!/b/dDQBAAAAAAAA&ek=1&kp=1&pt=0&bo=OwFTADsBUwABACc!&tl=1&vuin=1405591197&tm=1537783200&sce=50-1-1&rf=viewer_311">
+</div>
 
-<h2 id="因子分析模型"><a href="#因子分析模型" class="headerlink" title="因子分析模型"></a>因子分析模型</h2><p>假设一个关于$(x,z)$的联合分布，$z\in R^k$是一个随机隐变量：<br>$$<br>z \sim \mathcal{N}(0,I)\\<br>x|z \sim \mathcal{N}(\mu+\Lambda z，\Psi)<br>$$<br>$\mu \in R^n,\Lambda \in R^{n*k}$,对角矩阵$\Psi \in R^{n*n}$,$k$通常比$n$更小。<br>现在，可以想象一下每个数据点是通过什么方式生成的：在一个k维多元高斯分布生成一个样本$z^{(i)}$，然后把它映射到一个n维空间通过$\mu+\Lambda z^{(i0}$，最后加上协方差$\Psi$的噪声。<br>同样的，因子分析模型可以被定义为：<br>$$<br>z \sim \mathcal{N}(0,I) \\<br>\epsilon \sim \mathcal{N}(0,\Psi) \\<br>x = \mu + \Lambda z + \epsilon<br>$$<br>其中$\epsilon$和$z$是独立的。<br>变量$z$和$x$服从联合高斯分布<br>$$\begin{bmatrix} z \ x \ \end{bmatrix} \sim \mathcal{N}(\mu_{zx},\Sigma)$$<br>现在，要求解$u_{zx}$和$\Sigma$<br>已知$E[z]=0$，所以<br>$$<br>\begin{align}<br>E[x] &amp;= E[\mu+\Lambda z+ \epsilon]\\<br>&amp;=\mu + \Lambda E[z] + E[\epsilon] \\<br>&amp;= \mu<br>\end{align}<br>$$<br>所以有$$\mu_{zx} = \begin{bmatrix} \overrightarrow{0} \ \mu \ \end{bmatrix}$$<br>接下来要计算$\Sigma$，需要计算<br>$$<br>\Sigma_{zz} = E[(z - E[z])(z-E[z]^T)] \\<br>\Sigma_{zx} = E[(z-E[z])（x-E[x]^T)] \\<br>\sigma_{xx} = E[(x-E[x])(x-E[x])^T]<br>$$<br>因为$z \sim \mathcal{N}(0,I)$，可以得到$E_{zz}=Cov(z)=I$<br>$$<br>\begin{align}<br>E[(z-E[z])(x-E[x])^T] &amp;= E[z(\mu + \Lambda z+\epsilon-\mu)^T] \\<br>&amp;= E[zz^T] \Lambda^T + E[z\epsilon^T] \\<br>&amp; = \Lambda^T<br>\end{align}<br>$$<br>在最后一步，因为$z$和$\epsilon$是独立的，$E[z\epsilon^T] = E[z]E[\epsilon^T]=0$<br>$$<br>\begin{align}<br>E[(x-E[x])(x-E[x])^T] &amp;= E[(\mu+\Lambda z+\epsilon -\mu)(\mu + \Lambda z+\epsilon-\mu)^T] \\<br>&amp;= E[\Lambda zz^T\Lambda^T + \epsilon z^T\Lambda^T + \Lambda z\epsilon^T + \epsilon\epsilon^T] \\<br>&amp; = \Lambda E[zz^T]\Lambda^T + E[\epsilon\epsilon^T] \\<br>&amp; = \Lambda\Lambda^T + \Psi<br>\end{align}<br>$$</p>
-<p>所以<br>$$\begin{bmatrix} z \ x \ \end{bmatrix} \sim \mathcal{N}(\begin{bmatrix} \overrightarrow{0} \ \mu \ \end{bmatrix}),\begin{bmatrix} I&amp;\Lambda^T \ \Lambda &amp; \Lambda\Lambda^T + \Psi\ \end{bmatrix}$$<br>$x$的边缘分布为：$x\sim \mathcal{N}(\mu,\Lambda\Lambda^T+\Psi)$<br>关于参数的最大似然估计为：<br>$$\ell(\mu,\Lambda,\Psi)=log\prod_{i=1}^m\frac{1}{(2\pi)^{\frac{n}{2}}}exp(-\frac{1}{2}(x^{(i)}-\mu)^T(\Lambda\Lambda^T+\Psi)^{-1}(x^{(i)}-\mu))$$<br>这个最大似然估计没有算法可以求出封闭解，所以使用EM算法来解决。</p>
+<h2 id="因子分析模型"><a href="#因子分析模型" class="headerlink" title="因子分析模型"></a>因子分析模型</h2><p>假设一个关于$(x,z)$的联合分布，$z\in R^k$是一个随机隐变量：</p>
+<script type="math/tex; mode=display">
+z \sim \mathcal{N}(0,I)\\
+x|z \sim \mathcal{N}(\mu+\Lambda z，\Psi)</script><p>$\mu \in R^n,\Lambda \in R^{n*k}$,对角矩阵$\Psi \in R^{n*n}$,$k$通常比$n$更小。<br>现在，可以想象一下每个数据点是通过什么方式生成的：在一个k维多元高斯分布生成一个样本$z^{(i)}$，然后把它映射到一个n维空间通过$\mu+\Lambda z^{(i0}$，最后加上协方差$\Psi$的噪声。<br>同样的，因子分析模型可以被定义为：</p>
+<script type="math/tex; mode=display">
+z \sim \mathcal{N}(0,I) \\
+\epsilon \sim \mathcal{N}(0,\Psi) \\
+x = \mu + \Lambda z + \epsilon</script><p>其中$\epsilon$和$z$是独立的。<br>变量$z$和$x$服从联合高斯分布</p>
+<script type="math/tex; mode=display">\begin{bmatrix} z \\ x \\ \end{bmatrix} \sim \mathcal{N}(\mu_{zx},\Sigma)</script><p>现在，要求解$u_{zx}$和$\Sigma$<br>已知$E[z]=0$，所以</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E[x] &= E[\mu+\Lambda z+ \epsilon]\\
+&=\mu + \Lambda E[z] + E[\epsilon] \\
+&= \mu
+\end{align}</script><p>所以有<script type="math/tex">\mu_{zx} = \begin{bmatrix} \overrightarrow{0} \\ \mu \\ \end{bmatrix}</script><br>接下来要计算$\Sigma$，需要计算</p>
+<script type="math/tex; mode=display">
+\Sigma_{zz} = E[(z - E[z])(z-E[z]^T)] \\
+\Sigma_{zx} = E[(z-E[z])（x-E[x]^T)] \\
+\sigma_{xx} = E[(x-E[x])(x-E[x])^T]</script><p>因为$z \sim \mathcal{N}(0,I)$，可以得到$E_{zz}=Cov(z)=I$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E[(z-E[z])(x-E[x])^T] &= E[z(\mu + \Lambda z+\epsilon-\mu)^T] \\
+&= E[zz^T] \Lambda^T + E[z\epsilon^T] \\
+& = \Lambda^T
+\end{align}</script><p>在最后一步，因为$z$和$\epsilon$是独立的，$E[z\epsilon^T] = E[z]E[\epsilon^T]=0$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E[(x-E[x])(x-E[x])^T] &= E[(\mu+\Lambda z+\epsilon -\mu)(\mu + \Lambda z+\epsilon-\mu)^T] \\
+&= E[\Lambda zz^T\Lambda^T + \epsilon z^T\Lambda^T + \Lambda z\epsilon^T + \epsilon\epsilon^T] \\
+& = \Lambda E[zz^T]\Lambda^T + E[\epsilon\epsilon^T] \\
+& = \Lambda\Lambda^T + \Psi
+\end{align}</script><p>所以</p>
+<script type="math/tex; mode=display">\begin{bmatrix} z \\ x \\ \end{bmatrix} \sim \mathcal{N}(\begin{bmatrix} \overrightarrow{0} \\ \mu \\ \end{bmatrix}),\begin{bmatrix} I&\Lambda^T \\ \Lambda & \Lambda\Lambda^T + \Psi\\ \end{bmatrix}</script><p>$x$的边缘分布为：$x\sim \mathcal{N}(\mu,\Lambda\Lambda^T+\Psi)$<br>关于参数的最大似然估计为：</p>
+<script type="math/tex; mode=display">\ell(\mu,\Lambda,\Psi)=log\prod_{i=1}^m\frac{1}{(2\pi)^{\frac{n}{2}}}exp(-\frac{1}{2}(x^{(i)}-\mu)^T(\Lambda\Lambda^T+\Psi)^{-1}(x^{(i)}-\mu))</script><p>这个最大似然估计没有算法可以求出封闭解，所以使用EM算法来解决。</p>
 <h2 id="将EM算法运用到因子分析"><a href="#将EM算法运用到因子分析" class="headerlink" title="将EM算法运用到因子分析"></a>将EM算法运用到因子分析</h2><p>将EM算法运用到因子分析中,$z$是隐变量</p>
-<h3 id="E步"><a href="#E步" class="headerlink" title="E步"></a>E步</h3><p>$$Q_i(z^{(i)})=p(z^{(i)}|x^{(i)};\mu,\Lambda,\Psi)$$,运用之前多元高斯模型条件分布的公式：</p>
-<div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/E*.zRSK33uZp*8.4Mxp5iVx.wjxYneOCW4ga0smUahI!/b/dDEBAAAAAAAA&ek=1&kp=1&pt=0&bo=QgFEAEIBRAABACc!&tl=1&vuin=1405591197&tm=1537783200&sce=50-1-1&rf=viewer_311"><br></div><br>所以：<br><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/WN0Sq.8PLOAiqDleQa9fvwqLHWpvtpT*rS0ms7Uq.lw!/b/dDEBAAAAAAAA&ek=1&kp=1&pt=0&bo=QgFEAEIBRAABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311"><br></div>
+<h3 id="E步"><a href="#E步" class="headerlink" title="E步"></a>E步</h3><p><script type="math/tex">Q_i(z^{(i)})=p(z^{(i)}|x^{(i)};\mu,\Lambda,\Psi)</script>,运用之前多元高斯模型条件分布的公式：</p>
+<div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/E*.zRSK33uZp*8.4Mxp5iVx.wjxYneOCW4ga0smUahI!/b/dDEBAAAAAAAA&ek=1&kp=1&pt=0&bo=QgFEAEIBRAABACc!&tl=1&vuin=1405591197&tm=1537783200&sce=50-1-1&rf=viewer_311">
+</div>
+所以：
+<div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/WN0Sq.8PLOAiqDleQa9fvwqLHWpvtpT*rS0ms7Uq.lw!/b/dDEBAAAAAAAA&ek=1&kp=1&pt=0&bo=QgFEAEIBRAABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311">
+</div>
 
-<h3 id="M步"><a href="#M步" class="headerlink" title="M步"></a>M步</h3><div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/4OaJa0oz1U5tsFODhkEA3yK5mpNbRXocpOoktrn5cQI!/b/dGcBAAAAAAAA&ek=1&kp=1&pt=0&bo=SwE3AEsBNwABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=0-18"><br></div>
+<h3 id="M步"><a href="#M步" class="headerlink" title="M步"></a>M步</h3><div align="center">
+<img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/4OaJa0oz1U5tsFODhkEA3yK5mpNbRXocpOoktrn5cQI!/b/dGcBAAAAAAAA&ek=1&kp=1&pt=0&bo=SwE3AEsBNwABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=0-18">
+</div>
 
 <p>可以被简化为：</p>
-<div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/010UbSEOLBOPVKXdSHZNn.EibOrjuXxNY9FmcMviI14!/b/dDYBAAAAAAAA&ek=1&kp=1&pt=0&bo=8wFvAPMBbwABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311"><br></div>
+<div align="center">
+<img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/010UbSEOLBOPVKXdSHZNn.EibOrjuXxNY9FmcMviI14!/b/dDYBAAAAAAAA&ek=1&kp=1&pt=0&bo=8wFvAPMBbwABACc!&tl=1&tm=1537783200&sce=0-12-12&rf=viewer_311">
+</div>
 
 <p>后续最大化过程再看讲义吧，推不下去了ORZ。</p>
 
@@ -487,9 +565,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS229/" rel="tag"># CS229</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
         </div>
       

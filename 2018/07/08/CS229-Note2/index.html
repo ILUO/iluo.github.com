@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="CS229 Note2本章主要内容是生成学习算法与朴素贝叶斯模型">
-<meta name="keywords" content="CS229,machine learning">
+<meta name="keywords" content="machine learning,CS229">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS229-Note2">
 <meta property="og:url" content="http://yoursite.com/2018/07/08/CS229-Note2/index.html">
@@ -461,29 +461,108 @@
 
       
         <h1 id="CS229-Note2"><a href="#CS229-Note2" class="headerlink" title="CS229 Note2"></a>CS229 Note2</h1><p>本章主要内容是生成学习算法与朴素贝叶斯模型</p>
-<div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/dUZe.Hk*cqFogUJiwZaWs10rF3NEyF*TWS6.5VNHCMI!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=FQIsARUCLAEBACc!&tl=1&tm=1531029600&sce=0-12-12&rf=viewer_311"><br></div>
+<div align="center">
+<img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/dUZe.Hk*cqFogUJiwZaWs10rF3NEyF*TWS6.5VNHCMI!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=FQIsARUCLAEBACc!&tl=1&tm=1531029600&sce=0-12-12&rf=viewer_311">
+</div>
 
 <a id="more"></a>
 <h2 id="生成学习算法"><a href="#生成学习算法" class="headerlink" title="生成学习算法"></a>生成学习算法</h2><p>与使用决策边界进行分类的方法不同(逻辑回归与感知机算法)，生成学习算法对不同的类别分别建立分类模型，将要预测的样本与不同的模型进行匹配，观察新样本更符合哪一个类别。</p>
-<p>试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签${0,1}$之间的直接映射的算法叫做<strong>判别学习算法(discriminative learning algorithms)</strong>。对于对$p(x|y)$以及$p(y)$进行建模的算法，叫做<strong>生成学习算法(generative learning algorithms)</strong>，$p(x|y=1)$模拟了类别1的特征分布，$p(x|y=0)$同理。</p>
-<p>在对$p(y)$(<strong>class priors</strong>)以及$p(x|y)$进行建模之后，使用贝叶斯法则推导给定$x$时$y$的后分布。<br>$$p(y|x)=\frac{p(x|y)p(y)}{p(x)}$$<br>$$p(x)=p(x|y=1)p(y=1)+p(x|y=0)p(y=0)$$<br>进行预测时，其实不用计算分子，因为可以认为每种输入特征发生的概率可以认为是一样的，当$p(y)$为0.5，该项相同也可以省去。<br>$$<br>\begin{align}<br>\mathop{\arg\max}_{y}   p(y|x)&amp;=\mathop{\arg\max}_{y}\frac{p(x|y)p(y)}{p(x)} \\<br>&amp;= \mathop{\arg\max}_{y}p(x|y)p(y)<br>\end{align}<br>$$</p>
-<h3 id="高斯判别分析-GDA"><a href="#高斯判别分析-GDA" class="headerlink" title="高斯判别分析(GDA)"></a>高斯判别分析(GDA)</h3><p>在高斯判别分析(Gaussian discriminant anlysis)中，假设$p(x|y)$遵循多元正态分布。</p>
-<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>多元正态分布被一个平均向量$u \in R^n$和协方差矩阵$\Sigma \in R^{n*n} \geq 0$，这是一个对称的半正定矩阵。<br>概率密度：<br>$$p(x;\mu,\Sigma)=\frac{1}{(2\pi)^{1/2}|\Sigma|^{-1}}exp(-\frac{1}{2}(x-\mu)^T{\Sigma}^{-1}(x-\mu)$$<br>$|\Sigma|$是矩阵的行列式，平均值$u$的计算方法是期望$E[X]=\int_x {xp(x;u,\Sigma)} \,{\rm d}x=u$<br>，对于矩阵$Z$,其协方差矩阵$$Cov(Z)=E[(Z-E[Z])(Z-E[Z])^T]=E[ZZ^T]-(E[Z])(E[Z])^T$$<br>如果$X \thicksim N(\mu,\Sigma)$<br>$$Cov(X)=\Sigma$$</p>
-<p>对于多元正态分布，参数$\mu$是正态分布的中心点的坐标，协方差矩阵$\Sigma$影响正态分布的形状，具体影响见下图。</p>
-<p><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tSeZr3z0kXXTF9o7gAdmc0a5iTr4eSzoeBqa5MyhSI!/b/dOAAAAAAAAAA&ek=1&kp=1&pt=0&bo=0AK8ANACvAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311"><br></div></p>
-<p><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/wtqnzqHyiHP3VoNZm4g7eYd7PqmM*OK8CIo7EmvSoTU!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=ggJLAIICSwABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311"><br></div></p>
-<p><div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/qqTGRDy*x2EBgFhagyyZzrcNMDd2gXcty.hpMQ*AT4Y!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=sALEALACxAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311"><br></div><br>最左边的是标准的正态分布，当增加对角元素的值时，密度在45度角上产生了压缩。</p>
-<p><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xIwrDWaQRG2F2Lvs9e*64O9aefL0ynpy7xNvFpfWzmY!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=ugK0ALoCtAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311"><br></div></p>
-<p><div align="center"><br><img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/BvrvoX5B*FTdJA7F9bCDjipQBlORyra7HFjeDqvZ*b0!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=UAJIAFACSAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311"><br></div><br>当减小对角线上的值，可以看到密度再一次被压缩，不过是在相反的方向上。</p>
-<h3 id="高斯判别分析模型-Gaussian-Discriminant-Analysis-model"><a href="#高斯判别分析模型-Gaussian-Discriminant-Analysis-model" class="headerlink" title="高斯判别分析模型(Gaussian Discriminant Analysis model)"></a>高斯判别分析模型(Gaussian Discriminant Analysis model)</h3><p>在分类问题中，输入特征$x$是连续值随机变量，可以使用高斯判别分析进行建模，$p(x|y)$被建模为多元正态分布。<br>$$<br>y \thicksim Bernoulli(\phi)\\x|y = 0 \thicksim N(\mu_0,\Sigma)\\<br>x|y = 1 \thicksim N(\mu_1,\sigma)\\<br>p(y)=(\phi)^y(1-\phi)^{1-y}\\<br>p(x|y=0) = \frac{1}{(2\pi)^{n/2}}exp(-\frac{1}{2}(x-\mu_0)^T\Sigma^{-1}(x-\mu_0))\\<br>p(x|y=1) = \frac{1}{(2\pi)^{n/2}}exp(-\frac{1}{2}(x-\mu_1)^T\Sigma^{-1}(x-\mu_1))\\<br>$$<br>模型的参数分别是$\phi$，$\Sigma$，$\mu_1$，$\mu_0$（注意平均向量$\mu_0$和$\mu_1$是不同的，协方差矩阵$\Sigma$是一样的），数据的极大似然估计如下。<br>\begin{align}<br>\ell(\phi,\mu_0,\mu_1,\Sigma) &amp;= log \prod_{i=1}^mp(x^{(i)},y^{(i)};\phi,\mu_0,\mu_1,\Sigma)\\<br>&amp;= log \prod_{i=1}^mp(x^{(i)}|y^{(i)};\mu_0,\mu_1,\Sigma)p(y^{(i)};\phi)<br>\end{align}<br>通过最大化似函数，参数的估计如下：<br>$$<br>\phi=\frac{1}{m}\sum_{i=1}^m1{y^{(i)}=1} \\<br>\mu_0 = \frac{\sum_{i=1}^m1{y^{(i)}=0}x^{(i)}}{\sum_{i=1}^m1{y^{(i)}=0}}\\<br>\mu_1 = \frac{\sum_{i=1}^m1{y^{(i)}=1}x^{(i)}}{\sum_{i=1}^{m}1{y^{(i)}=1}}\\<br>$$<br>然后使用贝叶斯法则就能预测给定x时y的概率。<br>从绘图上来看，算法所做的事情如下</p>
-<h3 id="GDA与逻辑回归"><a href="#GDA与逻辑回归" class="headerlink" title="GDA与逻辑回归"></a>GDA与逻辑回归</h3><p>如果把$p(y=1|x;\phi,\mu_0,\mu_1,\Sigma)$看作$x$的函数，可以发现其形式为<br>$$\frac{1}{1+exp(-\theta^Tx)}$$<br>$\theta$可以被看做其余四个参数的函数，这恰好是逻辑回归的形式。<br>GDA比逻辑回归具有更严格的建模假设，当$p(x|y)$确实是高斯分布，那么GDA是<strong>渐近有效(asymptotically efficient)</strong>的，也就是说在训练集非常大的条件下，没有算法比GDA更好，即使是小型的数据集，GDA的效果也比逻辑回归好。相比之下，如果对数据的假设约束更弱，如$p(x|y)$是泊松分布，或者不确定是什么分布，那么逻辑回归会更强健，对错误数据也不会特别敏感。</p>
-<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>如果在分类问题中输入的特征是离散的值，如垃圾邮件文本分类，首先约定一个字典 dict={a,aardvark,…,zygmurgy}和字典向量<br>$$<br>x=<br>\begin{bmatrix}<br>1<br>\\<br>…<br>\\<br>1<br>\\<br>…<br>\\<br>0<br>\end{bmatrix}<br>$$<br>字典向量中第$i$为1，则代表字典中序号为$i$的单词出现在了这封邮件中。<br>有了特征向量，接下来对$p(x|y)$进行建模，如果字典中有50000个单词，直接用多元分布对$p(x|y)$进行建模,特征会有$2^50000$种可能。那么参数向量的维度会有$2^50000-1$，实在是太多了。<br>为了对$p(x|y)$进行建模，我们对数据加了一个较强的约束假设，即$x_i$对于给定条件$y$是独立的，即$y$发生的条件下，$x_i$之间互不影响。这个假设叫做朴素贝叶斯假设(Naive Bayes assumption)，得到的算法是朴素贝叶斯分类器(Naive Bayes classifier)。比如，在一个字典中，”buy”是第2087个单词，”price”是第39381个单词，那么如果一封邮件是垃圾邮件，那么已知其中一个单词出现了，不会影响另一个单词出现的概率。于我们就有$$p(x_{2087}|y)=p(x_{2087}|y,x_{39831})$$<br>$$<br>\begin{align}<br>p(x_1,…,x_{5000}) &amp;= p(x_1|y)p(x_2|y,x_1)p(x3|y,x_1,x_2)…p(x_{50000}|y,x_1…,x_{49999})\\<br>&amp;=p(x_1|y)p(x_2|y)p(x_3|y)…p(x_50000|y)\\<br>&amp;=\prod_{i=1}^np(x_i|y)<br>\end{align}<br>$$<br>即便朴素贝叶斯假设是一个约束非常强的假设，朴素贝叶斯分类器依然可以在很多问题上很好的工作。</p>
-<p>模型的参数化：<br>$$<br>\phi_{i|y=1}=p(x_i=1|y=1)\\<br>\phi_{i|y=0}=p(x_i=1|y=0)<br>$$</p>
-<p>给定训练集${(x^{(i)},y^{(i)};i=1,…,m)}$<br>数据的联合似然函数为：<br>$$\mathcal{L}(\phi_y,\phi_{i|y=0},\phi_{i|y=1})=\prod_{i=1}^mp(x^{(i)},y^{(i)})$$<br>对该似然函数进行最大似然估计：<br>$$<br>\phi_{j|y=1}=\frac{\sum_{i=1}^m1{x_j^{(i)}=1\wedge y^{(i)}=1}}{\sum_{i=1}^m1{y^{(i)}=1}}\\<br>\phi_{j|y=0}=\frac{\sum_{i=1}^m1{x_j^{(i)}=1\wedge y^{(i)}=0}}{\sum_{i=1}^m1{y^{(i)}=0}}\\<br>\phi_y = \frac{\sum_{i=1}^m1{y^{^{(i)}}=1}}{m}<br>$$<br>拟合了所有参数之后，预测一个新样本的计算方法为：<br>$$<br>\begin{align}<br>p(y=1|x)&amp;=\frac{p(x|y=1)p(y=1)}{p(x)}\\<br>&amp;=\frac{(\prod_{i=1}^np(x_i|y=1))p(y=1)}{(\prod_{i=1}^np(x_i|y=1))p(y=1)+(\prod_{i=1}^np(x_i|y=0))p(y=0)}<br>\end{align}<br>$$<br>该算法中的参数$x_i$不一定是binary-value，可以推广为一般离散的值，如{1,2,…,k}也可行，例如对于连续的特征使用多元正态分布不能很好建模时，对特征进行离散化再使用朴素贝叶斯通常会有更好的表现。</p>
-<h3 id="拉普拉斯平滑-Laplace-smoothing"><a href="#拉普拉斯平滑-Laplace-smoothing" class="headerlink" title="拉普拉斯平滑(Laplace smoothing)"></a>拉普拉斯平滑(Laplace smoothing)</h3><p>假如在预测一封邮件时，出现了没在以前的邮件里出现过的单词$x_{35000}$。那么$\phi_{35000}|y=1$与$\phi_{35000}|y=0$的值都是0，无法对$p(y=1|x)$进行预测。<br>将这个问题推广开来，将训练集中未出现的时间概率估计为0是一个坏主意，估计一个多元随机变量z在{1,…,k}中取值，有$\phi_i=p(z=i)$,给定观察值${z^{(1)},…,z^{(m)}}$，最大似然估计为<br>$$\phi_j=\frac{\sum_{i=1}^m{z^{(i)}=j}}{m}$$<br>要解决之前预测未出现过的单词的问题，使用拉普拉斯平滑<br>$$\phi_j=\frac{\sum_{i=1}^m{z^{(i)}=j}+1}{m+k}$$<br>然后就可以对有未出现过的单词的邮件进行预测了</p>
-<h3 id="文本分类的事件模型"><a href="#文本分类的事件模型" class="headerlink" title="文本分类的事件模型"></a>文本分类的事件模型</h3><p>首先引入不同的符号和特征来代表邮件，$x_i$表示邮件中的第$i$个单词，从{1,…,|V|}中取值，|V|是字典的大小。一封邮件被$(x_1,….,x_n)$表示，n随着不同文档变化。<br>我们假设邮件的生成是一个随机过程，在这个过程中，是否为垃圾邮件首先被确定(根据p(y))，然后邮件发送者首先通过多元分布生成$x_1$，概率为$p(x_1|y)$，再独立与$x_1$使用相同的多元分布生成$x_2$，之后的单词都是如此。然后总体概率$p(y)\prod_{i=1}^np(x_i|y)$<br>如果给定训练集${(x^{(i)},y^{(i)});i=1,…,m}$,$x^{(i)}=(x_1^{(i)},x_2^{(i)},…,x_{n_i}^{(i)})$,$n_i$是第i个训练集的单词数。<br>似然函数是：<br>$$<br>\begin{align}<br>\mathcal{L}(\phi_y,\phi_{i|y=0},\phi_{i|y=1})&amp;=\prod_{i=1}^mp(x^{(i)},y^{(i)})\\<br>&amp;=\prod_{i=1}^m(\prod_{j=1}^{n_i}p())<br>\end{align}<br>$$<br>对参数的最大似然估计是：<br>$$<br>\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}{x_J^{(i)}=k\wedge y^{(i)}=1}}{\sum_{i=1}^m1{y^{(i)}=1}n_i}<br>$$<br>分子是垃圾邮件的单词数之和，分母是所有垃圾邮件中存在字典中第k个单词的的单词数之和。<br>$$<br>\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}{x_J^{(i)}=k\wedge y^{(i)}=0}}{\sum_{i=1}^m1{y^{(i)}=0}n_i}<br>$$<br>分子是非垃圾邮件的单词数之和，分母是所有非垃圾邮件中存在字典中第k个单词的的单词数之和。<br>$$<br>\phi_y=\frac{\sum_{i=1}^m1{y^{(i)}=1}}{m}<br>$$<br>拉普拉斯平滑<br>$$<br>\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}{x_J^{(i)}=k\wedge y^{(i)}=1}+1}{\sum_{i=1}^m1{y^{(i)}=1}n_i+|V|}<br>$$</p>
-<p>$$<br>\phi_{k|y=0}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}{x_J^{(i)}=k\wedge y^{(i)}=0}+1}{\sum_{i=1}^m1{y^{(i)}=0}n_i+|V|}<br>$$<br>然后使用贝叶斯公式进行预测<br>$$<br>\begin{align}<br>p(y=1|x)&amp;=\frac{p(x|y=1)p(y=1)}{p(x)}\\<br>&amp;=\frac{(\prod_{i=1}^np(x_i|y=1))p(y=1)}{(\prod_{i=1}^np(x_i|y=1))p(y=1)+(\prod_{i=1}^np(x_i|y=0))p(y=0)}<br>\end{align}<br>$$</p>
-
+<p>试图直接学习$p(y|x)$（如逻辑回归），或者学习输入空间$X$与标签$\{0,1\}$之间的直接映射的算法叫做<strong>判别学习算法(discriminative learning algorithms)</strong>。对于对$p(x|y)$以及$p(y)$进行建模的算法，叫做<strong>生成学习算法(generative learning algorithms)</strong>，$p(x|y=1)$模拟了类别1的特征分布，$p(x|y=0)$同理。</p>
+<p>在对$p(y)$(<strong>class priors</strong>)以及$p(x|y)$进行建模之后，使用贝叶斯法则推导给定$x$时$y$的后分布。</p>
+<script type="math/tex; mode=display">p(y|x)=\frac{p(x|y)p(y)}{p(x)}</script><script type="math/tex; mode=display">p(x)=p(x|y=1)p(y=1)+p(x|y=0)p(y=0)</script><p>进行预测时，其实不用计算分子，因为可以认为每种输入特征发生的概率可以认为是一样的，当$p(y)$为0.5，该项相同也可以省去。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathop{\arg\max}_{y} \ \ p(y|x)&=\mathop{\arg\max}_{y}\frac{p(x|y)p(y)}{p(x)} \\
+&= \mathop{\arg\max}_{y}p(x|y)p(y)
+\end{align}</script><h3 id="高斯判别分析-GDA"><a href="#高斯判别分析-GDA" class="headerlink" title="高斯判别分析(GDA)"></a>高斯判别分析(GDA)</h3><p>在高斯判别分析(Gaussian discriminant anlysis)中，假设$p(x|y)$遵循多元正态分布。</p>
+<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>多元正态分布被一个平均向量$u \in R^n$和协方差矩阵$\Sigma \in R^{n*n} \geq 0$，这是一个对称的半正定矩阵。<br>概率密度：</p>
+<script type="math/tex; mode=display">p(x;\mu,\Sigma)=\frac{1}{(2\pi)^{1/2}|\Sigma|^{-1}}exp(-\frac{1}{2}(x-\mu)^T{\Sigma}^{-1}(x-\mu)</script><p>$|\Sigma|$是矩阵的行列式，平均值$u$的计算方法是期望$E[X]=\int_x {xp(x;u,\Sigma)} \,{\rm d}x=u$<br>，对于矩阵$Z$,其协方差矩阵<script type="math/tex">Cov(Z)=E[(Z-E[Z])(Z-E[Z])^T]=E[ZZ^T]-(E[Z])(E[Z])^T</script><br>如果$X \thicksim N(\mu,\Sigma)$</p>
+<script type="math/tex; mode=display">Cov(X)=\Sigma</script><p>对于多元正态分布，参数$\mu$是正态分布的中心点的坐标，协方差矩阵$\Sigma$影响正态分布的形状，具体影响见下图。</p>
+<p><div align="center">
+<img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tSeZr3z0kXXTF9o7gAdmc0a5iTr4eSzoeBqa5MyhSI!/b/dOAAAAAAAAAA&ek=1&kp=1&pt=0&bo=0AK8ANACvAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
+</div></p>
+<p><div align="center">
+<img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/wtqnzqHyiHP3VoNZm4g7eYd7PqmM*OK8CIo7EmvSoTU!/b/dN4AAAAAAAAA&ek=1&kp=1&pt=0&bo=ggJLAIICSwABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
+</div></p>
+<p><div align="center">
+<img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/qqTGRDy*x2EBgFhagyyZzrcNMDd2gXcty.hpMQ*AT4Y!/b/dOsAAAAAAAAA&ek=1&kp=1&pt=0&bo=sALEALACxAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
+</div><br>最左边的是标准的正态分布，当增加对角元素的值时，密度在45度角上产生了压缩。</p>
+<p><div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xIwrDWaQRG2F2Lvs9e*64O9aefL0ynpy7xNvFpfWzmY!/b/dIUBAAAAAAAA&ek=1&kp=1&pt=0&bo=ugK0ALoCtAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
+</div></p>
+<p><div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/BvrvoX5B*FTdJA7F9bCDjipQBlORyra7HFjeDqvZ*b0!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=UAJIAFACSAABACc!&tl=1&tm=1531018800&sce=0-12-12&rf=viewer_311">
+</div><br>当减小对角线上的值，可以看到密度再一次被压缩，不过是在相反的方向上。</p>
+<h3 id="高斯判别分析模型-Gaussian-Discriminant-Analysis-model"><a href="#高斯判别分析模型-Gaussian-Discriminant-Analysis-model" class="headerlink" title="高斯判别分析模型(Gaussian Discriminant Analysis model)"></a>高斯判别分析模型(Gaussian Discriminant Analysis model)</h3><p>在分类问题中，输入特征$x$是连续值随机变量，可以使用高斯判别分析进行建模，$p(x|y)$被建模为多元正态分布。</p>
+<script type="math/tex; mode=display">
+y \thicksim Bernoulli(\phi)\\x|y = 0 \thicksim N(\mu_0,\Sigma)\\
+x|y = 1 \thicksim N(\mu_1,\sigma)\\
+p(y)=(\phi)^y(1-\phi)^{1-y}\\
+p(x|y=0) = \frac{1}{(2\pi)^{n/2}}exp(-\frac{1}{2}(x-\mu_0)^T\Sigma^{-1}(x-\mu_0))\\
+p(x|y=1) = \frac{1}{(2\pi)^{n/2}}exp(-\frac{1}{2}(x-\mu_1)^T\Sigma^{-1}(x-\mu_1))\\</script><p>模型的参数分别是$\phi$，$\Sigma$，$\mu_1$，$\mu_0$（注意平均向量$\mu_0$和$\mu_1$是不同的，协方差矩阵$\Sigma$是一样的），数据的极大似然估计如下。<br>\begin{align}<br>\ell(\phi,\mu_0,\mu_1,\Sigma) &amp;= log \prod_{i=1}^mp(x^{(i)},y^{(i)};\phi,\mu_0,\mu_1,\Sigma)\\<br>&amp;= log \prod_{i=1}^mp(x^{(i)}|y^{(i)};\mu_0,\mu_1,\Sigma)p(y^{(i)};\phi)<br>\end{align}<br>通过最大化似函数，参数的估计如下：</p>
+<script type="math/tex; mode=display">
+\phi=\frac{1}{m}\sum_{i=1}^m1\{y^{(i)}=1\} \\
+\mu_0 = \frac{\sum_{i=1}^m1\{y^{(i)}=0\}x^{(i)}}{\sum_{i=1}^m1\{y^{(i)}=0\}}\\
+\mu_1 = \frac{\sum_{i=1}^m1\{y^{(i)}=1\}x^{(i)}}{\sum_{i=1}^{m}1\{y^{(i)}=1\}}\\</script><p>然后使用贝叶斯法则就能预测给定x时y的概率。<br>从绘图上来看，算法所做的事情如下</p>
+<h3 id="GDA与逻辑回归"><a href="#GDA与逻辑回归" class="headerlink" title="GDA与逻辑回归"></a>GDA与逻辑回归</h3><p>如果把$p(y=1|x;\phi,\mu_0,\mu_1,\Sigma)$看作$x$的函数，可以发现其形式为</p>
+<script type="math/tex; mode=display">\frac{1}{1+exp(-\theta^Tx)}</script><p>$\theta$可以被看做其余四个参数的函数，这恰好是逻辑回归的形式。<br>GDA比逻辑回归具有更严格的建模假设，当$p(x|y)$确实是高斯分布，那么GDA是<strong>渐近有效(asymptotically efficient)</strong>的，也就是说在训练集非常大的条件下，没有算法比GDA更好，即使是小型的数据集，GDA的效果也比逻辑回归好。相比之下，如果对数据的假设约束更弱，如$p(x|y)$是泊松分布，或者不确定是什么分布，那么逻辑回归会更强健，对错误数据也不会特别敏感。</p>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>如果在分类问题中输入的特征是离散的值，如垃圾邮件文本分类，首先约定一个字典 dict={a,aardvark,…,zygmurgy}和字典向量</p>
+<script type="math/tex; mode=display">
+x=
+\begin{bmatrix} 
+1  
+\\
+...
+\\
+1
+\\
+...
+\\
+0 
+\end{bmatrix}</script><p>字典向量中第$i$为1，则代表字典中序号为$i$的单词出现在了这封邮件中。<br>有了特征向量，接下来对$p(x|y)$进行建模，如果字典中有50000个单词，直接用多元分布对$p(x|y)$进行建模,特征会有$2^50000$种可能。那么参数向量的维度会有$2^50000-1$，实在是太多了。<br>为了对$p(x|y)$进行建模，我们对数据加了一个较强的约束假设，即$x_i$对于给定条件$y$是独立的，即$y$发生的条件下，$x_i$之间互不影响。这个假设叫做朴素贝叶斯假设(Naive Bayes assumption)，得到的算法是朴素贝叶斯分类器(Naive Bayes classifier)。比如，在一个字典中，”buy”是第2087个单词，”price”是第39381个单词，那么如果一封邮件是垃圾邮件，那么已知其中一个单词出现了，不会影响另一个单词出现的概率。于我们就有<script type="math/tex">p(x\_{2087}|y)=p(x\_{2087}|y,x\_{39831})</script></p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(x_1,...,x\_{5000}) &= p(x_1|y)p(x_2|y,x_1)p(x3|y,x_1,x_2)...p(x_{50000}|y,x_1...,x_{49999})\\
+&=p(x_1|y)p(x_2|y)p(x_3|y)...p(x_50000|y)\\
+&=\prod_{i=1}^np(x_i|y)
+\end{align}</script><p>即便朴素贝叶斯假设是一个约束非常强的假设，朴素贝叶斯分类器依然可以在很多问题上很好的工作。</p>
+<p>模型的参数化：</p>
+<script type="math/tex; mode=display">
+\phi_{i|y=1}=p(x_i=1|y=1)\\
+\phi_{i|y=0}=p(x_i=1|y=0)</script><p>给定训练集$\{(x^{(i)},y^{(i)};i=1,…,m)\}$<br>数据的联合似然函数为：</p>
+<script type="math/tex; mode=display">\mathcal{L}(\phi_y,\phi_{i|y=0},\phi_{i|y=1})=\prod_{i=1}^mp(x^{(i)},y^{(i)})</script><p>对该似然函数进行最大似然估计：</p>
+<script type="math/tex; mode=display">
+\phi_{j|y=1}=\frac{\sum_{i=1}^m1\{x_j^{(i)}=1\wedge y^{(i)}=1\}}{\sum_{i=1}^m1\{y^{(i)}=1\}}\\
+\phi_{j|y=0}=\frac{\sum_{i=1}^m1\{x_j^{(i)}=1\wedge y^{(i)}=0\}}{\sum_{i=1}^m1\{y^{(i)}=0\}}\\
+\phi_y = \frac{\sum_{i=1}^m1\{y^{^{(i)}}=1\}}{m}</script><p>拟合了所有参数之后，预测一个新样本的计算方法为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y=1|x)&=\frac{p(x|y=1)p(y=1)}{p(x)}\\
+&=\frac{(\prod_{i=1}^np(x_i|y=1))p(y=1)}{(\prod_{i=1}^np(x_i|y=1))p(y=1)+(\prod_{i=1}^np(x_i|y=0))p(y=0)}
+\end{align}</script><p>该算法中的参数$x_i$不一定是binary-value，可以推广为一般离散的值，如{1,2,…,k}也可行，例如对于连续的特征使用多元正态分布不能很好建模时，对特征进行离散化再使用朴素贝叶斯通常会有更好的表现。</p>
+<h3 id="拉普拉斯平滑-Laplace-smoothing"><a href="#拉普拉斯平滑-Laplace-smoothing" class="headerlink" title="拉普拉斯平滑(Laplace smoothing)"></a>拉普拉斯平滑(Laplace smoothing)</h3><p>假如在预测一封邮件时，出现了没在以前的邮件里出现过的单词$x_{35000}$。那么$\phi_{35000}|y=1$与$\phi_{35000}|y=0$的值都是0，无法对$p(y=1|x)$进行预测。<br>将这个问题推广开来，将训练集中未出现的时间概率估计为0是一个坏主意，估计一个多元随机变量z在{1,…,k}中取值，有$\phi_i=p(z=i)$,给定观察值${z^{(1)},…,z^{(m)}}$，最大似然估计为</p>
+<script type="math/tex; mode=display">\phi_j=\frac{\sum_{i=1}^m\{z^{(i)}=j\}}{m}</script><p>要解决之前预测未出现过的单词的问题，使用拉普拉斯平滑</p>
+<script type="math/tex; mode=display">\phi_j=\frac{\sum_{i=1}^m\{z^{(i)}=j\}+1}{m+k}</script><p>然后就可以对有未出现过的单词的邮件进行预测了</p>
+<h3 id="文本分类的事件模型"><a href="#文本分类的事件模型" class="headerlink" title="文本分类的事件模型"></a>文本分类的事件模型</h3><p>首先引入不同的符号和特征来代表邮件，$x_i$表示邮件中的第$i$个单词，从{1,…,|V|}中取值，|V|是字典的大小。一封邮件被$(x_1,….,x_n)$表示，n随着不同文档变化。<br>我们假设邮件的生成是一个随机过程，在这个过程中，是否为垃圾邮件首先被确定(根据p(y))，然后邮件发送者首先通过多元分布生成$x_1$，概率为$p(x_1|y)$，再独立与$x_1$使用相同的多元分布生成$x_2$，之后的单词都是如此。然后总体概率$p(y)\prod_{i=1}^np(x_i|y)$<br>如果给定训练集$\{(x^{(i)},y^{(i)});i=1,…,m\}$,$x^{(i)}=(x_1^{(i)},x_2^{(i)},…,x_{n_i}^{(i)})$,$n_i$是第i个训练集的单词数。<br>似然函数是：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{L}(\phi_y,\phi_{i|y=0},\phi_{i|y=1})&=\prod_{i=1}^mp(x^{(i)},y^{(i)})\\
+&=\prod_{i=1}^m(\prod_{j=1}^{n_i}p())
+\end{align}</script><p>对参数的最大似然估计是：</p>
+<script type="math/tex; mode=display">
+\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}\{x_J^{(i)}=k\wedge y^{(i)}=1\}}{\sum_{i=1}^m1\{y^{(i)}=1\}n_i}</script><p>分子是垃圾邮件的单词数之和，分母是所有垃圾邮件中存在字典中第k个单词的的单词数之和。</p>
+<script type="math/tex; mode=display">
+\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}\{x_J^{(i)}=k\wedge y^{(i)}=0\}}{\sum_{i=1}^m1\{y^{(i)}=0\}n_i}</script><p>分子是非垃圾邮件的单词数之和，分母是所有非垃圾邮件中存在字典中第k个单词的的单词数之和。</p>
+<script type="math/tex; mode=display">
+\phi_y=\frac{\sum_{i=1}^m1\{y^{(i)}=1\}}{m}</script><p>拉普拉斯平滑</p>
+<script type="math/tex; mode=display">
+\phi_{k|y=1}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}\{x_J^{(i)}=k\wedge y^{(i)}=1\}+1}{\sum_{i=1}^m1\{y^{(i)}=1\}n_i+|V|}</script><script type="math/tex; mode=display">
+\phi_{k|y=0}=\frac{\sum_{i=1}^m\sum_{j=1}^{n_i}\{x_J^{(i)}=k\wedge y^{(i)}=0\}+1}{\sum_{i=1}^m1\{y^{(i)}=0\}n_i+|V|}</script><p>然后使用贝叶斯公式进行预测</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y=1|x)&=\frac{p(x|y=1)p(y=1)}{p(x)}\\
+&=\frac{(\prod_{i=1}^np(x_i|y=1))p(y=1)}{(\prod_{i=1}^np(x_i|y=1))p(y=1)+(\prod_{i=1}^np(x_i|y=0))p(y=0)}
+\end{align}</script>
       
     </div>
 
@@ -503,9 +582,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS229/" rel="tag"># CS229</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
         </div>
       

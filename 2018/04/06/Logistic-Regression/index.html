@@ -116,14 +116,10 @@
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
 <meta property="og:updated_time" content="2018-05-25T02:24:20.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
-<meta name="twitter:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
 
 
 
@@ -458,31 +454,40 @@
 
       
         <h1 id="逻辑回归-Logistic-regression"><a href="#逻辑回归-Logistic-regression" class="headerlink" title="逻辑回归(Logistic regression)"></a>逻辑回归(Logistic regression)</h1><h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><p>线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。<br><a id="more"></a></p>
-<h2 id="回归模型假设-待证明"><a href="#回归模型假设-待证明" class="headerlink" title="回归模型假设(待证明)"></a>回归模型假设(待证明)</h2><p>$$h_\theta(x)=g(\theta^Tx)$$<br>$$g(z) = \frac{1}{1+e^{-z}}$$</p>
-<ul>
+<h2 id="回归模型假设-待证明"><a href="#回归模型假设-待证明" class="headerlink" title="回归模型假设(待证明)"></a>回归模型假设(待证明)</h2><script type="math/tex; mode=display">h_\theta(x)=g(\theta^Tx)</script><script type="math/tex; mode=display">g(z) = \frac{1}{1+e^{-z}}</script><ul>
 <li>x表示特征向量</li>
 <li>g代表逻辑函数</li>
 </ul>
 <p>该函数的图像为</p>
-<div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=3AHMANwBzAABACc!&amp;tm=1522976400&amp;sce=0-12-12&amp;rf=viewer_311" alt="假设模型图像" title="假设模型图像"><br></div>
+<div align="center">
+![假设模型图像](http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311 "假设模型图像")
+</div>
 
-<p>$h_\theta(x)$的作用是，对于给定的输入变量，根据参数计算输出变量为1 的可能性。<br>$$h_\theta(x)=P(y=1|x;\theta)$$</p>
-<h2 id="判定边界-Decision-Boundary"><a href="#判定边界-Decision-Boundary" class="headerlink" title="判定边界(Decision Boundary)"></a>判定边界(Decision Boundary)</h2><p>即$z=\theta^TX=0$</p>
+<p>$h_\theta(x)$的作用是，对于给定的输入变量，根据参数计算输出变量为1 的可能性。</p>
+<script type="math/tex; mode=display">h_\theta(x)=P(y=1|x;\theta)</script><h2 id="判定边界-Decision-Boundary"><a href="#判定边界-Decision-Boundary" class="headerlink" title="判定边界(Decision Boundary)"></a>判定边界(Decision Boundary)</h2><p>即$z=\theta^TX=0$</p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>若沿用线性回归的定义，得到的代价函数是一个非凸函数，这将会影响梯度下降算法寻找全局最小值</p>
-<h3 id="重新定义-待证明"><a href="#重新定义-待证明" class="headerlink" title="重新定义(待证明)"></a>重新定义(待证明)</h3><p>$$J(\theta) =  \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))$$<br>$$<br>        Cost(h_\theta(x),y) =<br>        \begin{cases}<br>        -log(h_\theta(x)),  &amp; \text{if $y$=1} \\<br>        -log(1-h_\theta(x)), &amp; \text{if $y=0$}<br>        \end{cases}<br>$$</p>
-<p>$h_\theta(x)$与$Cost(h_\theta(x),y)$之间的关系如图：</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=5gHdAOYB3QABACc!&amp;vuin=1405591197&amp;tm=1522976400&amp;sce=50-1-1&amp;rf=viewer_311" alt="theta与代价函数之间的关系" title="变量与代价函数之间的关系"><br></div>
+<h3 id="重新定义-待证明"><a href="#重新定义-待证明" class="headerlink" title="重新定义(待证明)"></a>重新定义(待证明)</h3><script type="math/tex; mode=display">J(\theta) =  \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))</script><script type="math/tex; mode=display">
+        Cost(h_\theta(x),y) =
+        \begin{cases}
+        -log(h_\theta(x)),  & \text{if $y$=1} \\
+        -log(1-h_\theta(x)), & \text{if $y=0$}
+        \end{cases}</script><p>$h_\theta(x)$与$Cost(h_\theta(x),y)$之间的关系如图：</p>
+<div align="center">
+![theta与代价函数之间的关系](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311 "变量与代价函数之间的关系")
+</div>
 
 <p>特点：$y=1，h_\theta(x) \neq1 $时误差随$h_\theta(x)变小而增大$，$y=0，h_\theta(x) \neq0 $时误差随$h_\theta(x)变大而增大$</p>
-<h3 id="简化-待证明"><a href="#简化-待证明" class="headerlink" title="简化(待证明)"></a>简化(待证明)</h3><p>基于最大似然估计<br>$$J(\theta)=-\frac{1}{m}\sum_{i=1}{m}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]$$</p>
-<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>$\frac{\delta J(\theta)}{\delta\theta_j}=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{h_\theta(x^{((i))})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j}-(1-y^{(i)})\frac{1}{1-h_\theta(x^{(i)})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j})$</p>
+<h3 id="简化-待证明"><a href="#简化-待证明" class="headerlink" title="简化(待证明)"></a>简化(待证明)</h3><p>基于最大似然估计</p>
+<script type="math/tex; mode=display">J(\theta)=-\frac{1}{m}\sum_{i=1}{m}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]</script><h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><p>$\frac{\delta J(\theta)}{\delta\theta_j}=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{h_\theta(x^{((i))})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j}-(1-y^{(i)})\frac{1}{1-h_\theta(x^{(i)})}\frac{\delta h_\theta(x^{(i)})}{\delta\theta_j})$</p>
 <p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})})\frac{\delta g(\theta^Tx^{(i)}))}{\delta\theta_j}$</p>
 <p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}\frac{1}{g(\theta^Tx^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^Tx^{(i)})}) g(\theta^Tx^{(i)})(1-g(\theta^Tx^{(i)})x_j^{(i)})$</p>
 <p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}(1-g(\theta^Tx^{(i)})-(1-y^{(i)})g(\theta^Tx^{(i)}))x_j^{(i)} $</p>
 <p>$=-\frac{1}{m}\sum_{i=1}^{m}(y^{(i)}-g(\theta^Tx^{(i)}))x_j^{(i)}$</p>
 <p>$=\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}$</p>
 <p>第二步到第三步的推导：</p>
-<div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=pQLNAaUCzQEBACc!&amp;vuin=1405591197&amp;tm=1522976400&amp;sce=50-1-1&amp;rf=viewer_311" alt="推导" title="第二步到第三步的推导"><br></div>
+<div align="center">
+![推导](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311 "第二步到第三步的推导")
+</div>
 
 <p>可以证明(凸优化的知识)，所选代价函数是一个凸优化问题，没有局部最优值。<br>注意，由于假设函数与线性回归不同，所以梯度下降是不一样的，同时特征缩放也是必要的。</p>
 <h3 id="一些梯度下降算法之外的选择"><a href="#一些梯度下降算法之外的选择" class="headerlink" title="一些梯度下降算法之外的选择"></a>一些梯度下降算法之外的选择</h3><ul>
@@ -491,8 +496,7 @@
 <li>有限内存局部优化(LBFGS)</li>
 <li>fminunc是octave和matlab提供的最小值优化函数，需要提供代价函数和每个参数的求导。<br> 调用它的方式如下：<br> options=optimset(‘GradObj’,’on’,’MaxIter’,100);<br> initialTheta=zeros(2,1);<br> [optTheta, functionVal, exitFlag]=fminunc(@costFunction, initialTheta, options);</li>
 </ul>
-<h2 id="简化代价函数和梯度下降"><a href="#简化代价函数和梯度下降" class="headerlink" title="简化代价函数和梯度下降"></a>简化代价函数和梯度下降</h2><p>$$J(\theta)=-\frac{1}{m}(y^Tlog(g(X\theta))+(1-y)^Tlog(1-g(X\theta)))$$<br>$$grad = \frac{1}{m}.*(X^T(g(X\theta)-y))$$</p>
-<h2 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h2><p>共轭梯度，局部优化，有限内存局部优化的优点：<br>自动选择学习率$\alpha$,但是这些算法实际上在做更复杂的事情，不仅仅是在选择一个好的学习速率。</p>
+<h2 id="简化代价函数和梯度下降"><a href="#简化代价函数和梯度下降" class="headerlink" title="简化代价函数和梯度下降"></a>简化代价函数和梯度下降</h2><script type="math/tex; mode=display">J(\theta)=-\frac{1}{m}(y^Tlog(g(X\theta))+(1-y)^Tlog(1-g(X\theta)))</script><script type="math/tex; mode=display">grad = \frac{1}{m}.*(X^T(g(X\theta)-y))</script><h2 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h2><p>共轭梯度，局部优化，有限内存局部优化的优点：<br>自动选择学习率$\alpha$,但是这些算法实际上在做更复杂的事情，不仅仅是在选择一个好的学习速率。</p>
 <h2 id="多类别分类-one-vs-all"><a href="#多类别分类-one-vs-all" class="headerlink" title="多类别分类(one-vs-all)"></a>多类别分类(one-vs-all)</h2><p>若要将数据集分为n个类，则转化为n个二分类问题，做预测时将所有的分类机都运行一遍。</p>
 <h2 id="正则化-Regularization"><a href="#正则化-Regularization" class="headerlink" title="正则化(Regularization)"></a>正则化(Regularization)</h2><h3 id="过拟合-Overfitting"><a href="#过拟合-Overfitting" class="headerlink" title="过拟合(Overfitting)"></a>过拟合(Overfitting)</h3><p>如果我们有非常多的特征，通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。</p>
 <h3 id="如何处理过拟合"><a href="#如何处理过拟合" class="headerlink" title="如何处理过拟合"></a>如何处理过拟合</h3><ul>
@@ -500,10 +504,10 @@
 <li>正则化。保留所有的特征，但是减少参数的大小</li>
 </ul>
 <h2 id="正则化代价函数"><a href="#正则化代价函数" class="headerlink" title="正则化代价函数"></a>正则化代价函数</h2><p>高次项导致了过拟合的产生，如果能让这些高此项系数接近于0，就能很好的拟合。</p>
-<h3 id="惩罚"><a href="#惩罚" class="headerlink" title="惩罚"></a>惩罚</h3><p>在尝试最小化代价时将惩罚纳入考虑<br>$$J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{i=1}^{n}\theta_j^{2}]$$<br>$\lambda$称为正规化参数，根据惯例，不对$\theta_0$进行惩罚</p>
+<h3 id="惩罚"><a href="#惩罚" class="headerlink" title="惩罚"></a>惩罚</h3><p>在尝试最小化代价时将惩罚纳入考虑</p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{i=1}^{n}\theta_j^{2}]</script><p>$\lambda$称为正规化参数，根据惯例，不对$\theta_0$进行惩罚</p>
 <p>$\lambda$过大，主要受$\theta_0$影响，欠拟合</p>
-<h2 id="正则化线性回归"><a href="#正则化线性回归" class="headerlink" title="正则化线性回归"></a>正则化线性回归</h2><h3 id="根据正则化代价函数求偏导"><a href="#根据正则化代价函数求偏导" class="headerlink" title="根据正则化代价函数求偏导"></a>根据正则化代价函数求偏导</h3><p>$$\theta_j := \theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
-<h3 id="正规方程也可以"><a href="#正规方程也可以" class="headerlink" title="正规方程也可以"></a>正规方程也可以</h3><p>$\theta = (X^TX+\lambda   \begin{bmatrix}0 &amp;  &amp;  &amp;  &amp;  \ &amp; 1 &amp;  &amp; &amp;  \\&amp;  &amp;  &amp; \ddots &amp;  \\&amp;  &amp;  &amp;  &amp; 1 \ \end{bmatrix})^-1X^Ty$</p>
+<h2 id="正则化线性回归"><a href="#正则化线性回归" class="headerlink" title="正则化线性回归"></a>正则化线性回归</h2><h3 id="根据正则化代价函数求偏导"><a href="#根据正则化代价函数求偏导" class="headerlink" title="根据正则化代价函数求偏导"></a>根据正则化代价函数求偏导</h3><script type="math/tex; mode=display">\theta_j := \theta_j(1-\alpha\frac{\lambda}{m})-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}</script><h3 id="正规方程也可以"><a href="#正规方程也可以" class="headerlink" title="正规方程也可以"></a>正规方程也可以</h3><p>$\theta = (X^TX+\lambda   \begin{bmatrix}0 &amp;  &amp;  &amp;  &amp;  \\ &amp; 1 &amp;  &amp; &amp;  \\&amp;  &amp;  &amp; \ddots &amp;  \\&amp;  &amp;  &amp;  &amp; 1 \\ \end{bmatrix})^-1X^Ty$</p>
 
       
     </div>

@@ -108,13 +108,13 @@
 
 
 
-  <meta name="description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+  <meta name="description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta name="keywords" content="machine learning,Coursera笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anomaly Detection">
 <meta property="og:url" content="http://yoursite.com/2018/05/08/Anomaly-Detection/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+<meta property="og:description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
@@ -131,7 +131,7 @@
 <meta property="og:updated_time" content="2018-09-08T09:33:26.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anomaly Detection">
-<meta name="twitter:description" content="异常检测(Anomaly Detection)  Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+<meta name="twitter:description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
 <meta name="twitter:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
 
 
@@ -466,22 +466,29 @@
       
 
       
-        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4"><br></div>
+        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
+</div>
 
 <p>Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。</p>
 <a id="more"></a>
 <h2 id="动机-Motivation"><a href="#动机-Motivation" class="headerlink" title="动机(Motivation)"></a>动机(Motivation)</h2><p>异常检测主要应用于非监督学习问题，但是却类似于监督学习问题。<br>给定数据集 ，我们假使数据集是正常的，我们希望知道新的数据 xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性$p(x)$。</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
+</div>
 
-<p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。<br>这种方法称为<strong>密度估计</strong><br>$$<br>if \quad p(x) \begin{cases} \leq\epsilon, &amp; \text {anomaly} \ &gt;\epsilon, &amp; \text{normal} \end{cases}<br>$$</p>
-<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布也称为正态分布。变量$x$符合高斯分布$x~N(\mu,\sigma^2)$则其概率密度函数为:<br>$$p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$$<br>可以利用已有数据来预测总体中的$\mu$和$\sigma^2$:<br>$$\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}$$<br>$$\sigma^2 = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)^2$$</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>对于给定数据集$x^{(1)},x^{(2)},x^{(3)}$，预测$\mu$和$\sigma^2$的值。给定一个训练实例，根据模型计算$p(x)$。<br>$$p(x) = \prod_{j=1}^np(x_j,u_j,\sigma_j^2)=\prod_{j=1}^n\frac{1}{\sqrt{2\pi}\sigma_j}exp(-\frac{(x_j-u_j)^2}{2\sigma_j^2})$$</p>
-<h2 id="开发异常检测系统"><a href="#开发异常检测系统" class="headerlink" title="开发异常检测系统"></a>开发异常检测系统</h2><ul>
+<p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。<br>这种方法称为<strong>密度估计</strong></p>
+<script type="math/tex; mode=display">
+if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \text{normal} \end{cases}</script><h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布也称为正态分布。变量$x$符合高斯分布$x~N(\mu,\sigma^2)$则其概率密度函数为:</p>
+<script type="math/tex; mode=display">p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})</script><p>可以利用已有数据来预测总体中的$\mu$和$\sigma^2$:</p>
+<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}</script><script type="math/tex; mode=display">\sigma^2 = \frac{1}{m}\sum\_{i=1}^{m}(x^{(i)}-\mu)^2</script><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>对于给定数据集$x^{(1)},x^{(2)},x^{(3)}$，预测$\mu$和$\sigma^2$的值。给定一个训练实例，根据模型计算$p(x)$。</p>
+<script type="math/tex; mode=display">p(x) = \prod_{j=1}^np(x_j,u_j,\sigma_j^2)=\prod_{j=1}^n\frac{1}{\sqrt{2\pi}\sigma_j}exp(-\frac{(x_j-u_j)^2}{2\sigma_j^2})</script><h2 id="开发异常检测系统"><a href="#开发异常检测系统" class="headerlink" title="开发异常检测系统"></a>开发异常检测系统</h2><ul>
 <li>根据训练集数据，估计特征的平均值和方差并构建$p(x)$函数，一般训练集数据都是正常数据。</li>
 <li>对交叉检验集，尝试使用不同的$\epsilon$作于阈值，根据$F_1$或者查准率、查全率的比例来选择$\epsilon$。</li>
 <li>选出$\epsilon$后，对测试集进行预测，计算异常检测系统的$F_1$或者查全率、查准率之比。</li>
 </ul>
-<h2 id="异常检测监督学习的比较"><a href="#异常检测监督学习的比较" class="headerlink" title="异常检测监督学习的比较"></a>异常检测监督学习的比较</h2><table>
+<h2 id="异常检测监督学习的比较"><a href="#异常检测监督学习的比较" class="headerlink" title="异常检测监督学习的比较"></a>异常检测监督学习的比较</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">异常检测</th>
@@ -503,13 +510,19 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="选择特征"><a href="#选择特征" class="headerlink" title="选择特征"></a>选择特征</h2><p>异常检测特征符合高斯分布，如果数据的分布不是高斯分布，异常检测算法也能工作，但是最好将数据转换为高斯分布，常用对数函数$x=log(x+c)$、$x=x^c(c为0-1之间的一个分数)$。</p>
 <p>误差分析：<br>分析那些被算法错误预测为正常的数据，观察能否找出一些问题。我们可能从问题中发现需要增加一些新的特征，增加这些新特征后获得的新算法能够帮助我们更好地进行异常检测。<br>通常可以通过将一些相关的特征进行组合，来获得一些新的更好的特征（异常数据的该特征值异常地大或小。</p>
 <h2 id="多元高斯分布"><a href="#多元高斯分布" class="headerlink" title="多元高斯分布"></a>多元高斯分布</h2><p>假使我们有两个相关的特征，而且这两个特征的值域范围比较宽，这种情况下，一般的高斯分布模型可能不能很好地识别异常数据。其原因在于，一般的高斯分布模型尝试的是去同时抓住两个特征的偏差，因此创造出一个比较大的判定边界。</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4">
+</div>
 
-<p>在一般的高斯分布模型中，我们计算 的方法是： 通过分别计算每个特征对应的几率然后将其累乘起来，在多元高斯分布模型中，我们将构建特征的协方差矩阵，用所有的特征一起来计算 。<br>$$\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}$$<br>$$\Sigma=\frac{1}{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}(X-\mu)^T(X-\mu)$$<br>$$p(x) = \frac{1}{(2\pi^{\frac{n}{2}})|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$$<br>$|\Sigma|$是定矩阵，在Octave中用det(sigma)计算</p>
-<h3 id="协方差矩阵如何影响模型"><a href="#协方差矩阵如何影响模型" class="headerlink" title="协方差矩阵如何影响模型"></a>协方差矩阵如何影响模型</h3><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&bo=zgNEAQAAAAARF6g!&rf=viewer_4"><br></div>
+<p>在一般的高斯分布模型中，我们计算 的方法是： 通过分别计算每个特征对应的几率然后将其累乘起来，在多元高斯分布模型中，我们将构建特征的协方差矩阵，用所有的特征一起来计算 。</p>
+<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}</script><script type="math/tex; mode=display">\Sigma=\frac{1}{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}(X-\mu)^T(X-\mu)</script><script type="math/tex; mode=display">p(x) = \frac{1}{(2\pi^{\frac{n}{2}})|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))</script><p>$|\Sigma|$是定矩阵，在Octave中用det(sigma)计算</p>
+<h3 id="协方差矩阵如何影响模型"><a href="#协方差矩阵如何影响模型" class="headerlink" title="协方差矩阵如何影响模型"></a>协方差矩阵如何影响模型</h3><div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&bo=zgNEAQAAAAARF6g!&rf=viewer_4">
+</div>
 
 <p>上图是5个不同的模型，从左往右依次分析：</p>
 <ol>
@@ -519,7 +532,8 @@
 <li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的正相关性；</li>
 <li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的负相关性 。</li>
 </ol>
-<h3 id="多元高斯分布与原高斯分布模型的比较"><a href="#多元高斯分布与原高斯分布模型的比较" class="headerlink" title="多元高斯分布与原高斯分布模型的比较"></a>多元高斯分布与原高斯分布模型的比较</h3><table>
+<h3 id="多元高斯分布与原高斯分布模型的比较"><a href="#多元高斯分布与原高斯分布模型的比较" class="headerlink" title="多元高斯分布与原高斯分布模型的比较"></a>多元高斯分布与原高斯分布模型的比较</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">原高斯分布模型</th>
@@ -541,8 +555,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>原高斯分布模型被广泛使用着，如果特征之间在某种程度上存在相互关联的情况，我们可以通过构造新新特征的方法来捕捉这些相关性。如果训练集不是太大，并且没有太多的特征，我们可以使用多元高斯分布模型。</strong></p>
-<h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1><h2 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h2><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4"><br></div>
+<h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1><h2 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h2><div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4">
+</div>
 
 <h3 id="变量描述"><a href="#变量描述" class="headerlink" title="变量描述"></a>变量描述</h3><ul>
 <li>$\theta^{(j)}$用户j的参数向量</li>
@@ -554,18 +571,29 @@
 <li>$y(i,j)$用户i给电影j评分</li>
 <li>$m_j$用户j评分过的电影总数</li>
 </ul>
-<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>$$min\frac{1}{2}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^i-y^{(i,j)})^2 + \frac{\lambda}{2}(\theta_k^{(j)})^2$$<br>其中 i :r(i,j) 表示我们只计算那些用户j评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1/2m，在这里我们将m去掉。并且我们不对方差项 进行正则化处理。<br>为了学习所有用户的参数，代价函数为：</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4"><br></div>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><script type="math/tex; mode=display">min\frac{1}{2}\sum\_{i:r(i,j)=1}((\theta^{(j)})^Tx^i-y^{(i,j)})^2 + \frac{\lambda}{2}(\theta_k^{(j)})^2</script><p>其中 i :r(i,j) 表示我们只计算那些用户j评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1/2m，在这里我们将m去掉。并且我们不对方差项 进行正则化处理。<br>为了学习所有用户的参数，代价函数为：</p>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4">
+</div>
 
-<p>梯度下降更新公式为：<br>$$\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} \quad k=0$$<br>$$\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} + \lambda\theta_k^{(j)} \quad k\neq0$$</p>
-<h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h2><p>在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4"><br></div>
+<p>梯度下降更新公式为：</p>
+<script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum\_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} \quad k=0</script><script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} + \lambda\theta_k^{(j)} \quad k\neq0</script><h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h2><p>在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。</p>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4">
+</div>
 
 <p>但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。协同过滤算法可以同时学习这两者。<br>我们的优化目标便改为同时针对$x$和$\theta$进行：</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4">
+</div>
 
 <p>对代价函数求偏导的结果如下：</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4"><br></div><br><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4">
+</div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4">
+</div>
 
 <ul>
 <li>初始 $x$,$\theta$为一些随机小值；</li>
@@ -573,10 +601,14 @@
 <li>在训练完算法后，我们预测$(\theta^{(j)})^Tx^{(i)}$为用户 j 给电影 i 的评分。<br> 如果一位用户正在观看电影，我们可以寻找另一部电影 ，依据两部电影的特征向量之间的距离$||x^{(i)}-x^{(j)}||$ 的大小来判断电影的相似度。</li>
 </ul>
 <h2 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h2><p>如果已有数据如图</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4">
+</div>
 
 <p>我们首先需要对结果 Y 矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：</p>
-<div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4"><br></div>
+<div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4">
+</div>
 
 <p>然后我们利用这个新的 Y，矩阵来训练算法。对于Eve，我们的新模型会认为她给每部电影的评分都是该电影的平均分。</p>
 

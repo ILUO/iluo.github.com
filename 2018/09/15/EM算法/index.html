@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="Jensen’s inequality这一部分引入了Jensen不等式来导出EM算法，利用jensen不等式取等号的条件构造似然函数的下界，并且可以证明EM算法是可以收敛的。最后一部分将算法代入高斯混合模型求解。">
-<meta name="keywords" content="CS229,machine learning,EM算法">
+<meta name="keywords" content="machine learning,CS229,EM算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM算法">
 <meta property="og:url" content="http://yoursite.com/2018/09/15/EM算法/index.html">
@@ -451,20 +451,51 @@
       
         <h2 id="Jensen’s-inequality"><a href="#Jensen’s-inequality" class="headerlink" title="Jensen’s inequality"></a>Jensen’s inequality</h2><p>这一部分引入了Jensen不等式来导出EM算法，利用jensen不等式取等号的条件构造似然函数的下界，并且可以证明EM算法是可以收敛的。最后一部分将算法代入高斯混合模型求解。<br><a id="more"></a></p>
 <h3 id="convex-function-凸函数"><a href="#convex-function-凸函数" class="headerlink" title="convex function(凸函数)"></a>convex function(凸函数)</h3><p>设$f$是一个值域为实数的的函数，如果对于$x\in R$有$f’’(x)\ge0$，那么$f$是一个凸函数。在$f$的输入是向量化的值的情况下，那么该函数的Hessian矩阵是半正定的($H\ge0$)，如果二阶导是大于0的，该函数就是<strong>“strictly convex”</strong>的，输入是向量化的情况下，Hessian矩阵就是严格半正定的。</p>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>如果$f$是一个凸函数，设$X$为随机变量，则有<br>$$E[f(x)]\ge f(E(X))$$<br>另外，如果$f$是”strictly convex”的，那么当且仅当$X=E[X]$的概率为1时，等式$E[f(x)]=f[E(X)      ]$成立，由于表示期望可以删除括号的约定，$f(EX)=f(E[X])$</p>
+<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>如果$f$是一个凸函数，设$X$为随机变量，则有</p>
+<script type="math/tex; mode=display">E[f(x)]\ge f(E(X))</script><p>另外，如果$f$是”strictly convex”的，那么当且仅当$X=E[X]$的概率为1时，等式$E[f(x)]=f[E(X)      ]$成立，由于表示期望可以删除括号的约定，$f(EX)=f(E[X])$</p>
 <p>为了对该不等式有一个直观的理解，可以用下图来说明：</p>
-<p><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/eIguCpQKJuZ7Hwec5GlDkbAitbrfgdqgjCGkDUXxOi4!/b/dFMBAAAAAAAA&bo=tgFRAQAAAAARB9c!&rf=viewer_4"><br></div><br><strong>Remark</strong>：如果函数是一个凹函数，那么不等式为$E[f(x)]\le f[E(X)]$</p>
-<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><h3 id="建模问题"><a href="#建模问题" class="headerlink" title="建模问题"></a>建模问题</h3><p>假如有由m个独立样本组成的训练集${x^{(1)},…,x^{(m)}}$，现在希望通过模型$p(x,z)$对数据进行建模，通过最大似然估计拟合参数：<br>$$\ell(\theta)=\sum_{i=1}^mlogp(x;\theta)=\sum_{i=1}^{m}log\sum_zp(x,z;\theta)$$<br>但是，直接求解最大似然估计可能很困难，因为$z^{(i)}$是一个随机隐变量，如果能够观测到$z^{(i)}$的话，求解将会变得容易。</p>
+<p><div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/eIguCpQKJuZ7Hwec5GlDkbAitbrfgdqgjCGkDUXxOi4!/b/dFMBAAAAAAAA&bo=tgFRAQAAAAARB9c!&rf=viewer_4">
+</div><br><strong>Remark</strong>：如果函数是一个凹函数，那么不等式为$E[f(x)]\le f[E(X)]$</p>
+<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><h3 id="建模问题"><a href="#建模问题" class="headerlink" title="建模问题"></a>建模问题</h3><p>假如有由m个独立样本组成的训练集$\{x^{(1)},…,x^{(m)}\}$，现在希望通过模型$p(x,z)$对数据进行建模，通过最大似然估计拟合参数：</p>
+<script type="math/tex; mode=display">\ell(\theta)=\sum_{i=1}^mlogp(x;\theta)=\sum_{i=1}^{m}log\sum_zp(x,z;\theta)</script><p>但是，直接求解最大似然估计可能很困难，因为$z^{(i)}$是一个随机隐变量，如果能够观测到$z^{(i)}$的话，求解将会变得容易。</p>
 <h3 id="求解思路"><a href="#求解思路" class="headerlink" title="求解思路"></a>求解思路</h3><p>E步：重复构造一个似然函数的下界<br>M步：进一步优化这个下界的取值</p>
-<p>利用jensen不等式：<br>$$<br>\begin{align}<br>\sum_i logp(x^{(i)};\theta) &amp;= \sum_{i}log_{z^{(i)}}p(x^{(i)},z^{(i)};\theta) \\<br>&amp;=\sum_ilog\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\\<br>&amp;\ge \sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}<br>\end{align}<br>$$</p>
-<p>证明过程：<br>有$X_i=\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})} \in X,i=1,2,…,m$,在这个式子中，$X_i$的取值受未知的$z^{(i)}$和$Q(Z^{(i)})$所影响，现在设$z^{(i)}$的分布函数就是$Q(z^{(i)})$，所以整个式子的值只受$z^{(i)}$所影响。<br>设$f(X)=logX$<br>那么(第二步)，$X_i$的期望$E(X_i)=\sum_{z^{(i)}}Q_i(z^{(i)})X_i=\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>所以，$f(E(X_i))=log\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>另外(第三步)，$f(X_i)$的期望$E(f(X_i))=\sum_{(z^{(i)})}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>由于$f(X)=logX$的二阶导小于0，所以该函数是一个凹函数，所以有$f(E(X_i))\ge E(f(X_i))$，综上，每一个$X_i$的期望对应的函数值都大于$f(X_i)$的期望，上式得证。</p>
-<h3 id="Q-i-z-i-的选择"><a href="#Q-i-z-i-的选择" class="headerlink" title="$Q_i(z^{(i)})$的选择"></a>$Q_i(z^{(i)})$的选择</h3><p>现在，对于任何分布函数$Q_i$，公式3都对最大似然估计$\ell(\theta)$限定了一个下界。为了让估计更准确，要尽量让似然函数与下界更接近。根据jensen不等式的性质，当且仅当$f(X)$的输入都是一个常量时，等号才成立，当等号成立时，此时的下界是最接近的似然函数的，所以，要求不等式的输入为一个常量，使等式成立。<br>$$\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}=c$$<br>要使上式成立，易得:<br>$$Q_i(z^{(i)})\propto p(x^{(i)},z^{(i)};\theta)$$<br>由于$\sum_zQ_i(Z^{(i)})=1$，可得:<br>$$<br>\begin{align}<br>Q_i(z^{(i)}) &amp;= \frac{p(x^{(i)},z^{(i)};\theta)}{\sum_zp(x^{(i)}),z;\theta)} \\<br>&amp;=\frac{p(x^{(i)},z^{(i)};\theta)}{p(x^{(i)});\theta} \\<br>&amp;=p(z^{(i)}|x^{(i)};\theta)<br>\end{align}<br>$$<br>因此，将$Q_i$设为给定$x^{(i)}$后$z^{(i)}$的后验分布。</p>
-<h3 id="算法导出"><a href="#算法导出" class="headerlink" title="算法导出"></a>算法导出</h3><p>E步,对于每一个i:<br>$$Q_i(z^{(i)}):=p(z^{(i)}|x^{(i)};\theta)$$<br>M步:<br>$$\theta:=arg\quad max_\theta\sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$$</p>
-<h3 id="算法收敛的证明"><a href="#算法收敛的证明" class="headerlink" title="算法收敛的证明"></a>算法收敛的证明</h3><p>不断重复以上两步，直到算法收敛，如何保证算法是收敛的呢？假设$\theta^{(t)}$和$\theta^{(t+1)}$是两次连续迭代的参数，由于$Q_{i}$的选择使式(3)的等号成立，所以有:<br>$$\ell(\theta^{(t)})=\sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^t)}{Q_i^{(t)}(z^{(i)})}$$<br>由于$\theta^{(t+1)}$是用来最大化上式的，因此有:<br>$$<br>\begin{align}<br>\ell(\theta^{t+1}) &amp;\ge \sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^{t+1})}{Q_i^{(t)}(z^{(i)})} \\<br>&amp;\ge \sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^t)}{Q_i^{(t)}(z^{(i)})} \\<br>&amp;=\ell(\theta^{(t)})<br>\end{align}<br>$$<br>第一个不等式来自于公式(3)，为什么不是等号呢，因为$Q_i$的参数是$\theta^t$,而第二个不等式成立的原因是因为在M步中，$\theta^{(t+1)}$正是通过最大化<br>$$\sum_i\sum_{z^{(i)}}Q_i^t(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i^t{z^{(i)}}}$$<br>得到的，所以第一个式子的值必定大于等于第二个式子的值，因此该算法必定会收敛。</p>
-<h3 id="Remarks"><a href="#Remarks" class="headerlink" title="Remarks"></a>Remarks</h3><p>如果定义<br>$$J(Q,\theta)=\sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$$<br>此时EM算法可以看作一个坐标上升算法。</p>
-<h2 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h2><p>E步：<br>计算<br>$$w_j^{(i)}=Q_i(z^{(i)=j})=P(z^{(i)}=j|x^{(i)};\phi,\mu,\Sigma)$$<br>M步:<br>我要贴图片啦，反正就是把$Q_i(z^{(i)})$和高斯分模型表示出来代入原始模型，如下：</p>
-<p><div align="center"><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/elSSvX1A..XwcCpjOXhXups32oAssJp25SY7vQmMqTc!/b/dFIBAAAAAAAA&bo=vgIHAQAAAAARB4o!&rf=viewer_4"><br></div><br>现在要更新$\mu_l$，对上式求偏导置为0，解得,依旧是贴图片:<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/fkBUcBKSlmKOBGo2djTMjQGYFr2h1iWSg8vd4Rco0Jk!/b/dDYBAAAAAAAA&bo=bQIbAQAAAAARF1U!&rf=viewer_4"><br><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Mn7u.1I2AYlvy8GJSXAizcpgRykzhyRVMCKBtN5DgGE!/b/dDYBAAAAAAAA&bo=8ABfAAAAAAARF48!&rf=viewer_4"><br><br>要更新$\phi_j$，把由$\phi_j$决定的项加起来，发现我们需要最大化：<br><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/j2Cdmko.HTWRLhOj0K3gnc6*.AnfXiCxAXXNw3CKOJo!/b/dGcBAAAAAAAA&bo=sgBQAAAAAAARF8I!&rf=viewer_4"><br><br>由于有一个所有$\phi_j$的和为1的限制，所以可以构造拉格朗日函数：<br><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/cXIuRIZVEahDYWmJlf9T8gbc.QaSh6aj5H*aHL2bIck!/b/dDABAAAAAAAA&bo=kAFTAAAAAAARF.I!&rf=viewer_4"><br><br>$\beta$是拉格朗日乘子，求偏导置0，解得<br><br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/AKrIULFUcLokn35yUz8UtC53EsGNY8PKfAd0JsFSPy8!/b/dFQBAAAAAAAA&bo=6gBOAAAAAAARF4Q!&rf=viewer_4"><br><br>$$\phi_j=\frac{\sum_{i=1}^mw_j^{(i)}}{-\beta}$$</p>
-<p>所以$$\sum_j\phi_j=1=\frac{\sum_{i=1}^m\sum_{j=1}^kw_j^{(i)}}{-\beta}$$<br>又因为<br>$$\sum_jw_j^{(i)}=1$$<br>所以$$\sum_{i=1}^m1=-\beta$$<br>所以$$\phi_j:=\frac{1}{m}\sum_{i=1}^mw_j^{(i)}$$</p>
+<p>利用jensen不等式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\sum_i logp(x^{(i)};\theta) &= \sum_{i}log_{z^{(i)}}p(x^{(i)},z^{(i)};\theta) \\
+&=\sum_ilog\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\\
+&\ge \sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}
+\end{align}</script><p>证明过程：<br>有$X_i=\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})} \in X,i=1,2,…,m$,在这个式子中，$X_i$的取值受未知的$z^{(i)}$和$Q(Z^{(i)})$所影响，现在设$z^{(i)}$的分布函数就是$Q(z^{(i)})$，所以整个式子的值只受$z^{(i)}$所影响。<br>设$f(X)=logX$<br>那么(第二步)，$X_i$的期望$E(X_i)=\sum_{z^{(i)}}Q_i(z^{(i)})X_i=\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>所以，$f(E(X_i))=log\sum_{z^{(i)}}Q_i(z^{(i)})\frac{p(x_{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>另外(第三步)，$f(X_i)$的期望$E(f(X_i))=\sum_{(z^{(i)})}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$<br>由于$f(X)=logX$的二阶导小于0，所以该函数是一个凹函数，所以有$f(E(X_i))\ge E(f(X_i))$，综上，每一个$X_i$的期望对应的函数值都大于$f(X_i)$的期望，上式得证。</p>
+<h3 id="Q-i-z-i-的选择"><a href="#Q-i-z-i-的选择" class="headerlink" title="$Q_i(z^{(i)})$的选择"></a>$Q_i(z^{(i)})$的选择</h3><p>现在，对于任何分布函数$Q_i$，公式3都对最大似然估计$\ell(\theta)$限定了一个下界。为了让估计更准确，要尽量让似然函数与下界更接近。根据jensen不等式的性质，当且仅当$f(X)$的输入都是一个常量时，等号才成立，当等号成立时，此时的下界是最接近的似然函数的，所以，要求不等式的输入为一个常量，使等式成立。</p>
+<script type="math/tex; mode=display">\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}=c</script><p>要使上式成立，易得:</p>
+<script type="math/tex; mode=display">Q_i(z^{(i)})\propto p(x^{(i)},z^{(i)};\theta)</script><p>由于$\sum_zQ_i(Z^{(i)})=1$，可得:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+Q_i(z^{(i)}) &= \frac{p(x^{(i)},z^{(i)};\theta)}{\sum_zp(x^{(i)}),z;\theta)} \\
+&=\frac{p(x^{(i)},z^{(i)};\theta)}{p(x^{(i)});\theta} \\
+&=p(z^{(i)}|x^{(i)};\theta)
+\end{align}</script><p>因此，将$Q_i$设为给定$x^{(i)}$后$z^{(i)}$的后验分布。</p>
+<h3 id="算法导出"><a href="#算法导出" class="headerlink" title="算法导出"></a>算法导出</h3><p>E步,对于每一个i:</p>
+<script type="math/tex; mode=display">Q_i(z^{(i)}):=p(z^{(i)}|x^{(i)};\theta)</script><p>M步:</p>
+<script type="math/tex; mode=display">\theta:=arg\quad max_\theta\sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}</script><h3 id="算法收敛的证明"><a href="#算法收敛的证明" class="headerlink" title="算法收敛的证明"></a>算法收敛的证明</h3><p>不断重复以上两步，直到算法收敛，如何保证算法是收敛的呢？假设$\theta^{(t)}$和$\theta^{(t+1)}$是两次连续迭代的参数，由于$Q_{i}$的选择使式(3)的等号成立，所以有:</p>
+<script type="math/tex; mode=display">\ell(\theta^{(t)})=\sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^t)}{Q_i^{(t)}(z^{(i)})}</script><p>由于$\theta^{(t+1)}$是用来最大化上式的，因此有:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\ell(\theta^{t+1}) &\ge \sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^{t+1})}{Q_i^{(t)}(z^{(i)})} \\
+&\ge \sum_i\sum_{z^{(i)}}Q_i^{(t)}(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta^t)}{Q_i^{(t)}(z^{(i)})} \\
+&=\ell(\theta^{(t)})
+\end{align}</script><p>第一个不等式来自于公式(3)，为什么不是等号呢，因为$Q_i$的参数是$\theta^t$,而第二个不等式成立的原因是因为在M步中，$\theta^{(t+1)}$正是通过最大化</p>
+<script type="math/tex; mode=display">\sum_i\sum_{z^{(i)}}Q_i^t(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i^t{z^{(i)}}}</script><p>得到的，所以第一个式子的值必定大于等于第二个式子的值，因此该算法必定会收敛。</p>
+<h3 id="Remarks"><a href="#Remarks" class="headerlink" title="Remarks"></a>Remarks</h3><p>如果定义</p>
+<script type="math/tex; mode=display">J(Q,\theta)=\sum_i\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}</script><p>此时EM算法可以看作一个坐标上升算法。</p>
+<h2 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h2><p>E步：<br>计算</p>
+<script type="math/tex; mode=display">w_j^{(i)}=Q_i(z^{(i)=j})=P(z^{(i)}=j|x^{(i)};\phi,\mu,\Sigma)</script><p>M步:<br>我要贴图片啦，反正就是把$Q_i(z^{(i)})$和高斯分模型表示出来代入原始模型，如下：</p>
+<p><div align="center">
+<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/elSSvX1A..XwcCpjOXhXups32oAssJp25SY7vQmMqTc!/b/dFIBAAAAAAAA&bo=vgIHAQAAAAARB4o!&rf=viewer_4">
+</div><br>现在要更新$\mu_l$，对上式求偏导置为0，解得,依旧是贴图片:<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/fkBUcBKSlmKOBGo2djTMjQGYFr2h1iWSg8vd4Rco0Jk!/b/dDYBAAAAAAAA&bo=bQIbAQAAAAARF1U!&rf=viewer_4"><br>&lt;/div&gt;<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Mn7u.1I2AYlvy8GJSXAizcpgRykzhyRVMCKBtN5DgGE!/b/dDYBAAAAAAAA&bo=8ABfAAAAAAARF48!&rf=viewer_4"><br>&lt;/div&gt;<br>要更新$\phi_j$，把由$\phi_j$决定的项加起来，发现我们需要最大化：<br>&lt;/div&gt;<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/j2Cdmko.HTWRLhOj0K3gnc6*.AnfXiCxAXXNw3CKOJo!/b/dGcBAAAAAAAA&bo=sgBQAAAAAAARF8I!&rf=viewer_4"><br>&lt;/div&gt;<br>由于有一个所有$\phi_j$的和为1的限制，所以可以构造拉格朗日函数：<br>&lt;/div&gt;<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/cXIuRIZVEahDYWmJlf9T8gbc.QaSh6aj5H*aHL2bIck!/b/dDABAAAAAAAA&bo=kAFTAAAAAAARF.I!&rf=viewer_4"><br>&lt;/div&gt;<br>$\beta$是拉格朗日乘子，求偏导置0，解得<br>&lt;/div&gt;<br><img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/AKrIULFUcLokn35yUz8UtC53EsGNY8PKfAd0JsFSPy8!/b/dFQBAAAAAAAA&bo=6gBOAAAAAAARF4Q!&rf=viewer_4"><br>&lt;/div&gt;</p>
+<script type="math/tex; mode=display">\phi_j=\frac{\sum_{i=1}^mw_j^{(i)}}{-\beta}</script><p>所以<script type="math/tex">\sum_j\phi_j=1=\frac{\sum_{i=1}^m\sum_{j=1}^kw_j^{(i)}}{-\beta}</script><br>又因为</p>
+<script type="math/tex; mode=display">\sum_jw_j^{(i)}=1</script><p>所以<script type="math/tex">\sum_{i=1}^m1=-\beta</script><br>所以<script type="math/tex">\phi_j:=\frac{1}{m}\sum_{i=1}^mw_j^{(i)}</script></p>
 
       
     </div>
@@ -485,9 +516,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CS229/" rel="tag"># CS229</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
             <a href="/tags/EM算法/" rel="tag"># EM算法</a>
           

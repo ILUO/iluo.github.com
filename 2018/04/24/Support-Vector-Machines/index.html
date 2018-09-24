@@ -116,18 +116,10 @@
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="支持向量机(Support Vector Machines)优化目标监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M48gDFWba9uzQRzRSp43xmgDq06qfLSCbypRUwWic3o!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uzT2Q6tCsWhWhKTEFlNqEY9SMa.x411gRbbIFiImQGA!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/kKJP5u5ZvTPIugeZGznxpenFDwTo6GKJX3oQw92W0Eo!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/mPyfQKciu4c6Fersg3UXT0o.nrMKifiTDXrryetvB5k!/b/dHMBAAAAAAAA&ek=1&kp=1&pt=0&bo=vAH.ALwB*gABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/V5HZMUe5saE0x*qfK.qCzV0m3jNMNxW385ny4KrYEao!/b/dGwBAAAAAAAA&ek=1&kp=1&pt=0&bo=rwEZAa8BGQEBACc!&vuin=1405591197&tm=1524538800&sce=50-1-1&rf=viewer_311">
-<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tOzmghqsA7utPUhcmO4yIvMjKNmbvulyWPisy7uotQ!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=9AGcAPQBnAABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
 <meta property="og:updated_time" content="2018-05-25T02:25:02.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machines">
 <meta name="twitter:description" content="支持向量机(Support Vector Machines)优化目标监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311">
 
 
 
@@ -463,26 +455,71 @@
       
         <h1 id="支持向量机-Support-Vector-Machines"><a href="#支持向量机-Support-Vector-Machines" class="headerlink" title="支持向量机(Support Vector Machines)"></a>支持向量机(Support Vector Machines)</h1><h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><p>监督学习算法的性能大多类似，因此重要的不是选择算法，而是应用算法的水平。诸如特征的选择以及正则化参数的选择。SVM在学习复杂的非线性方程时提供了更为清晰、强大的方式。</p>
 <a id="more"></a>
-<h3 id="从逻辑回归来修改"><a href="#从逻辑回归来修改" class="headerlink" title="从逻辑回归来修改"></a>从逻辑回归来修改</h3><div align="center"><br><img src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="逻辑回归" title="逻辑回归"><br></div>
+<h3 id="从逻辑回归来修改"><a href="#从逻辑回归来修改" class="headerlink" title="从逻辑回归来修改"></a>从逻辑回归来修改</h3><div align="center">
+![逻辑回归](http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/JiwgCSLbaT66rrgp5B9tgam*ifWEM5cWhtiBsUJqANg!/b/dI4BAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "逻辑回归")
+</div>
 
 <p>在逻辑回归中，每个样本$(x,y)$都会为总代价函数增加一项。忽略$\frac{1}{m}$，当$y=1$,代价函数项为$-log(\frac{1}{1+e^{-\theta^Tx}})$，随着$Z$增大而减小，当$y=0$，代价函数项为$-log(1-\frac{1}{1+e^{-\theta^Tx}})$，随着$Z$增大而增大。在这个基础上支持向量机的代价函数，做了如图变换，即对于正样本的代价函数，$Z&gt;1$时代价函数为0，对于负样本的代价函数,$Z &lt; -1$时代价函数为0，其他时候为线性函数，暂时可以不必考虑其斜率如何。</p>
 <p><strong>左边的函数为$cost_1^{(z)}$,右边的函数为$cost_0^{(z)}$</strong></p>
-<h3 id="构建支持向量机"><a href="#构建支持向量机" class="headerlink" title="构建支持向量机"></a>构建支持向量机</h3><p>有了代价函数形式，最小化问题为<br>$$\frac{1}{m}(\sum_{i=1}^{m}y^{(i)}(-logh_\theta{(x^{(i)})})+(1-y^{(i)})(-log(1-h_\theta(x^{(i)}))))$$<br>然后再加上正则化参数<br>由于$\frac{1}{m}$不影响优化，可以先不考虑。<br>不同于逻辑回归中$A+\lambda B$的正则化优化形式，这里采用$CA+B$的正则化优化形式。<br>所以，代价函数的形式为:<br>$$min_\Theta C\sum_{i=1}{m}[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{i=1}^n\theta_j^{2}$$</p>
-<p>假设函数的形式为:<br>$$ h_\theta{(x)} =\begin{cases} 1,  &amp; \text{if $\theta^Tx\geq0$ } \ 0, &amp; \text{otherwise}\end{cases}$$</p>
-<p><strong>与逻辑回归输出概率不同，SVM的假设函数直接预测y是1还是0</strong></p>
+<h3 id="构建支持向量机"><a href="#构建支持向量机" class="headerlink" title="构建支持向量机"></a>构建支持向量机</h3><p>有了代价函数形式，最小化问题为</p>
+<script type="math/tex; mode=display">\frac{1}{m}(\sum_{i=1}^{m}y^{(i)}(-logh\_\theta{(x^{(i)})})+(1-y^{(i)})(-log(1-h\_\theta(x^{(i)}))))</script><p>然后再加上正则化参数<br>由于$\frac{1}{m}$不影响优化，可以先不考虑。<br>不同于逻辑回归中$A+\lambda B$的正则化优化形式，这里采用$CA+B$的正则化优化形式。<br>所以，代价函数的形式为:</p>
+<script type="math/tex; mode=display">min\_\Theta C\sum_{i=1}{m}[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\_{i=1}^n\theta_j^{2}</script><p>假设函数的形式为:</p>
+<script type="math/tex; mode=display">h\_\theta{(x)} =\begin{cases} 1,  & \text{if $\theta^Tx\geq0$ } \\ 0, & \text{otherwise}\end{cases}</script><p><strong>与逻辑回归输出概率不同，SVM的假设函数直接预测y是1还是0</strong></p>
 <h2 id="大边界的直观理解-Large-Margin-Intuition"><a href="#大边界的直观理解-Large-Margin-Intuition" class="headerlink" title="大边界的直观理解(Large Margin Intuition)"></a>大边界的直观理解(Large Margin Intuition)</h2><p>支持向量机不仅要求正确分开输入样本，还引入了安全的间距因子，即$y=1$,我们希望$\theta^Tx \geq 1$,$y=0$，我们希望$\theta^Tx \leq -1$</p>
-<h3 id="常数C的影响"><a href="#常数C的影响" class="headerlink" title="常数C的影响"></a>常数C的影响</h3><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M48gDFWba9uzQRzRSp43xmgDq06qfLSCbypRUwWic3o!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="常数C的影响" title="常数C的影响"><br></div><br>若C非常大，我们希望在使第一项为0的前提下优化问题。要想让第一项为0，则要遵从以下约束，如果$y^{(i)}=1$,$\theta^Tx^{(i)} \geq 1$，如果$y^{(i)}=0$,$\theta^Tx^{(i)} \leq -1$。在这个基础上求解关于$\theta$的函数，会得到一个有趣的决策边界。<br><br>###    间距<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uzT2Q6tCsWhWhKTEFlNqEY9SMa.x411gRbbIFiImQGA!/b/dDwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="间距" title="间距"><br></div><br>上图可以有很多决策边界进行分割，但是支持向量机会选择黑色这条决策边界，它在分离正负样本上显得更好，就是这个黑线具有更大的<strong>间距</strong>。<br><br><strong>支持向量机的间距，是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本</strong><br><br>在代价函数最小化的过程中，我们希望找出$y=1$和$y=0$两种情况下都使得代价函数中左边一项尽量为0的参数。如果找到这样的参数，最小化问题变为。<br>$$min\frac{1}{2}\sum_{j=1}^n\theta_j^2$$<br>参数遵从的约束见“常数C的影响”<br><br>使用大间距分类器，学习算法会受<strong>异常点</strong>的影响。这样就需要考虑$C=\frac{1}{\lambda}$，回顾$\lambda$对过拟合和欠拟合的影响。<br>因此：<br>$C$较大时，$\lambda$较小，可能会导致过拟合，高方差<br>$C$较小时，$\lambda$较大，可能会导致欠拟合，高偏差<br><br>##   大边界分类的数学原理<br><br>###    向量内积<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/kKJP5u5ZvTPIugeZGznxpenFDwTo6GKJX3oQw92W0Eo!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAMcAsADHAIBACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="向量内积" title="向量内积"><br></div>
+<h3 id="常数C的影响"><a href="#常数C的影响" class="headerlink" title="常数C的影响"></a>常数C的影响</h3><div align="center">
+![常数C的影响](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/M48gDFWba9uzQRzRSp43xmgDq06qfLSCbypRUwWic3o!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "常数C的影响")
+</div>
+若C非常大，我们希望在使第一项为0的前提下优化问题。要想让第一项为0，则要遵从以下约束，如果$y^{(i)}=1$,$\theta^Tx^{(i)} \geq 1$，如果$y^{(i)}=0$,$\theta^Tx^{(i)} \leq -1$。在这个基础上求解关于$\theta$的函数，会得到一个有趣的决策边界。
+
+###    间距
+<div align="center">
+![间距](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/uzT2Q6tCsWhWhKTEFlNqEY9SMa.x411gRbbIFiImQGA!/b/dDwBAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "间距")
+</div>
+上图可以有很多决策边界进行分割，但是支持向量机会选择黑色这条决策边界，它在分离正负样本上显得更好，就是这个黑线具有更大的**间距**。
+
+**支持向量机的间距，是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本**
+
+在代价函数最小化的过程中，我们希望找出$y=1$和$y=0$两种情况下都使得代价函数中左边一项尽量为0的参数。如果找到这样的参数，最小化问题变为。
+$$min\frac{1}{2}\sum\_{j=1}^n\theta_j^2$$
+参数遵从的约束见“常数C的影响”
+
+使用大间距分类器，学习算法会受**异常点**的影响。这样就需要考虑$C=\frac{1}{\lambda}$，回顾$\lambda$对过拟合和欠拟合的影响。
+因此：
+$C$较大时，$\lambda$较小，可能会导致过拟合，高方差
+$C$较小时，$\lambda$较大，可能会导致欠拟合，高偏差
+
+##   大边界分类的数学原理
+
+###    向量内积
+<div align="center">
+![向量内积](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/kKJP5u5ZvTPIugeZGznxpenFDwTo6GKJX3oQw92W0Eo!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=wAMcAsADHAIBACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "向量内积")
+</div>
 
 <p>$u^Tv$是向量$u$和$v$的内积，$||u||=\sqrt{u_1^2+u_2^2}$，再看向量$v$，已知$v_1$和$v_2$这两个分量，将向量$v$投影到$u$上，长度为$p$,那么另外一种计算内积的方法是$p||u||$(PS:我怎么觉得需要证明一下,想想原来是三角函数emmm)<br>有了向量内积的知识，再来理解支持向量机中的目标函数。</p>
 <h3 id="决策边界需要满足的条件"><a href="#决策边界需要满足的条件" class="headerlink" title="决策边界需要满足的条件"></a>决策边界需要满足的条件</h3><p>假如仅有两个特征,忽略截距$\theta_0$，那么$\theta=[\theta_1 \quad \theta_2]$，目标函数为$\frac{1}{2}||\theta||^2$,所以支持向量机所要做的就是极小化参数$\theta$长度的平方。</p>
-<div align="center"><br><img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/mPyfQKciu4c6Fersg3UXT0o.nrMKifiTDXrryetvB5k!/b/dHMBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vAH.ALwB*gABACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="决策边界" title="决策边界"><br></div><br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/V5HZMUe5saE0x*qfK.qCzV0m3jNMNxW385ny4KrYEao!/b/dGwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rwEZAa8BGQEBACc!&amp;vuin=1405591197&amp;tm=1524538800&amp;sce=50-1-1&amp;rf=viewer_311" alt="决策边界" title="决策边界"><br></div><br>加入我们有很多决策边界都能把训练集分开，即满足上面讲的约束，那应该怎样选择参数$\theta$呢?事实上,参数$\theta$向量和决策边界是正交的(因为决策边界的斜率就和参数$\theta$的方向垂直)<br><br>所以要想尽量满足约束条件$p||\theta||\geq1$或者$p||\theta||\leq-1$，而且要让$||\theta||$尽量小，那么就要让$p$的绝对值尽量大，而如何让让$p$尽量大呢？就要让$x$与$\theta$之间的余弦值的绝对值越大，如何才能做到呢？支持向量机就会选择下边的决策边界，它试图极大化这些$p^{(i)}$的范数，即训练样本到决策边界的距离。<br><br>##     核函数(Kernels)<br>给定一个训练实例$x$，我们利用$x$的各个特征与预先选定的地标(landmarks)$l^{(1)}$，$l^{(2)}$，$l^{(3)}$的近似程度来选取新的特征$f_1,f_2,f_3$。<br><div align="center"><br><img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tOzmghqsA7utPUhcmO4yIvMjKNmbvulyWPisy7uotQ!/b/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=9AGcAPQBnAABACc!&amp;tm=1524535200&amp;sce=0-12-12&amp;rf=viewer_311" alt="核函数" title="核函数"><br></div>
+<div align="center">
+![决策边界](http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/mPyfQKciu4c6Fersg3UXT0o.nrMKifiTDXrryetvB5k!/b/dHMBAAAAAAAA&ek=1&kp=1&pt=0&bo=vAH.ALwB*gABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "决策边界")
+</div>
+<div align="center">
+![决策边界](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/V5HZMUe5saE0x*qfK.qCzV0m3jNMNxW385ny4KrYEao!/b/dGwBAAAAAAAA&ek=1&kp=1&pt=0&bo=rwEZAa8BGQEBACc!&vuin=1405591197&tm=1524538800&sce=50-1-1&rf=viewer_311 "决策边界")
+</div>
+加入我们有很多决策边界都能把训练集分开，即满足上面讲的约束，那应该怎样选择参数$\theta$呢?事实上,参数$\theta$向量和决策边界是正交的(因为决策边界的斜率就和参数$\theta$的方向垂直)
 
-<p>例如:<br>$$f_1 = similarity(x,l^{(l)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})$$<br>其中$||x-l^{(1)}||^2=\sum_{j=1}^n(x_j-l_j^{(1)})^2$，为实例$x$中所有特征与地标$l^{(1)}$之间的距离的核。<br>具体而言,$similarity(x,l^{(1)})$就是核函数，高斯核函数(Gaussian Kernel)。如果训练实例与地标距离越短，则$f$近似于1，如果越长，则近似于0。$f$随$x$改变的速率受$\sigma$控制。</p>
+所以要想尽量满足约束条件$p||\theta||\geq1$或者$p||\theta||\leq-1$，而且要让$||\theta||$尽量小，那么就要让$p$的绝对值尽量大，而如何让让$p$尽量大呢？就要让$x$与$\theta$之间的余弦值的绝对值越大，如何才能做到呢？支持向量机就会选择下边的决策边界，它试图极大化这些$p^{(i)}$的范数，即训练样本到决策边界的距离。
+
+##     核函数(Kernels)
+给定一个训练实例$x$，我们利用$x$的各个特征与预先选定的地标(landmarks)$l^{(1)}$，$l^{(2)}$，$l^{(3)}$的近似程度来选取新的特征$f_1,f_2,f_3$。
+<div align="center">
+![核函数](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/3tOzmghqsA7utPUhcmO4yIvMjKNmbvulyWPisy7uotQ!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=9AGcAPQBnAABACc!&tm=1524535200&sce=0-12-12&rf=viewer_311 "核函数")
+</div>
+
+<p>例如:</p>
+<script type="math/tex; mode=display">f_1 = similarity(x,l^{(l)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})</script><p>其中$||x-l^{(1)}||^2=\sum_{j=1}^n(x_j-l_j^{(1)})^2$，为实例$x$中所有特征与地标$l^{(1)}$之间的距离的核。<br>具体而言,$similarity(x,l^{(1)})$就是核函数，高斯核函数(Gaussian Kernel)。如果训练实例与地标距离越短，则$f$近似于1，如果越长，则近似于0。$f$随$x$改变的速率受$\sigma$控制。</p>
 <p>$f$是特征，所以$\theta^Tf$决定着假设函数预测的值</p>
-<h3 id="如何选择地标"><a href="#如何选择地标" class="headerlink" title="如何选择地标"></a>如何选择地标</h3><p>根据训练集数量选择地标数量，令$l^{(n)}=x^{(n)}$，新特征建立在原有特征与训练集中所有其他特征之间的距离的基础之上。<br>$$f^{(i)}=[f_0^{(i)}=1\quad… f_m^{(i)}=sim(x^{(i)},l^{(m)})]$$</p>
-<h3 id="支持向量机假设"><a href="#支持向量机假设" class="headerlink" title="支持向量机假设"></a>支持向量机假设</h3><ul>
+<h3 id="如何选择地标"><a href="#如何选择地标" class="headerlink" title="如何选择地标"></a>如何选择地标</h3><p>根据训练集数量选择地标数量，令$l^{(n)}=x^{(n)}$，新特征建立在原有特征与训练集中所有其他特征之间的距离的基础之上。</p>
+<script type="math/tex; mode=display">f^{(i)}=[f_0^{(i)}=1\quad... f_m^{(i)}=sim(x^{(i)},l^{(m)})]</script><h3 id="支持向量机假设"><a href="#支持向量机假设" class="headerlink" title="支持向量机假设"></a>支持向量机假设</h3><ul>
 <li>给定$x$，计算新特征$f$，当$\theta^T f\geq0$，预测$y=1$,反之</li>
-<li>相应的代价函数为:<br> $$minC\sum_{i=1}^{m}[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum_{j=1}^{n=m}\theta_j^{2}$$</li>
+<li>相应的代价函数为:<script type="math/tex; mode=display">minC\sum_{i=1}^{m}[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum\_{j=1}^{n=m}\theta_j^{2}</script></li>
 </ul>
 <p>其中$\sum_{j=1}^{n=m}\theta_j^{2}=\theta^T\theta$,需要用$\theta^T M\theta$代替,$M$是根据核函数不同选择的一个矩阵，这是为了简化计算。</p>
 <p>没有介绍代价函数的计算方法，可以使用鲜有软件报进行计算(如liblinear,libsvm)。使用之前需要编写核函数，如果使用高斯核函数，使用之前进行特征缩放是必要的。</p>

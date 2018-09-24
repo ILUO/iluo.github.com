@@ -454,8 +454,8 @@
 
       
         <h1 id="线性回归代价函数的来源"><a href="#线性回归代价函数的来源" class="headerlink" title="线性回归代价函数的来源"></a>线性回归代价函数的来源</h1><p>Andrew Ng在Coursea的machine learning公开课上引入cost function：”And one thing I might do is try to minimize the square difference between the output of the hypothesis and the actual price of a house”<br>那Cost Function是square difference的原因是什么呢？<br><a id="more"></a></p>
-<h2 id="概率角度"><a href="#概率角度" class="headerlink" title="概率角度"></a>概率角度</h2><p>Andrew Ng在CS 229上有推导：<br>数据集可以认为是从理想模型$F(x)$中采样，并添加高斯噪声形成。那数据集中的每一个点$(x^{(i)},y^{(i)})$都服从于均值为$f(x^{(i)})$，方差为某一固定值高斯分布。所以数据$(x^{(i)},y^{(i)})$的概率如下：<br>$$p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt[2]{2\pi\sigma}}exp(\frac{(y^{(i)-\theta^Tx^{(i)}})^2}{2\sigma^2})$$</p>
-<p>要判断一个模型是否接近理想，可以比较数据集在当前模型下出现的概率，即最大似然估计。目标就是极大化数据集的对数似然函数。通过化简，极大化数据集的对数似然函数等价于最小化误差的平方和。</p>
+<h2 id="概率角度"><a href="#概率角度" class="headerlink" title="概率角度"></a>概率角度</h2><p>Andrew Ng在CS 229上有推导：<br>数据集可以认为是从理想模型$F(x)$中采样，并添加高斯噪声形成。那数据集中的每一个点$(x^{(i)},y^{(i)})$都服从于均值为$f(x^{(i)})$，方差为某一固定值高斯分布。所以数据$(x^{(i)},y^{(i)})$的概率如下：</p>
+<script type="math/tex; mode=display">p(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt[2]{2\pi\sigma}}exp(\frac{(y^{(i)-\theta^Tx^{(i)}})^2}{2\sigma^2})</script><p>要判断一个模型是否接近理想，可以比较数据集在当前模型下出现的概率，即最大似然估计。目标就是极大化数据集的对数似然函数。通过化简，极大化数据集的对数似然函数等价于最小化误差的平方和。</p>
 <h2 id="技术角度"><a href="#技术角度" class="headerlink" title="技术角度"></a>技术角度</h2><p>用梯度下降或者梯度上升来优化模型时，误差的平方和在求导时具有快速简洁的优势。</p>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
 <li>信号保真度与信号的空间和时间顺序无关</li>

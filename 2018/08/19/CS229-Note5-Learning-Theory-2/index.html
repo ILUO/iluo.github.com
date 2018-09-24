@@ -467,20 +467,41 @@
 <h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>对模型给定n个特征，有$2^n$中可能的特征子集，当$n$非常大的时候，对每一种特征子集都训练一遍的代价是非常大的，因此使用一种启发式的方式去寻找合适的特征子集。</p>
 <h3 id="foward-search算法"><a href="#foward-search算法" class="headerlink" title="foward search算法"></a>foward search算法</h3><ul>
 <li>初始化$\mathcal{F}=\phi$</li>
-<li>Repeat<br>${  \ (a)for \quad i=1,…,n,如果i \notin \mathcal{F}，令\mathcal{F_i}=\mathcal{F}\cup{i}使用交叉验证去评估特征\mathcal{F_i}\ (b)将上一步得到的最好的特征子集赋值给\mathcal{F}\ }$</li>
+<li>Repeat<br>$\{  \\ (a)for \quad i=1,…,n,如果i \notin \mathcal{F}，令\mathcal{F_i}=\mathcal{F}\cup\{i\}使用交叉验证去评估特征\mathcal{F_i}\\ (b)将上一步得到的最好的特征子集赋值给\mathcal{F}\\ \}$</li>
 <li>选择并输出整个过程中最好的特征子集</li>
 </ul>
 <p>在该算法中，外部循环停止的条件可以是当$\mathcal{|F|}=n$时，也可以是自己设定的一个界限。<br>该算法的实例化被称作<strong>封装特征选择(wrapper model feature selection)</strong>,除了foward search，还有一种被称作backward search的算法，其将$\mathcal{F}$初始化为包含全部特征的全集，每次循环从中去除一个特征，直到$\mathcal{F}=\phi$。</p>
 <p><strong>这个算法不是实时更新最佳特征集合的，每次循环的最佳子集都会参与最后的特征选择。</strong><br>算法的缺点：计算复杂度较大，一个完整的foward search算法会调用$O(n^2)$次学习算法。</p>
-<h3 id="过滤特征选择-Filter-feature-selection"><a href="#过滤特征选择-Filter-feature-selection" class="headerlink" title="过滤特征选择(Filter feature selection)"></a>过滤特征选择(Filter feature selection)</h3><p>过滤特征选择的目的是为了在启发式的基础上让计算代价降低。其基本思想是计算每个特征$x_i$对标签$y$的影响程度，记作$S(i)$，然后根据其排名来决定优先选择哪些特征。<br>具体的，使用MI(mutual infomation)互信息作为$S(i)$,其计算公式为：<br>$$MI(x_i,y)=\sum_{x_i\in{0,1}}\sum_{y\in{0,1}}p(x_i,y)log\frac{p(x_i,y)}{p(x_i)p(y)}$$<br>上式中所需的概率都可以从训练集中的经验分布得到。<br>互信息还可以用<strong>相对熵(KL散度)</strong>来表示。</p>
+<h3 id="过滤特征选择-Filter-feature-selection"><a href="#过滤特征选择-Filter-feature-selection" class="headerlink" title="过滤特征选择(Filter feature selection)"></a>过滤特征选择(Filter feature selection)</h3><p>过滤特征选择的目的是为了在启发式的基础上让计算代价降低。其基本思想是计算每个特征$x_i$对标签$y$的影响程度，记作$S(i)$，然后根据其排名来决定优先选择哪些特征。<br>具体的，使用MI(mutual infomation)互信息作为$S(i)$,其计算公式为：</p>
+<script type="math/tex; mode=display">MI(x_i,y)=\sum_{x_i\in\{0,1\}}\sum_{y\in\{0,1\}}p(x_i,y)log\frac{p(x_i,y)}{p(x_i)p(y)}</script><p>上式中所需的概率都可以从训练集中的经验分布得到。<br>互信息还可以用<strong>相对熵(KL散度)</strong>来表示。</p>
 <h2 id="贝叶斯统计和正则化"><a href="#贝叶斯统计和正则化" class="headerlink" title="贝叶斯统计和正则化"></a>贝叶斯统计和正则化</h2><p>贝叶斯正则化是用来防止过拟合的工具。</p>
-<h3 id="最大似然估计（Maximum-likelihood）"><a href="#最大似然估计（Maximum-likelihood）" class="headerlink" title="最大似然估计（Maximum likelihood）"></a>最大似然估计（Maximum likelihood）</h3><p>在此前推导线性回归和逻辑回归的代价函数时，都是通过最大似然估计ML得到的优化函数。<br>$$\theta_{ML}=arg\quad max_\theta \prod_{i=1}^mp(y^{(i)}|x^{(i)};\theta)$$<br>关于最大似然估计，这是之前的记录：<a href="https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">似然函数</a>，最大似然估计来源于概率中的<strong>频率学派(frequentist)</strong>,其观点是对于一组数据，基于一个模型去拟合参数时，参数$\theta$本身没有概率分布，它是一个未知的常量，通过对观测到的事件进行最大似然估计得到的$\theta$就是最符合已知训练数据的参数。<br>例子：抛一枚硬币10次，观测到9正1反，设正面向上的概率为p，那么使用最大似然估计，9正1反的概率为$p^9(1-p)$，对此概率最大化，此时对应的p就是通过最大似然估计得到的参数。</p>
-<h3 id="贝叶斯估计与最大后验概率（Maximum-A-Posteriori）"><a href="#贝叶斯估计与最大后验概率（Maximum-A-Posteriori）" class="headerlink" title="贝叶斯估计与最大后验概率（Maximum A Posteriori）"></a>贝叶斯估计与最大后验概率（Maximum A Posteriori）</h3><p>贝叶斯估计是属于贝叶斯学派拟合参数的方法，与最大似然估计相反，在拟合参数时，它认为$\theta$是本身有着先验概率分布的未知值，要做的工作就是在知道观测结果$S$时，哪一个$\theta$的概率最大，这个概率可以通过<a href="https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86-Bayes%E2%80%99s-Theorem" target="_blank" rel="noopener">贝叶斯统计</a>得到。<br>$$<br>\begin{align}<br>p(\theta|S)&amp;=\frac{p(S|\theta)p(\theta)}{p(S)} \\<br>&amp;=\frac{(\prod_{i=1}^mp(y^{(i)}|x^{(i)},\theta))p(\theta)}{\int_\theta(\prod_{i=1}^mp(y^{(i)}|x^{(i)},\theta)p(\theta))d\theta}<br>\end{align}<br>$$</p>
-<p>例子：抛一枚硬币10次，观测到9正1反，设正面向上的概率为p，求在事件S为9正1反的条件下，使概率$p(p|S)$<br>取最大值的p。</p>
-<h4 id="如何使用贝叶斯估计的后验概率："><a href="#如何使用贝叶斯估计的后验概率：" class="headerlink" title="如何使用贝叶斯估计的后验概率："></a>如何使用贝叶斯估计的后验概率：</h4><p>已知数据$S$,要预测一个新的样本$x$的标签$y$，即在已知数据$S$的情况下计算新样本标签$y$的数学期望。<br>$$<br>\begin{align}<br>E[y|x,S]=\int_yyp(y|x,S)dy<br>\end{align}<br>$$<br>此时需要求$p(y|x,S)$，这个式子隐藏了一个含义，y的分布与$\theta$有关，而$\theta$服从于某种分布，因此考虑所有$\theta$可能的情况，使用全概率公式：<br>$$<br>\begin{align}<br>p(y|x,S)=\int_\theta p(\theta,y|x,S)d\theta<br>\end{align}<br>$$<br>运用条件概率：<br>$$<br>\begin{align}<br>p(\theta,y|x,S)=p(y|x,\theta,S)p(\theta|S)<br>\end{align}<br>$$<br>其含义为：已知数据为S的条件下，参数为$\theta$且$x$的标签为$y$的概率=已知数据S和参数为$\theta$的条件下$x$的标签为$y$的概率乘以数据为S的条件下参数为$\theta$的概率<br>同时，有化简$$p(y|x,\theta,S)=p(y|x,\theta)$$<br>这是因为对于预测$x$,当参数$\theta$确定后，数据S如何分布与x的标签是什么已经没有关系了，x的标签的取值概率完全由参数和模型决定。将（4）代入（3）得到：<br>$$<br>\begin{align}<br>p(y|x,S)=\int_\theta p(y|x,\theta)p(\theta|S)d\theta<br>\end{align}<br>$$</p>
-<p>现在，如果$\theta$确定，则$p(\theta|S)$确定（使用公式2），$p(y|x,\theta)$也确定，计算出$p(y)$，代入公式3，那么标签y的数学期望也就求出，完成预测。</p>
-<h4 id="贝叶斯估计的缺点"><a href="#贝叶斯估计的缺点" class="headerlink" title="贝叶斯估计的缺点"></a>贝叶斯估计的缺点</h4><p>由于参数是随机分布的，在公式2中进行积分是非常困难的。通过观察公式2，可以发现分母是一个归一化因子，因此可以不必计算。<br>于是使用<br>$$\theta_{MAP}=arg\quad max_{\theta}\prod_{i=1}^{i=m}p(y^{(i)}|x^{(i)},\theta)p(\theta)$$</p>
-<p>上式过程即为<strong>最大后验概率</strong>，它属于最大似然估计与贝叶斯估计互相融合的方法，一方面具有点估计的特征，另一方面考虑了参数的先验概率$p(\theta)$，通常$p(\theta)$这个先验概率被定义为高斯分布$\theta~\mathcal{N}(0,\tau^2I)$，通过贝叶斯估计的最大后验概率选择的参数与最大似然估计选择的参数相比，过拟合的程度会更小。</p>
+<h3 id="最大似然估计（Maximum-likelihood）"><a href="#最大似然估计（Maximum-likelihood）" class="headerlink" title="最大似然估计（Maximum likelihood）"></a>最大似然估计（Maximum likelihood）</h3><p>在此前推导线性回归和逻辑回归的代价函数时，都是通过最大似然估计ML得到的优化函数。</p>
+<script type="math/tex; mode=display">\theta_{ML}=arg\quad max_\theta \prod_{i=1}^mp(y^{(i)}|x^{(i)};\theta)</script><p>关于最大似然估计，这是之前的记录：<a href="https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">似然函数</a>，最大似然估计来源于概率中的<strong>频率学派(frequentist)</strong>,其观点是对于一组数据，基于一个模型去拟合参数时，参数$\theta$本身没有概率分布，它是一个未知的常量，通过对观测到的事件进行最大似然估计得到的$\theta$就是最符合已知训练数据的参数。<br>例子：抛一枚硬币10次，观测到9正1反，设正面向上的概率为p，那么使用最大似然估计，9正1反的概率为$p^9(1-p)$，对此概率最大化，此时对应的p就是通过最大似然估计得到的参数。</p>
+<h3 id="贝叶斯估计与最大后验概率（Maximum-A-Posteriori）"><a href="#贝叶斯估计与最大后验概率（Maximum-A-Posteriori）" class="headerlink" title="贝叶斯估计与最大后验概率（Maximum A Posteriori）"></a>贝叶斯估计与最大后验概率（Maximum A Posteriori）</h3><p>贝叶斯估计是属于贝叶斯学派拟合参数的方法，与最大似然估计相反，在拟合参数时，它认为$\theta$是本身有着先验概率分布的未知值，要做的工作就是在知道观测结果$S$时，哪一个$\theta$的概率最大，这个概率可以通过<a href="https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86-Bayes%E2%80%99s-Theorem" target="_blank" rel="noopener">贝叶斯统计</a>得到。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(\theta|S)&=\frac{p(S|\theta)p(\theta)}{p(S)} \\
+&=\frac{(\prod_{i=1}^mp(y^{(i)}|x^{(i)},\theta))p(\theta)}{\int_\theta(\prod_{i=1}^mp(y^{(i)}|x^{(i)},\theta)p(\theta))d\theta}
+\end{align}</script><p>例子：抛一枚硬币10次，观测到9正1反，设正面向上的概率为p，求在事件S为9正1反的条件下，使概率$p(p|S)$<br>取最大值的p。</p>
+<h4 id="如何使用贝叶斯估计的后验概率："><a href="#如何使用贝叶斯估计的后验概率：" class="headerlink" title="如何使用贝叶斯估计的后验概率："></a>如何使用贝叶斯估计的后验概率：</h4><p>已知数据$S$,要预测一个新的样本$x$的标签$y$，即在已知数据$S$的情况下计算新样本标签$y$的数学期望。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E[y|x,S]=\int_yyp(y|x,S)dy
+\end{align}</script><p>此时需要求$p(y|x,S)$，这个式子隐藏了一个含义，y的分布与$\theta$有关，而$\theta$服从于某种分布，因此考虑所有$\theta$可能的情况，使用全概率公式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y|x,S)=\int_\theta p(\theta,y|x,S)d\theta
+\end{align}</script><p>运用条件概率：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(\theta,y|x,S)=p(y|x,\theta,S)p(\theta|S)
+\end{align}</script><p>其含义为：已知数据为S的条件下，参数为$\theta$且$x$的标签为$y$的概率=已知数据S和参数为$\theta$的条件下$x$的标签为$y$的概率乘以数据为S的条件下参数为$\theta$的概率<br>同时，有化简<script type="math/tex">p(y|x,\theta,S)=p(y|x,\theta)</script><br>这是因为对于预测$x$,当参数$\theta$确定后，数据S如何分布与x的标签是什么已经没有关系了，x的标签的取值概率完全由参数和模型决定。将（4）代入（3）得到：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(y|x,S)=\int_\theta p(y|x,\theta)p(\theta|S)d\theta
+\end{align}</script><p>现在，如果$\theta$确定，则$p(\theta|S)$确定（使用公式2），$p(y|x,\theta)$也确定，计算出$p(y)$，代入公式3，那么标签y的数学期望也就求出，完成预测。</p>
+<h4 id="贝叶斯估计的缺点"><a href="#贝叶斯估计的缺点" class="headerlink" title="贝叶斯估计的缺点"></a>贝叶斯估计的缺点</h4><p>由于参数是随机分布的，在公式2中进行积分是非常困难的。通过观察公式2，可以发现分母是一个归一化因子，因此可以不必计算。<br>于是使用</p>
+<script type="math/tex; mode=display">\theta_{MAP}=arg\quad max_{\theta}\prod_{i=1}^{i=m}p(y^{(i)}|x^{(i)},\theta)p(\theta)</script><p>上式过程即为<strong>最大后验概率</strong>，它属于最大似然估计与贝叶斯估计互相融合的方法，一方面具有点估计的特征，另一方面考虑了参数的先验概率$p(\theta)$，通常$p(\theta)$这个先验概率被定义为高斯分布$\theta~\mathcal{N}(0,\tau^2I)$，通过贝叶斯估计的最大后验概率选择的参数与最大似然估计选择的参数相比，过拟合的程度会更小。</p>
 
       
     </div>
