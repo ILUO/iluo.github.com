@@ -1,3 +1,4 @@
+https://iluo.github.io/2018/09/24/CS229-因子分析-Factor-Analysis/
 https://iluo.github.io/2018/09/15/EM算法/
 https://iluo.github.io/2018/09/13/混合高斯模型与EM算法/
 https://iluo.github.io/2018/08/19/CS229-Note5-Learning-Theory-2/
