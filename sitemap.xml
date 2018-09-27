@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iluo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
+    
+    <lastmod>2018-09-27T09:22:11.993Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iluo.github.io/2018/09/24/CS229-%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90-Factor-Analysis/</loc>
     
-    <lastmod>2018-09-24T10:29:16.495Z</lastmod>
+    <lastmod>2018-09-24T11:01:51.760Z</lastmod>
     
   </url>
   
@@ -166,13 +173,6 @@
     <loc>https://iluo.github.io/2018/05/23/Large-Scale-Machine-Learning-OCR/</loc>
     
     <lastmod>2018-05-25T02:23:41.791Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iluo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
-    
-    <lastmod>2018-05-25T02:23:30.343Z</lastmod>
     
   </url>
   
