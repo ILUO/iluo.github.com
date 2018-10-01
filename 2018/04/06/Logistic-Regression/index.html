@@ -116,10 +116,14 @@
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-25T02:24:20.591Z">
+<meta property="og:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
+<meta property="og:updated_time" content="2018-10-01T14:10:33.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑回归(Logistic regression)分类问题线性回归只能预测连续的值，分类问题只需要输出0或者1；当假设函数的值大于等于0.5，预测为1，小于0.5则预测为0。">
+<meta name="twitter:image" content="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
 
 
 
@@ -399,7 +403,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-25 10:24:20" itemprop="dateModified" datetime="2018-05-25T10:24:20+08:00">2018-05-25</time>
+                <time title="Modified: 2018-10-01 22:10:33" itemprop="dateModified" datetime="2018-10-01T22:10:33+08:00">2018-10-01</time>
               
             
           </span>
@@ -460,8 +464,9 @@
 </ul>
 <p>该函数的图像为</p>
 <div align="center">
-![假设模型图像](http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311 "假设模型图像")
+<img src="http://a4.qpic.cn/psb?/V12UJCGv0BAHHA/xqCK02z8O2oecOdWHvovGLYOTa9Nh.6E5dmzvgNuBOE!/b/dAsAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AHMANwBzAABACc!&tm=1522976400&sce=0-12-12&rf=viewer_311">
 </div>
+
 
 <p>$h_\theta(x)$的作用是，对于给定的输入变量，根据参数计算输出变量为1 的可能性。</p>
 <script type="math/tex; mode=display">h_\theta(x)=P(y=1|x;\theta)</script><h2 id="判定边界-Decision-Boundary"><a href="#判定边界-Decision-Boundary" class="headerlink" title="判定边界(Decision Boundary)"></a>判定边界(Decision Boundary)</h2><p>即$z=\theta^TX=0$</p>
@@ -473,7 +478,7 @@
         -log(1-h_\theta(x)), & \text{if $y=0$}
         \end{cases}</script><p>$h_\theta(x)$与$Cost(h_\theta(x),y)$之间的关系如图：</p>
 <div align="center">
-![theta与代价函数之间的关系](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311 "变量与代价函数之间的关系")
+<img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/FJ6D4Tcf1xf5QleG9GGOf4sulIUbca*YIrMyPn.IuAU!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=5gHdAOYB3QABACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
 </div>
 
 <p>特点：$y=1，h_\theta(x) \neq1 $时误差随$h_\theta(x)变小而增大$，$y=0，h_\theta(x) \neq0 $时误差随$h_\theta(x)变大而增大$</p>
@@ -486,8 +491,9 @@
 <p>$=\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}$</p>
 <p>第二步到第三步的推导：</p>
 <div align="center">
-![推导](http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311 "第二步到第三步的推导")
+<img src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/Ae9unkvT49M3eqC8spmy2PDfcDE1l.TIIP23PX03cjE!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=pQLNAaUCzQEBACc!&vuin=1405591197&tm=1522976400&sce=50-1-1&rf=viewer_311">
 </div>
+
 
 <p>可以证明(凸优化的知识)，所选代价函数是一个凸优化问题，没有局部最优值。<br>注意，由于假设函数与线性回归不同，所以梯度下降是不一样的，同时特征缩放也是必要的。</p>
 <h3 id="一些梯度下降算法之外的选择"><a href="#一些梯度下降算法之外的选择" class="headerlink" title="一些梯度下降算法之外的选择"></a>一些梯度下降算法之外的选择</h3><ul>

@@ -116,10 +116,13 @@
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="聚类(Clustering)无监督学习(Unsupervised Learning)数据没有任何标签信息 聚类算法将一系列无标签的训练数据，输入到一个算法中，得到给定数据的内在结构。我们可能需要某种算法帮助我们寻找一种结构。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-25T02:22:48.145Z">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xLu4ZwP4D8nGOkve1pW.9gqWWr4eTEVorZ.LAvKWGss!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=hwIHAYcCBwEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/Jo7rJFo9of*glPGCngI.rAEdn3Td5Z17lfX*8v.D.Ns!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=dgIEAXYCBAEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311">
+<meta property="og:updated_time" content="2018-10-01T14:10:08.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Clustering">
 <meta name="twitter:description" content="聚类(Clustering)无监督学习(Unsupervised Learning)数据没有任何标签信息 聚类算法将一系列无标签的训练数据，输入到一个算法中，得到给定数据的内在结构。我们可能需要某种算法帮助我们寻找一种结构。">
+<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xLu4ZwP4D8nGOkve1pW.9gqWWr4eTEVorZ.LAvKWGss!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=hwIHAYcCBwEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311">
 
 
 
@@ -399,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-25 10:22:48" itemprop="dateModified" datetime="2018-05-25T10:22:48+08:00">2018-05-25</time>
+                <time title="Modified: 2018-10-01 22:10:08" itemprop="dateModified" datetime="2018-10-01T22:10:08+08:00">2018-10-01</time>
               
             
           </span>
@@ -483,16 +486,18 @@
 <h2 id="降维-Dimensionality-Reduction"><a href="#降维-Dimensionality-Reduction" class="headerlink" title="降维(Dimensionality Reduction)"></a>降维(Dimensionality Reduction)</h2><h3 id="数据压缩-Motivation-I-Data-Compression"><a href="#数据压缩-Motivation-I-Data-Compression" class="headerlink" title="数据压缩(Motivation I_Data Compression)"></a>数据压缩(Motivation I_Data Compression)</h3><p>例如两种仪器对同一个东西测量的结果不完全相等，但是都特征却有些重复，这时候需要进行降维。</p>
 <p>将数据从三维降至二维:<br>将三维向量投射到一个二维平面上，强迫所有数据在同一平面上，降至二维的特征向量。</p>
 <div align="center">
-![降维](http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xLu4ZwP4D8nGOkve1pW.9gqWWr4eTEVorZ.LAvKWGss!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=hwIHAYcCBwEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311 "降维")
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/xLu4ZwP4D8nGOkve1pW.9gqWWr4eTEVorZ.LAvKWGss!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=hwIHAYcCBwEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311">
 </div>
 
 <h3 id="可视化-Motivation-II-Visualization"><a href="#可视化-Motivation-II-Visualization" class="headerlink" title="可视化(Motivation II_Visualization)"></a>可视化(Motivation II_Visualization)</h3><p>只有三维以内的数据才方便可视化</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>降维算法只负责减少维数，新产生特征的意义需要自己发现</p>
 <h2 id="主成分分析-Principal-Component-Analysis"><a href="#主成分分析-Principal-Component-Analysis" class="headerlink" title="主成分分析(Principal Component Analysis)"></a>主成分分析(Principal Component Analysis)</h2><p>主成分分析是常见的降维算法，要做的是找到一个方向向量，把所有数据投射到该向量上时，我们希望投射平均均方误差尽可能地小。</p>
 <p>主成分分析与线性回归的比较：<br>主成分分析最小化的是投射误差，而线性回归尝试最小化预测误差。线性回归的目的是预测结果，而主成分分析不作任何预测。</p>
-<p><div align="center">
-![比较](http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/Jo7rJFo9of*glPGCngI.rAEdn3Td5Z17lfX*8v.D.Ns!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=dgIEAXYCBAEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311 "比较")
-</div><br>PCA技术的好处：对数据进行降维处理，对新求出的“主元”向量的重要性进行排序，根据需要选取最重要的部分。将后面的维数省去，可以达到降维从而简化模型或者对数据进行压缩。PCA无参数限制，不需要人为干预，但是如果对数据有先验知识，这却是一个缺点，因为无法通过参数化对处理过程进行干预。</p>
+<div align="center">
+<img src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/Jo7rJFo9of*glPGCngI.rAEdn3Td5Z17lfX*8v.D.Ns!/b/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=dgIEAXYCBAEBACc!&tm=1525183200&sce=0-12-12&rf=viewer_311">
+</div>
+
+<p>PCA技术的好处：对数据进行降维处理，对新求出的“主元”向量的重要性进行排序，根据需要选取最重要的部分。将后面的维数省去，可以达到降维从而简化模型或者对数据进行压缩。PCA无参数限制，不需要人为干预，但是如果对数据有先验知识，这却是一个缺点，因为无法通过参数化对处理过程进行干预。</p>
 <h2 id="主成分分析算法"><a href="#主成分分析算法" class="headerlink" title="主成分分析算法"></a>主成分分析算法</h2><ol>
 <li>均值归一化，计算出所有特征的均值，令<script type="math/tex">x_j=x_j-\mu_j</script>,如果特征在不同数量级上，还需要进行特征缩放，将其除以标准差$\sigma$</li>
 <li>计算协方差矩阵(covariance matrix)<br><script type="math/tex">\sum=\frac{1}{m}(x^{(i)})(x^{(i)})^T</script>,<br>这是一个n*n的矩阵。</li>
