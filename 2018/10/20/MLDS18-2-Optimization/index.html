@@ -108,38 +108,35 @@
 
 
 
-  <meta name="description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
-<meta name="keywords" content="machine learning,Coursera笔记">
+  <meta name="description" content="这是李宏毅老师2018年春季深度学习课程的第二章，主要讲了神经网络的损失函数是非凸的，但是我们仍然有办法去达到local minima，但是如何达到global minima，还有待探索。">
+<meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anomaly Detection">
-<meta property="og:url" content="http://yoursite.com/2018/05/08/Anomaly-Detection/index.html">
+<meta property="og:title" content="MLDS18(2) Optimization">
+<meta property="og:url" content="http://yoursite.com/2018/10/20/MLDS18-2-Optimization/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
+<meta property="og:description" content="这是李宏毅老师2018年春季深度学习课程的第二章，主要讲了神经网络的损失函数是非凸的，但是我们仍然有办法去达到local minima，但是如何达到global minima，还有待探索。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&bo=zgNEAQAAAAARF6g!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4">
-<meta property="og:updated_time" content="2018-09-08T09:33:26.164Z">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/RhM0B597TwkUSB6euA3IkAe8sNTwc3lPKXjsQyGJ8BI!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=gwOSAoMDkgIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/ckU7LKg62lm*9KGQRmRGjbpFwTIM8NXzaRQ*zElGROc!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=ggOnAYIDpwEBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/JnrjTHRLbJuC.Dx528wLjGABZizmVZD8u46DnNtKUlg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=cwOdAnMDnQIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/tl2XF9EFxIbyZy5FCKZvdYjmzTy2WT4kpddmPIBzGKM!/b/dIABAAAAAAAA&ek=1&kp=1&pt=0&bo=mQOzApkDswIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/XnzqHm9l9YMQ8rf9qS71.hR95dAPxXsUe*cIefMfx4g!/b/dA4AAAAAAAAA&ek=1&kp=1&pt=0&bo=XgOYAl4DmAIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/v1ezoU3c2rZZcIkSySD1Yt.RlL6qJCOEZR1MN*aTeec!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=bwOYAm8DmAIBACc!&tl=3&vuin=1405591197&tm=1540026000&sce=60-2-2&rf=viewer_311">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/SeRKM.FuK1n4FpHVS.u3xqPXZ8IQ3iRxJU7hVvdr1vc!/b/dNoAAAAAAAAA&ek=1&kp=1&pt=0&bo=XAOFAlwDhQIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/fVbeEmyNpjCpdZUMtARiOqB2qwiiw67EjznUtVDx.kQ!/b/dNoAAAAAAAAA&ek=1&kp=1&pt=0&bo=gALgAYAC4AEBACc!&tl=1&tm=1540029600&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/byk7GvUXFerjNA8eDdG3dhOAmzlIuzmTHMWqXdGVg5s!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=lgP9ApYD*QIBACc!&tl=1&tm=1540029600&sce=0-12-12&rf=viewer_311">
+<meta property="og:updated_time" content="2018-10-20T10:58:46.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Anomaly Detection">
-<meta name="twitter:description" content="异常检测(Anomaly Detection)    Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。">
-<meta name="twitter:image" content="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
+<meta name="twitter:title" content="MLDS18(2) Optimization">
+<meta name="twitter:description" content="这是李宏毅老师2018年春季深度学习课程的第二章，主要讲了神经网络的损失函数是非凸的，但是我们仍然有办法去达到local minima，但是如何达到global minima，还有待探索。">
+<meta name="twitter:image" content="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/RhM0B597TwkUSB6euA3IkAe8sNTwc3lPKXjsQyGJ8BI!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=gwOSAoMDkgIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/08/Anomaly-Detection/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/20/MLDS18-2-Optimization/"/>
 
 
 
@@ -149,7 +146,7 @@
   };
 </script>
 
-  <title>Anomaly Detection | ILUO</title>
+  <title>MLDS18(2) Optimization | ILUO</title>
   
 
 
@@ -353,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/Anomaly-Detection/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/MLDS18-2-Optimization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ILUO">
@@ -370,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Anomaly Detection
+          <h1 class="post-title" itemprop="name headline">MLDS18(2) Optimization
               
             
           </h1>
@@ -395,24 +392,12 @@
                 
               
 
-              <time title="Created: 2018-05-08 22:13:37" itemprop="dateCreated datePublished" datetime="2018-05-08T22:13:37+08:00">2018-05-08</time>
+              <time title="Created: 2018-10-20 17:19:43 / Modified: 18:58:46" itemprop="dateCreated datePublished" datetime="2018-10-20T17:19:43+08:00">2018-10-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-09-08 17:33:26" itemprop="dateModified" datetime="2018-09-08T17:33:26+08:00">2018-09-08</time>
               
             
           </span>
@@ -426,8 +411,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/08/Anomaly-Detection/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/08/Anomaly-Detection/" itemprop="commentsCount"></span>
+                <a href="/2018/10/20/MLDS18-2-Optimization/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/10/20/MLDS18-2-Optimization/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -435,7 +420,7 @@
 
           
           
-             <span id="/2018/05/08/Anomaly-Detection/" class="leancloud_visitors" data-flag-title="Anomaly Detection">
+             <span id="/2018/10/20/MLDS18-2-Optimization/" class="leancloud_visitors" data-flag-title="MLDS18(2) Optimization">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -466,151 +451,87 @@
       
 
       
-        <h1 id="异常检测-Anomaly-Detection"><a href="#异常检测-Anomaly-Detection" class="headerlink" title="异常检测(Anomaly Detection)"></a>异常检测(Anomaly Detection)</h1><div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/itNP.T*TGE68ddBL58naygyk95ppYQa.9Vozqw*03pY!/b/dGEBAAAAAAAA&bo=zgFVAc4BVQERGS4!&rf=viewer_4">
-</div>
-
-<p>Andrew Ng老师的机器学习入门基础课程算是学完了，所谓”学而不思则惘，思而不学则殆”·，复盘一下学习情况和理解程度还是很有必要的，不过要交毕业论文啦，肝完毕设再来更博。</p>
-<a id="more"></a>
-<h2 id="动机-Motivation"><a href="#动机-Motivation" class="headerlink" title="动机(Motivation)"></a>动机(Motivation)</h2><p>异常检测主要应用于非监督学习问题，但是却类似于监督学习问题。<br>给定数据集 ，我们假使数据集是正常的，我们希望知道新的数据 xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性$p(x)$。</p>
+        <p>这是李宏毅老师2018年春季深度学习课程的第二章，主要讲了神经网络的损失函数是非凸的，但是我们仍然有办法去达到local minima，但是如何达到global minima，还有待探索。<br><a id="more"></a></p>
+<p>优化(Optimization)：是否可能在网络可以表示的函数空间中找到使训练误差的函数。在深度学习中，损失函数是一个非凸函数，非凸函数的优化问题是一个NP难问题。</p>
+<h2 id="神经网络的损失函数是非凸的"><a href="#神经网络的损失函数是非凸的" class="headerlink" title="神经网络的损失函数是非凸的"></a>神经网络的损失函数是非凸的</h2><p>结合下图，考虑一个只有一层隐藏层的全连接的网络，如果通过优化得到的参数能够使损失函数降到一个最小值，现在将隐藏层的神经元进行错位排列，并将对应的参数错位置换，可以想象得出这个网络所能表示的函数空间并没有发生变化（因为结构没变），而且相关参数随着神经元的错排进行了错位置换后，对应的损失函数的值也没有变。但是在以参数为应变量，损失函数为自变量的空间中，可以发现：将参数进行错位后，它对应的最小值的位置与原位置是不一样的，考虑有n个参数，则可以发现有很多个点都可以达到这个最小值，所以深度学习的损失函数是非凸的。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/YjPuZ*oaShNktXISodaCoSQFEN0ac3W9pHwww7ntsjs!/b/dG0BAAAAAAAA&bo=uQEGAbkBBgEBByA!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/RhM0B597TwkUSB6euA3IkAe8sNTwc3lPKXjsQyGJ8BI!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=gwOSAoMDkgIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 </div>
 
-<p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。<br>这种方法称为<strong>密度估计</strong></p>
-<script type="math/tex; mode=display">
-if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \text{normal} \end{cases}</script><h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布也称为正态分布。变量$x$符合高斯分布$x~N(\mu,\sigma^2)$则其概率密度函数为:</p>
-<script type="math/tex; mode=display">p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})</script><p>可以利用已有数据来预测总体中的$\mu$和$\sigma^2$:</p>
-<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}</script><script type="math/tex; mode=display">\sigma^2 = \frac{1}{m}\sum\_{i=1}^{m}(x^{(i)}-\mu)^2</script><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>对于给定数据集$x^{(1)},x^{(2)},x^{(3)}$，预测$\mu$和$\sigma^2$的值。给定一个训练实例，根据模型计算$p(x)$。</p>
-<script type="math/tex; mode=display">p(x) = \prod_{j=1}^np(x_j,u_j,\sigma_j^2)=\prod_{j=1}^n\frac{1}{\sqrt{2\pi}\sigma_j}exp(-\frac{(x_j-u_j)^2}{2\sigma_j^2})</script><h2 id="开发异常检测系统"><a href="#开发异常检测系统" class="headerlink" title="开发异常检测系统"></a>开发异常检测系统</h2><ul>
-<li>根据训练集数据，估计特征的平均值和方差并构建$p(x)$函数，一般训练集数据都是正常数据。</li>
-<li>对交叉检验集，尝试使用不同的$\epsilon$作于阈值，根据$F_1$或者查准率、查全率的比例来选择$\epsilon$。</li>
-<li>选出$\epsilon$后，对测试集进行预测，计算异常检测系统的$F_1$或者查全率、查准率之比。</li>
-</ul>
-<h2 id="异常检测监督学习的比较"><a href="#异常检测监督学习的比较" class="headerlink" title="异常检测监督学习的比较"></a>异常检测监督学习的比较</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">异常检测</th>
-<th style="text-align:center">监督学习</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">少量正向类，大量负向类</td>
-<td style="text-align:center">同时有大量正向和负向类</td>
-</tr>
-<tr>
-<td style="text-align:center">有许多不同种类的异常，未来遇到的异常可能与已掌握的异常非常不同根据非常少量的正向类数据来训练算法</td>
-<td style="text-align:center">有足够多的正向类实例，足够用于训练算法，未来遇到的正向类实例可能与训练集中的非常近似</td>
-</tr>
-<tr>
-<td style="text-align:center">欺诈行为检测、生产(例如飞机引擎检测)、检测数据中心计算机运行状况</td>
-<td style="text-align:center">邮件过滤、天气预报、肿瘤分类</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="选择特征"><a href="#选择特征" class="headerlink" title="选择特征"></a>选择特征</h2><p>异常检测特征符合高斯分布，如果数据的分布不是高斯分布，异常检测算法也能工作，但是最好将数据转换为高斯分布，常用对数函数$x=log(x+c)$、$x=x^c(c为0-1之间的一个分数)$。</p>
-<p>误差分析：<br>分析那些被算法错误预测为正常的数据，观察能否找出一些问题。我们可能从问题中发现需要增加一些新的特征，增加这些新特征后获得的新算法能够帮助我们更好地进行异常检测。<br>通常可以通过将一些相关的特征进行组合，来获得一些新的更好的特征（异常数据的该特征值异常地大或小。</p>
-<h2 id="多元高斯分布"><a href="#多元高斯分布" class="headerlink" title="多元高斯分布"></a>多元高斯分布</h2><p>假使我们有两个相关的特征，而且这两个特征的值域范围比较宽，这种情况下，一般的高斯分布模型可能不能很好地识别异常数据。其原因在于，一般的高斯分布模型尝试的是去同时抓住两个特征的偏差，因此创造出一个比较大的判定边界。</p>
+<h2 id="Hessian-Matrix"><a href="#Hessian-Matrix" class="headerlink" title="Hessian Matrix"></a>Hessian Matrix</h2><h3 id="critical-point"><a href="#critical-point" class="headerlink" title="critical point"></a>critical point</h3><p>critical(待鉴定的，临界的) point(接下来称为cp)，cp的梯度是为0，对于非凸函数，梯度为0不代表处于极值，还有可能是鞍点(saddle point)，即该点的梯度为0，但是在某些方向有上升的趋势，在某些方向有下降的趋势(想象一下马鞍的中心)，而不是像极值点一样，周围的变化趋势的是一致的，所以在深度学习中，对于cp，要借助Hessian Matrix进行判断。</p>
+<h3 id="Hessian"><a href="#Hessian" class="headerlink" title="Hessian"></a>Hessian</h3><p>在之前的一篇博客中，描述了<a href="https://iluo.github.io/2018/06/17/CS229-Note1/" target="_blank" rel="noopener">梯度下降的数学原理</a>，即通过一阶泰勒展开来寻求梯度为0的点，因为之前是针对梯度为0则一定处于极值的凸函数进行优化，所以一阶展开就行了。但是对于非凸函数，一阶泰勒展开近似时梯度为0并不能代表该点是极值，所以要进一步近似，寻求更微小的变化趋势，能够表示的就是Hessian矩阵。</p>
+<script type="math/tex; mode=display">f(\theta) = f(\theta^0)+(\theta-\theta^0)^Tg+\frac{1}{2}(\theta-\theta^0)^TH(\theta-\theta^0)+...</script><p>上式的g是梯度，是一个向量：$g_i = \frac{\delta f(\theta^0)}{\delta \theta_i}$<br>H就是Hessian矩阵而且是对称的:$H_{ij} = \frac{\delta^2}{\delta\theta_i\delta\theta_jf(\theta^0)}=H_{ji}$</p>
+<p>而当梯度g为0时，有$f(\theta) = f(\theta^0)+\frac{1}{2}(\theta-\theta^0)^TH(\theta-\theta^0)+…$的近似，所以就要考虑Hessian矩阵是如何影响这个近似的。</p>
+<h4 id="通过牛顿法求二阶展开的critical-point"><a href="#通过牛顿法求二阶展开的critical-point" class="headerlink" title="通过牛顿法求二阶展开的critical point"></a>通过牛顿法求二阶展开的critical point</h4><p>对二阶近似两边进行微分取0，可以得到(没有验证)：</p>
+<script type="math/tex; mode=display">\Delta f(\theta) \approx g + H(\theta - \theta_0) = 0</script><script type="math/tex; mode=display">\theta = \theta^0 - H^{-1}g</script><p>所以参数的更新就如下图，比梯度下降看起来步骤会更少，但是在高维空间中计算$H^{-1}$的代价会非常大，而且仍然不能避免让结果靠近鞍点。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/qun*ruLZtXRnZCy6jhI1yqlI1OSz*LsEHNbgFIc*QOo!/b/dD0BAAAAAAAA&bo=mgFOAZoBTgEBFzA!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/ckU7LKg62lm*9KGQRmRGjbpFwTIM8NXzaRQ*zElGROc!/b/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=ggOnAYIDpwEBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 </div>
 
-<p>在一般的高斯分布模型中，我们计算 的方法是： 通过分别计算每个特征对应的几率然后将其累乘起来，在多元高斯分布模型中，我们将构建特征的协方差矩阵，用所有的特征一起来计算 。</p>
-<script type="math/tex; mode=display">\mu=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}</script><script type="math/tex; mode=display">\Sigma=\frac{1}{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}(X-\mu)^T(X-\mu)</script><script type="math/tex; mode=display">p(x) = \frac{1}{(2\pi^{\frac{n}{2}})|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))</script><p>$|\Sigma|$是定矩阵，在Octave中用det(sigma)计算</p>
-<h3 id="协方差矩阵如何影响模型"><a href="#协方差矩阵如何影响模型" class="headerlink" title="协方差矩阵如何影响模型"></a>协方差矩阵如何影响模型</h3><div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/gQKrFpFvDAXniOExxd2pA53YehndXvLA9hp4gbsOYxE!/b/dJUAAAAAAAAA&bo=zgNEAQAAAAARF6g!&rf=viewer_4">
-</div>
 
-<p>上图是5个不同的模型，从左往右依次分析：</p>
-<ol>
-<li>是一个一般的高斯分布模型；</li>
-<li>通过协方差矩阵，令特征1拥有较小的偏差，同时保持特征2的偏差；</li>
-<li>通过协方差矩阵，令特征2拥有较大的偏差，同时保持特征1的偏差；</li>
-<li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的正相关性；</li>
-<li>通过协方差矩阵，在不改变两个特征的原有偏差的基础上，增加两者之间的负相关性 。</li>
-</ol>
-<h3 id="多元高斯分布与原高斯分布模型的比较"><a href="#多元高斯分布与原高斯分布模型的比较" class="headerlink" title="多元高斯分布与原高斯分布模型的比较"></a>多元高斯分布与原高斯分布模型的比较</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">原高斯分布模型</th>
-<th style="text-align:center">多元高斯分布模型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">不能捕捉特征之间的相关性，但可以通过将特征进行组合的方法来解决</td>
-<td style="text-align:center">自动捕捉特征之间的相关性</td>
-</tr>
-<tr>
-<td style="text-align:center">计算代价低，能适应大规模的特征</td>
-<td style="text-align:center">计算代价较高 训练集较小时也同样适用</td>
-</tr>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:center">必须满足 m&gt;n，不然协方差矩阵不可逆。通常须 m &gt; 10n。另外，特征冗余也会导致协方差矩阵不可逆</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>原高斯分布模型被广泛使用着，如果特征之间在某种程度上存在相互关联的情况，我们可以通过构造新新特征的方法来捕捉这些相关性。如果训练集不是太大，并且没有太多的特征，我们可以使用多元高斯分布模型。</strong></p>
-<h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1><h2 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h2><div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/Apwcg42sGu671zssgkMBFYx.aq0Xno27CIi3AsUWtZ8!/b/dGwBAAAAAAAA&bo=lwLiAJcC4gABFzA!&rf=viewer_4">
-</div>
 
-<h3 id="变量描述"><a href="#变量描述" class="headerlink" title="变量描述"></a>变量描述</h3><ul>
-<li>$\theta^{(j)}$用户j的参数向量</li>
-<li>$x^{(i)}$电影i的特征向量</li>
-<li>对于用户j和电影i，我们预测评分为$(\theta^{(j)}x^{(i)})$</li>
-<li>$n_u$用户的数量</li>
-<li>$n_m$电影的数量</li>
-<li>$r(i,j)$评分记录</li>
-<li>$y(i,j)$用户i给电影j评分</li>
-<li>$m_j$用户j评分过的电影总数</li>
-</ul>
-<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><script type="math/tex; mode=display">min\frac{1}{2}\sum\_{i:r(i,j)=1}((\theta^{(j)})^Tx^i-y^{(i,j)})^2 + \frac{\lambda}{2}(\theta_k^{(j)})^2</script><p>其中 i :r(i,j) 表示我们只计算那些用户j评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1/2m，在这里我们将m去掉。并且我们不对方差项 进行正则化处理。<br>为了学习所有用户的参数，代价函数为：</p>
+<h3 id="分析Hessian"><a href="#分析Hessian" class="headerlink" title="分析Hessian"></a>分析Hessian</h3><p>梯度g为0时，处于critical potint，有：</p>
+<script type="math/tex; mode=display">f(\theta) = f(\theta^0)+\frac{1}{2}(\theta-\theta^0)^TH(\theta-\theta^0)+...</script><p>将$\theta-\theta_0$看作一个向量x，如果矩阵H是正定的，那么$x^THx &gt; 0$，即H的所有特征值都是正的，那么在$\theta_0$附近的函数值都大于$f(\theta_0)$，所以这个点是local minima。<br>如果是负定的，那么$x^THx &lt; 0$，同理，这个点是local maxima，H的特征值都是负的。<br>如果$x^THx$有些大于0，有些小于0，即特征值有正有负，那么这个点是鞍点。<br>但是如果H矩阵半正定或者半负定，即特征值有0的存在，那么就无法判断这个点的具体情况了，因为可能会被未考虑的近似所影响。</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>设$v$为一个单元特征向量，由于$v^THv=v^T(\lambda v)=\lambda||v||^2=\lambda$，根据线代知识，H是一个对称方阵，它的所有特征向量都是正交的，而且正好能够张成$\theta$所在的空间，即$\theta_0$的到$\theta$的变化方向可以被这些特征向量的线性组合所表示，那么就有$(\theta-\theta_0)=m_1v_1+m_2v_2+…+m_nv_n$，$v_1$到$v_n$是所有的特征向量，通过这样表示，代入二阶泰勒展开，可以发现$f(\theta)$与$f(\theta_0)$的关系，完全由特征值的值所决定。</p>
+<h2 id="Deep-Linear-NetWork"><a href="#Deep-Linear-NetWork" class="headerlink" title="Deep Linear NetWork"></a>Deep Linear NetWork</h2><p>考虑如图最简单的Linear Network的Hessian矩阵，可以发现梯度为0时，即便在鞍点也可以通过计算Hessian来判断往哪一个方向走。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/7TSp6lpiFN0WdumgSVQo46aozMeJNLzhXBBuMZqlFv8!/b/dGwBAAAAAAAA&bo=6gFEAOoBRAABFzA!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/JnrjTHRLbJuC.Dx528wLjGABZizmVZD8u46DnNtKUlg!/b/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=cwOdAnMDnQIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 </div>
 
-<p>梯度下降更新公式为：</p>
-<script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum\_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} \quad k=0</script><script type="math/tex; mode=display">\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)} + \lambda\theta_k^{(j)} \quad k\neq0</script><h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h2><p>在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。</p>
+<p>考虑如图有两个hidden layers的Linear Network，有三种情况可以造成critical point，第一种情况，$W_1W_2W_3=1$，观察损失函数可以判断这个点是global minima，对于第二种情况,Hessian 矩阵是个0阵，无法通过Hessian矩阵来判断。对于第三种情况，H的特征值有正有负，所以可以确定是鞍点。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/WnSA8q6jEZUtBIg8EhnO7ACvigEMgsRQ39p72S9o7Po!/b/dGYBAAAAAAAA&bo=4QFCAAAAAAADB4A!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a1.qpic.cn/psb?/V12UJCGv0BAHHA/tl2XF9EFxIbyZy5FCKZvdYjmzTy2WT4kpddmPIBzGKM!/b/dIABAAAAAAAA&ek=1&kp=1&pt=0&bo=mQOzApkDswIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 </div>
 
-<p>但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。协同过滤算法可以同时学习这两者。<br>我们的优化目标便改为同时针对$x$和$\theta$进行：</p>
-<div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/*RHB7n9qz53kp.HuKaUoi2a.oUOeR0.Amp5u73M1tos!/b/dGwBAAAAAAAA&bo=lAIvAJQCLwABByA!&rf=viewer_4">
-</div>
-
-<p>对代价函数求偏导的结果如下：</p>
-<div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/xJZYUlnqunw*yA.daKXxKOGzik5Pe3tvlvPWi1f*uWE!/b/dGkAAAAAAAAA&bo=PgE0AD4BNAABFzA!&rf=viewer_4">
-</div>
-<div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/LSFEQ6nkCpbQwe.DxO348jOoK*9x3Z970NBBuOgPDCk!/b/dIUBAAAAAAAA&bo=RgE0AEYBNAABFzA!&rf=viewer_4">
-</div>
-
+<p>对于更加复杂的网络，还可以通过从不同的两个维度取点来观察函数的变化图像，可以观察出来是不是鞍点。</p>
+<h3 id="一些关于Linear-Network的minima的论文"><a href="#一些关于Linear-Network的minima的论文" class="headerlink" title="一些关于Linear Network的minima的论文"></a>一些关于Linear Network的minima的论文</h3><p>一些结论：<br>隐藏层的大小大于输入和输出的维度时是global minima<br>超过两层隐藏层的网络可能会制造出没有负特征值的鞍点。</p>
 <ul>
-<li>初始 $x$,$\theta$为一些随机小值；</li>
-<li>使用梯度下降算法最小化代价函数；</li>
-<li>在训练完算法后，我们预测$(\theta^{(j)})^Tx^{(i)}$为用户 j 给电影 i 的评分。<br> 如果一位用户正在观看电影，我们可以寻找另一部电影 ，依据两部电影的特征向量之间的距离$||x^{(i)}-x^{(j)}||$ 的大小来判断电影的相似度。</li>
+<li>Kenji Kawaguchi, Deep Learning without Poor Local Minima, NIPS, 2016</li>
+<li>Haihao Lu, Kenji Kawaguchi, Depth Creates No Bad Local Minima, arXiv,2017</li>
+<li>Thomas Laurent, James von Brecht, Deep linear neural networks with arbitrary loss: All local minima are global, arXiv, 2017</li>
+<li>Maher Nouiehed, Meisam Razaviyayn, Learning Deep Models: Critical Points and Local Openness, arXiv, 2018</li>
 </ul>
-<h2 id="均值归一化"><a href="#均值归一化" class="headerlink" title="均值归一化"></a>均值归一化</h2><p>如果已有数据如图</p>
+<h2 id="Non-linear-Deep-NetWork"><a href="#Non-linear-Deep-NetWork" class="headerlink" title="Non-linear Deep NetWork"></a>Non-linear Deep NetWork</h2><h3 id="ReLU-has-local"><a href="#ReLU-has-local" class="headerlink" title="ReLU has local"></a>ReLU has local</h3><p>ReLU的network是有盲点的，由于ReLU的特性，会出现输入数据x后所有输出都是0，那么这个点的梯度就是0，因为在数据点x附近都是非常平坦的，所以对于这个critical point，只要存在另外的输入使y为负数（这很好得到），所以这个点就不是global minima。</p>
+<p>关于Non-linear Deep Network的假想：使用某些特殊的参数初始化，或者特殊的训练数据，可以找到global minima</p>
+<h2 id="关于deep-learning的猜想"><a href="#关于deep-learning的猜想" class="headerlink" title="关于deep learning的猜想"></a>关于deep learning的猜想</h2><p>猜想一：<br>几乎所有的局部最小值和全局最小值都是差不多的。<br>如果Hessian矩阵的特征值是大于0还是小于0的概率各为1/2，那么随着参数的增多，如果遇到cp，是鞍点的概率会越来越大。而特征值符号的概率p其实是由损失函数决定的，如下图，鞍点容易出现在loss高的地方，而localminima会出现在loss比较低的地方，从而有local minima都是差不多的猜想。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/pcBvX8WQmHgpdmTMrpoFDXaQHzQGWw.YrRZ4.m09Lro!/b/dDIBAAAAAAAA&bo=uAPkAAAAAAADB30!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/XnzqHm9l9YMQ8rf9qS71.hR95dAPxXsUe*cIefMfx4g!/b/dA4AAAAAAAAA&ek=1&kp=1&pt=0&bo=XgOYAl4DmAIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
 </div>
 
-<p>我们首先需要对结果 Y 矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：</p>
+
+<p>猜想二：<br>如果Hessian的正特征值越多，就越像一个local minima,如下图。</p>
 <div align="center">
-<img src="http://m.qpic.cn/psb?/V12UJCGv0BAHHA/t20SFa6s9lxBUpBdS.EXaT3G6b1fPn49WkVX4zDo4ME!/b/dEUBAAAAAAAA&bo=lwOsAAAAAAADBxo!&rf=viewer_4">
+<img width="50%" height="50%" src="http://a2.qpic.cn/psb?/V12UJCGv0BAHHA/v1ezoU3c2rZZcIkSySD1Yt.RlL6qJCOEZR1MN*aTeec!/b/dN0AAAAAAAAA&ek=1&kp=1&pt=0&bo=bwOYAm8DmAIBACc!&tl=3&vuin=1405591197&tm=1540026000&sce=60-2-2&rf=viewer_311">
 </div>
 
-<p>然后我们利用这个新的 Y，矩阵来训练算法。对于Eve，我们的新模型会认为她给每部电影的评分都是该电影的平均分。</p>
+<p>猜想三：<br>如果网络够大，可以通过梯度下降找到一个全局最优解。</p>
+<ul>
+<li>Razvan Pascanu, Yann N. Dauphin, Surya Ganguli, Yoshua Bengio, On the saddle point problem for non-convex optimization, arXiv, 2014</li>
+<li>Yann Dauphin, Razvan Pascanu, Caglar Gulcehre, Kyunghyun Cho, Surya Ganguli, Yoshua Bengio, “Identifying and attacking the saddle point problem in high-dimensional non-convex optimization”, NIPS, 2014</li>
+<li>Anna Choromanska, Mikael Henaff, Michael Mathieu, Gérard Ben Arous, Yann LeCun, “The Loss Surfaces of Multilayer Networks”, PMLR, 2015</li>
+<li>Jeffrey Pennington, Yasaman Bahri, “Geometry of Neural Network Loss Surfaces via Random Matrix Theory”, PMLR, 2017<br>Benjamin D. Haeffele, Rene Vidal, ” Global Optimality in Neural Network Training”, CVPR, 2017</li>
+</ul>
+<h2 id="关于损失函数的可视化"><a href="#关于损失函数的可视化" class="headerlink" title="关于损失函数的可视化"></a>关于损失函数的可视化</h2><h3 id="观察参数是如何影响损失函数的"><a href="#观察参数是如何影响损失函数的" class="headerlink" title="观察参数是如何影响损失函数的"></a>观察参数是如何影响损失函数的</h3><p>一个维度：选择初始化的点与训练结束的点相连，然后继续延长两倍，然后可视化这一段线段上loss在某一个方向上的变化。</p>
+<p>两个维度：固定某一个参数方向的变化，另一个参数方向则是在不断的变化的。</p>
+<h3 id="可视化训练过程"><a href="#可视化训练过程" class="headerlink" title="可视化训练过程"></a>可视化训练过程</h3><p>在每次update参数的时候记录下所有的参数以及对应的loss，最后将参数通过PCA降维到二维，最后将对应的loss可视化到二维平面上，如下图，不同的模型可能会得到不同的Solution。</p>
+<div align="center">
+<img width="50%" height="50%" src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/SeRKM.FuK1n4FpHVS.u3xqPXZ8IQ3iRxJU7hVvdr1vc!/b/dNoAAAAAAAAA&ek=1&kp=1&pt=0&bo=XAOFAlwDhQIBACc!&tl=1&tm=1540026000&sce=0-12-12&rf=viewer_311">
+</div>
+
+<h3 id="比较不同的优化算法"><a href="#比较不同的优化算法" class="headerlink" title="比较不同的优化算法"></a>比较不同的优化算法</h3><p>使用同样的数据源喂给不同算法得到的网络，比较他们的差异。为什么会有这种差异（在鞍点时可能选择了不同的路线）</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>做了前两个作业，收获最大的就是理解了tensorflow的优化器是分为两个步骤的，第一个步骤是compute_gradients，即计算梯度，第二个步骤是apply_gradients，即使用计算得到的梯度和上一次的参数去更新此次参数。具体代码放在了<a href="https://github.com/ILUO/DLByLHY/tree/master/HW2/Optimization" target="_blank" rel="noopener">github</a>上</p>
+<h3 id="Visualize-the-Optimization-Process"><a href="#Visualize-the-Optimization-Process" class="headerlink" title="Visualize the Optimization Process"></a>Visualize the Optimization Process</h3><p>即上面的可视化训练过程，记录每次的参数和损失函数，然后使用PCA降维参数，将权重展示到平面上，我使用神经网络模拟同一个函数训练了六次，六次的变化如下，和老师的看起来差不多吧(迫真)：</p>
+<div align="center">
+<img width="50%" height="50%" src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/fVbeEmyNpjCpdZUMtARiOqB2qwiiw67EjznUtVDx.kQ!/b/dNoAAAAAAAAA&ek=1&kp=1&pt=0&bo=gALgAYAC4AEBACc!&tl=1&tm=1540029600&sce=0-12-12&rf=viewer_311">
+</div>
+
+<h3 id="Observe-Gradient-Norm-During-Training"><a href="#Observe-Gradient-Norm-During-Training" class="headerlink" title="Observe Gradient Norm During Training"></a>Observe Gradient Norm During Training</h3><p>即记录每次训练的Gradient Norm和loss，然后放到一起比较，是在MNist_data数据集上跑的，如图：</p>
+<div align="center">
+<img width="50%" height="50%" src="http://a3.qpic.cn/psb?/V12UJCGv0BAHHA/byk7GvUXFerjNA8eDdG3dhOAmzlIuzmTHMWqXdGVg5s!/b/dAoBAAAAAAAA&ek=1&kp=1&pt=0&bo=lgP9ApYD*QIBACc!&tl=1&tm=1540029600&sce=0-12-12&rf=viewer_311">
+</div>
+
+<p>所以有Gradient Norm接近0时越有可能是Solutin</p>
+<h3 id="What-Happened-When-Gradient-is-Almost-Zero"><a href="#What-Happened-When-Gradient-is-Almost-Zero" class="headerlink" title="What Happened When Gradient is Almost Zero"></a>What Happened When Gradient is Almost Zero</h3><p>即可视化梯度接近0时，Hessian矩阵中正值的比例与损失函数之间的关系，可以发现当征值比例很大时，loss都是很小的，不过我没找到怎么算Hessian，就没做这题。</p>
 
       
     </div>
@@ -631,9 +552,7 @@ if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \tex
       
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-          
-            <a href="/tags/Coursera笔记/" rel="tag"># Coursera笔记</a>
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
           
         </div>
       
@@ -646,8 +565,8 @@ if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \tex
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/05/Coursera-Machine-Learning-ex6-附加题/" rel="next" title="Coursera Machine Learning ex6 附加题">
-                <i class="fa fa-chevron-left"></i> Coursera Machine Learning ex6 附加题
+              <a href="/2018/10/14/MLDS18-1-Why-Deep-Network/" rel="next" title="MLDS18(1) Why Deep Network?">
+                <i class="fa fa-chevron-left"></i> MLDS18(1) Why Deep Network?
               </a>
             
           </div>
@@ -655,10 +574,6 @@ if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \tex
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/23/Large-Scale-Machine-Learning-OCR/" rel="prev" title="Large Scale Machine Learning & OCR">
-                Large Scale Machine Learning & OCR <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -854,7 +769,7 @@ if \quad p(x) \begin{cases} \leq\epsilon, & \text {anomaly} \\ >\epsilon, & \tex
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异常检测-Anomaly-Detection"><span class="nav-number">1.</span> <span class="nav-text">异常检测(Anomaly Detection)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动机-Motivation"><span class="nav-number">1.1.</span> <span class="nav-text">动机(Motivation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">高斯分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发异常检测系统"><span class="nav-number">1.4.</span> <span class="nav-text">开发异常检测系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常检测监督学习的比较"><span class="nav-number">1.5.</span> <span class="nav-text">异常检测监督学习的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择特征"><span class="nav-number">1.6.</span> <span class="nav-text">选择特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多元高斯分布"><span class="nav-number">1.7.</span> <span class="nav-text">多元高斯分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差矩阵如何影响模型"><span class="nav-number">1.7.1.</span> <span class="nav-text">协方差矩阵如何影响模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元高斯分布与原高斯分布模型的比较"><span class="nav-number">1.7.2.</span> <span class="nav-text">多元高斯分布与原高斯分布模型的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐系统"><span class="nav-number">2.</span> <span class="nav-text">推荐系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于内容的推荐"><span class="nav-number">2.1.</span> <span class="nav-text">基于内容的推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量描述"><span class="nav-number">2.1.1.</span> <span class="nav-text">变量描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代价函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">代价函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协同过滤"><span class="nav-number">2.2.</span> <span class="nav-text">协同过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#均值归一化"><span class="nav-number">2.3.</span> <span class="nav-text">均值归一化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的损失函数是非凸的"><span class="nav-number">1.</span> <span class="nav-text">神经网络的损失函数是非凸的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hessian-Matrix"><span class="nav-number">2.</span> <span class="nav-text">Hessian Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#critical-point"><span class="nav-number">2.1.</span> <span class="nav-text">critical point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hessian"><span class="nav-number">2.2.</span> <span class="nav-text">Hessian</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过牛顿法求二阶展开的critical-point"><span class="nav-number">2.2.1.</span> <span class="nav-text">通过牛顿法求二阶展开的critical point</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析Hessian"><span class="nav-number">2.3.</span> <span class="nav-text">分析Hessian</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">2.4.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Linear-NetWork"><span class="nav-number">3.</span> <span class="nav-text">Deep Linear NetWork</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些关于Linear-Network的minima的论文"><span class="nav-number">3.1.</span> <span class="nav-text">一些关于Linear Network的minima的论文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-linear-Deep-NetWork"><span class="nav-number">4.</span> <span class="nav-text">Non-linear Deep NetWork</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU-has-local"><span class="nav-number">4.1.</span> <span class="nav-text">ReLU has local</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于deep-learning的猜想"><span class="nav-number">5.</span> <span class="nav-text">关于deep learning的猜想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于损失函数的可视化"><span class="nav-number">6.</span> <span class="nav-text">关于损失函数的可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观察参数是如何影响损失函数的"><span class="nav-number">6.1.</span> <span class="nav-text">观察参数是如何影响损失函数的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化训练过程"><span class="nav-number">6.2.</span> <span class="nav-text">可视化训练过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较不同的优化算法"><span class="nav-number">6.3.</span> <span class="nav-text">比较不同的优化算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业"><span class="nav-number">7.</span> <span class="nav-text">作业</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualize-the-Optimization-Process"><span class="nav-number">7.1.</span> <span class="nav-text">Visualize the Optimization Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Observe-Gradient-Norm-During-Training"><span class="nav-number">7.2.</span> <span class="nav-text">Observe Gradient Norm During Training</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-Happened-When-Gradient-is-Almost-Zero"><span class="nav-number">7.3.</span> <span class="nav-text">What Happened When Gradient is Almost Zero</span></a></li></ol></li></ol></div>
             
 
           </div>

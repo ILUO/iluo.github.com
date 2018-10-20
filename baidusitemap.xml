@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/10/14/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2018-10-15T01:55:08.773Z</lastmod>
+    <loc>https://iuo.github.io/2018/10/14/MLDS18-1-Why-Deep-Network/</loc>
+    <lastmod>2018-10-20T10:59:37.435Z</lastmod>
     <data>
         <display>
-        <title>为什么要使用深度神经网络?</title>
+        <title>MLDS18(1) Why Deep Network?</title>
         <pubTime>2018-10-14T14:54:59.000Z</pubTime>
         
         <tag>deep learning</tag>
@@ -21,7 +21,24 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/03/31/Liner-Regression/</loc>
+    <loc>https://iuo.github.io/2018/10/20/MLDS18-2-Optimization/</loc>
+    <lastmod>2018-10-20T10:58:46.136Z</lastmod>
+    <data>
+        <display>
+        <title>MLDS18(2) Optimization</title>
+        <pubTime>2018-10-20T09:19:43.000Z</pubTime>
+        
+        <tag>deep learning</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://iuo.github.io/2018/03/31/Liner-Regression/</loc>
     <lastmod>2018-10-01T14:10:40.261Z</lastmod>
     <data>
         <display>
@@ -40,7 +57,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/01/Linear-Regression-Multiple-Variables/</loc>
+    <loc>https://iuo.github.io/2018/04/01/Linear-Regression-Multiple-Variables/</loc>
     <lastmod>2018-10-01T14:10:37.292Z</lastmod>
     <data>
         <display>
@@ -59,7 +76,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/06/Logistic-Regression/</loc>
+    <loc>https://iuo.github.io/2018/04/06/Logistic-Regression/</loc>
     <lastmod>2018-10-01T14:10:33.984Z</lastmod>
     <data>
         <display>
@@ -78,7 +95,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/12/Nerual-Networks-Learning/</loc>
+    <loc>https://iuo.github.io/2018/04/12/Nerual-Networks-Learning/</loc>
     <lastmod>2018-10-01T14:10:30.957Z</lastmod>
     <data>
         <display>
@@ -97,7 +114,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/08/Neural-Networks-Representation/</loc>
+    <loc>https://iuo.github.io/2018/04/08/Neural-Networks-Representation/</loc>
     <lastmod>2018-10-01T14:10:27.444Z</lastmod>
     <data>
         <display>
@@ -116,7 +133,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/15/%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/</loc>
+    <loc>https://iuo.github.io/2018/04/15/%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/</loc>
     <lastmod>2018-10-01T14:10:21.686Z</lastmod>
     <data>
         <display>
@@ -135,7 +152,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/24/Support-Vector-Machines/</loc>
+    <loc>https://iuo.github.io/2018/04/24/Support-Vector-Machines/</loc>
     <lastmod>2018-10-01T14:10:17.930Z</lastmod>
     <data>
         <display>
@@ -154,16 +171,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/09/29/CS229-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-Principal-components-analysis/</loc>
+    <loc>https://iuo.github.io/2018/09/29/CS229-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-Principal-components-analysis/</loc>
     <lastmod>2018-10-01T14:10:13.334Z</lastmod>
     <data>
         <display>
         <title>CS229 主成分分析(Principal components analysis)</title>
         <pubTime>2018-09-29T14:26:56.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>线性代数基础</tag>
          
@@ -175,7 +192,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/05/01/Clustering/</loc>
+    <loc>https://iuo.github.io/2018/05/01/Clustering/</loc>
     <lastmod>2018-10-01T14:10:08.178Z</lastmod>
     <data>
         <display>
@@ -194,7 +211,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
+    <loc>https://iuo.github.io/2018/05/05/Coursera-Machine-Learning-ex6-%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
     <lastmod>2018-09-27T09:22:11.993Z</lastmod>
     <data>
         <display>
@@ -213,16 +230,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/09/24/CS229-%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90-Factor-Analysis/</loc>
+    <loc>https://iuo.github.io/2018/09/24/CS229-%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90-Factor-Analysis/</loc>
     <lastmod>2018-09-24T11:01:51.760Z</lastmod>
     <data>
         <display>
         <title>CS229 因子分析(Factor Analysis)</title>
         <pubTime>2018-09-24T09:56:57.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
          
            
@@ -232,16 +249,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/09/15/EM%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://iuo.github.io/2018/09/15/EM%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2018-09-15T12:15:48.949Z</lastmod>
     <data>
         <display>
         <title>EM算法</title>
         <pubTime>2018-09-15T11:23:15.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>EM算法</tag>
          
@@ -253,16 +270,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/09/13/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B%E4%B8%8EEM%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://iuo.github.io/2018/09/13/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B%E4%B8%8EEM%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2018-09-13T08:40:11.097Z</lastmod>
     <data>
         <display>
         <title>混合高斯模型与EM算法</title>
         <pubTime>2018-09-13T08:22:25.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>EM算法</tag>
          
@@ -274,16 +291,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/07/08/CS229-Note2/</loc>
+    <loc>https://iuo.github.io/2018/07/08/CS229-Note2/</loc>
     <lastmod>2018-09-13T04:52:30.746Z</lastmod>
     <data>
         <display>
         <title>CS229-Note2</title>
         <pubTime>2018-07-08T03:24:55.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
          
            
@@ -294,7 +311,7 @@
     
     
   <url>
-    <loc>https://iluo.github.io/2018/05/08/Anomaly-Detection/</loc>
+    <loc>https://iuo.github.io/2018/05/08/Anomaly-Detection/</loc>
     <lastmod>2018-09-08T09:33:26.164Z</lastmod>
     <data>
         <display>
@@ -314,7 +331,7 @@
     
     
   <url>
-    <loc>https://iluo.github.io/2018/08/19/CS229-Note5-Learning-Theory-2/</loc>
+    <loc>https://iuo.github.io/2018/08/19/CS229-Note5-Learning-Theory-2/</loc>
     <lastmod>2018-08-19T04:36:00.476Z</lastmod>
     <data>
         <display>
@@ -323,9 +340,9 @@
         
         <tag>CS229</tag>
          
-        <tag>概率论基础</tag>
-         
         <tag>Learning Theory</tag>
+         
+        <tag>概率论基础</tag>
          
          
            
@@ -335,16 +352,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/07/27/CS229-Note4-Learning-Theory/</loc>
+    <loc>https://iuo.github.io/2018/07/27/CS229-Note4-Learning-Theory/</loc>
     <lastmod>2018-07-27T02:56:11.112Z</lastmod>
     <data>
         <display>
         <title>CS229 Note4 Learning Theory</title>
         <pubTime>2018-07-27T02:37:56.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>Learning Theory</tag>
          
@@ -356,16 +373,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/07/23/CS229-Note3-SVM-2/</loc>
+    <loc>https://iuo.github.io/2018/07/23/CS229-Note3-SVM-2/</loc>
     <lastmod>2018-07-23T06:50:04.203Z</lastmod>
     <data>
         <display>
         <title>CS229 Note3 SVM(2)</title>
         <pubTime>2018-07-23T02:40:39.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>SVM</tag>
          
@@ -377,16 +394,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/07/18/CS229-Note3-SVM-1/</loc>
+    <loc>https://iuo.github.io/2018/07/18/CS229-Note3-SVM-1/</loc>
     <lastmod>2018-07-20T07:54:13.133Z</lastmod>
     <data>
         <display>
         <title>CSS229 Note3 SVM(1)</title>
         <pubTime>2018-07-18T08:35:50.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>SVM</tag>
          
@@ -398,7 +415,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/06/20/try-to-try-again/</loc>
+    <loc>https://iuo.github.io/2018/06/20/try-to-try-again/</loc>
     <lastmod>2018-07-04T10:54:31.815Z</lastmod>
     <data>
         <display>
@@ -415,16 +432,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/06/17/CS229-Note1/</loc>
+    <loc>https://iuo.github.io/2018/06/17/CS229-Note1/</loc>
     <lastmod>2018-06-17T07:29:05.871Z</lastmod>
     <data>
         <display>
         <title>CS229 Note1</title>
         <pubTime>2018-06-17T06:32:56.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
          
            
@@ -434,16 +451,16 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</loc>
+    <loc>https://iuo.github.io/2018/06/02/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</loc>
     <lastmod>2018-06-04T07:06:51.932Z</lastmod>
     <data>
         <display>
         <title>最小二乘损失函数的概率解释</title>
         <pubTime>2018-06-02T13:22:42.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>CS229</tag>
+         
+        <tag>machine learning</tag>
          
         <tag>概率论基础</tag>
          
@@ -455,7 +472,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/05/23/%E6%80%BB%E7%BB%93%EF%BC%9ACoursera-Machine-Learning-By-Andrew-Ng/</loc>
+    <loc>https://iuo.github.io/2018/05/23/%E6%80%BB%E7%BB%93%EF%BC%9ACoursera-Machine-Learning-By-Andrew-Ng/</loc>
     <lastmod>2018-05-25T02:26:06.388Z</lastmod>
     <data>
         <display>
@@ -474,7 +491,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/01/%E8%AF%AF%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%9D%A5%E6%BA%90/</loc>
+    <loc>https://iuo.github.io/2018/04/01/%E8%AF%AF%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E6%9D%A5%E6%BA%90/</loc>
     <lastmod>2018-05-25T02:25:27.636Z</lastmod>
     <data>
         <display>
@@ -493,7 +510,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/05/23/Large-Scale-Machine-Learning-OCR/</loc>
+    <loc>https://iuo.github.io/2018/05/23/Large-Scale-Machine-Learning-OCR/</loc>
     <lastmod>2018-05-25T02:23:41.791Z</lastmod>
     <data>
         <display>
@@ -512,7 +529,7 @@
 
     
   <url>
-    <loc>https://iluo.github.io/2018/04/02/Linux-%E5%AD%A6%E4%B9%A0Shell/</loc>
+    <loc>https://iuo.github.io/2018/04/02/Linux-%E5%AD%A6%E4%B9%A0Shell/</loc>
     <lastmod>2018-04-03T09:21:52.049Z</lastmod>
     <data>
         <display>
