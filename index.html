@@ -339,6 +339,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/11/代理模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ILUO">
+      <meta itemprop="description" content="唯有春风最相惜 一年一度一归来">
+      <meta itemprop="image" content="/img/obito.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ILUO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/11/代理模式/" itemprop="url">
+                  代理模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-11 21:48:36 / Modified: 21:49:57" itemprop="dateCreated datePublished" datetime="2019-11-11T21:48:36+08:00">2019-11-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/11/11/代理模式/" class="leancloud_visitors" data-flag-title="代理模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><h2 id="情景引入"><a href="#情景引入" class="headerlink" title="情景引入"></a>情景引入</h2><p>比基尼海滩的蟹老板开了家蟹王堡，最开始的时候，材料采购、蟹王堡制作、确认订单、收款都是他一人完成的，随着生意越来越好，他招聘了海绵宝宝做材料采购和厨师，让章鱼哥下单同时兼任财务。为了方便管理，找派大星（bushi）做了一套餐厅的管理系统，在这个系统里面，海绵宝宝需要记录自己采购原材料的一些细节，比如买了什么食材，单价是什么，章鱼哥需要给员工发工资，并把采购相关细节，这样蟹老板一个人时要做的工作分别代理给了海绵宝宝和章鱼哥。这就是代理。</p>
+<p>&lt;!-more—&gt;</p>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>系统中的实现如下，就是把原本属于蟹老板的采购行为代理给了海绵宝宝，财务相关行为代理给了章鱼哥，本质上执行者还是蟹老板。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">采购员接口</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Purchaser</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">purchase</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">采购员的具体实现</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BossPurchaser</span> <span class="keyword">implements</span> <span class="title">Purchaser</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BossPurchaser</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">"买了材料"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">采购员代理的具体实现</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BossPurchaserProxy</span> <span class="keyword">implements</span> <span class="title">Purchaser</span></span>&#123;</span><br><span class="line">    <span class="comment">//代理持有被代理对象</span></span><br><span class="line">    BossPurchaser purchaser;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BossPurchaserProxy</span><span class="params">(Purchaser purchaser)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(purchaser.getClass() == BossPurchaser.class) &#123;</span><br><span class="line">            <span class="keyword">this</span>.BossPurchaser = (BossPurchaser)purchaser;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"海绵宝宝代理执行了purchase方法"</span>);</span><br><span class="line">        purchaser.purchase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BossPurchaser bossCancer = <span class="keyword">new</span> BossPurchaser(<span class="string">"蟹老板"</span>);</span><br><span class="line">BossPurchaserProxy spongeBob = <span class="keyword">new</span> BossPurchaserProxy(bossCancer);</span><br><span class="line">spongeBob.purchase();</span><br></pre></td></tr></table></figure>
+<p>可以看到如下输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">海绵宝宝代理执行了purchase方法</span><br><span class="line">蟹老板买了材料</span><br></pre></td></tr></table></figure>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>现在问题来了，无论是海绵宝宝采购材料，还是章鱼哥给员工发工资，蟹老板想监控他们的每次操作，即把他们的操作记录为日志， 那在系统里要怎么实现呢？首先想到的就是，无论是海绵宝宝还是章鱼哥进行任何操作，都先执行一个记录当前行为的方法，如上面代码中的<code>System.out.println(&quot;代理执行了purchase方法&quot;);</code> ，蟹老板这个系统比较小型，我们实现记录方法后，在系统代码里面，遇到员工进行操作时，就加入一行代码调用这个记录操作的方法。但是在一些超级大型的系统里面，记录操作的情景可能有数千种，每种行为之前都加上一行记录操作的代码是不是很麻烦很冗余呢？这时就需要动态代理，这个代理它可以代理海绵宝宝或者章鱼哥的任何行为，并且在执行行为之前记录下操作，这样，海绵宝宝和章鱼哥都不用去记录自己的操作了，而是让动态代理了去实现了这个行为。通过动态代理，使原来海绵宝宝和章鱼哥都需要进行的记录行为操作精简到了动态代理里面，而不用去修改章鱼哥或者海绵宝宝本身。</p>
+<p>现在来看看如何使用动态代理实现，接口<code>Purchaser</code>和类<code>BossPurchaser</code>，<code>BossPurchaserProxy</code>可以复用。要使用的类是<code>java.lang.reflect</code>下提供的<code>Proxy</code>类和<code>InvocationHandler</code>接口。</p>
+<p>首先创建一个中介类<code>PurchaseInvocationHandler</code>,它持有被代理对象target，重写了invoke函数，该函数通过反射调用了被代理对象的method方法。在执行method方法之前，我们就可以加入代码记录操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PurchaseInvocationHandler</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    T target;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PurchaseInvocationHandler</span><span class="params">(T target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method,Object[] args)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"代理执行了"</span>+ method.getName() + <span class="string">"方法"</span>);</span><br><span class="line">        <span class="keyword">return</span> method.invoke(target,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面看如何使用这个中介类进行动态代理，中介类持有了被代理对象spongeBob，使用Proxy.newProxyInstance方法创建了代理对象purchaserProxy，然后调用其purchase方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Purchaser bossCancer = <span class="keyword">new</span> BossPurchaser(<span class="string">"蟹老板"</span>);</span><br><span class="line"></span><br><span class="line">BossPurchaserProxy spongeBob = <span class="keyword">new</span> BossPurchaserProxy(bossCancer);</span><br><span class="line"></span><br><span class="line">InvocationHandler purchaseHandler = <span class="keyword">new</span> PurchaseInvocationHandler&lt;&gt;(spongeBob);</span><br><span class="line"></span><br><span class="line">Purchaser purchaserProxy = (Purchaser) Proxy.newProxyInstance(Purchaser.class.getClassLoader(),<span class="keyword">new</span> Class&lt;?&gt;[]&#123;Purchaser.class&#125;,purchaseHandler);</span><br><span class="line"></span><br><span class="line">purchaserProxy.purchase();</span><br></pre></td></tr></table></figure>
+<p>可以看到如下输出，第一行输出即是动态代理对行为进行的打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">代理执行了purchase方法</span><br><span class="line">海绵宝宝代理执行了purchase方法</span><br><span class="line">蟹老板买了材料</span><br></pre></td></tr></table></figure>
+<h3 id="动态代理的底层原理"><a href="#动态代理的底层原理" class="headerlink" title="动态代理的底层原理"></a>动态代理的底层原理</h3><p>中介类purchaseHandler被创建后可以通过反射来执行被代理的方法，而代理类$Proxy0是在内存中被Proxy.newProxyInstance所创建的，与静态代理不同的是，静态代理的代理类预先写好，而动态代理是在运行中生成的，该代理类持有了中介类，同时该代理类在静态块里面通过反射获得了被代理对象的所有方法。在执行代理对象的方法时，本质上是在使用中介类的invoke方法在执行被代理对象的方法。</p>
+<h3 id="动态字节码生成"><a href="#动态字节码生成" class="headerlink" title="动态字节码生成"></a>动态字节码生成</h3><p>以上讲到的基于接口的代理模式有四种角色：</p>
+<ul>
+<li>ISubject：被访问资源的抽象，比如采购员接口Purchaser</li>
+<li>SubjectImpl：被访问资源的具体实现类，比如采购员实现BossPurchaser</li>
+<li>SubjectProxy：代理实现类，持有ISubject的具体实例，也实现了接口ISubject，比如BossPurchaserProxy</li>
+<li>Client：访问者，通过代理访问资源的实例</li>
+</ul>
+<p>可以看到，无论动态代理还是静态代理，都需要目标对象实现了某个接口，当目标对象没有实现任何接口时，就需要使用动态字节码生成来扩充父类的行为。像静态代理那样为每个目标对象都实现不同的子类来扩展是不现实的。所以需要借助动态字节码生成库CGLIB，在运行期间动态为目标对象生成相应的扩展子类。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://book.douban.com/subject/3897837/" target="_blank" rel="noopener">王福强 (2009). Spring揭秘 .人民邮电出版社.8.2. Spring AOP实现机制</a></li>
+<li>[<a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">java动态代理实现与原理详细分析</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/MLDS18-2-Optimization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1770,178 +1950,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/CS229-Note3-SVM-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ILUO">
-      <meta itemprop="description" content="唯有春风最相惜 一年一度一归来">
-      <meta itemprop="image" content="/img/obito.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ILUO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/18/CS229-Note3-SVM-1/" itemprop="url">
-                  CSS229 Note3 SVM(1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-18 16:35:50" itemprop="dateCreated datePublished" datetime="2018-07-18T16:35:50+08:00">2018-07-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-07-20 15:54:13" itemprop="dateModified" datetime="2018-07-20T15:54:13+08:00">2018-07-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/07/18/CS229-Note3-SVM-1/" class="leancloud_visitors" data-flag-title="CSS229 Note3 SVM(1)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="CS229-Note3-SVM-1"><a href="#CS229-Note3-SVM-1" class="headerlink" title="CS229 Note3 SVM(1)"></a>CS229 Note3 SVM(1)</h1><p>这篇博文主要内容是</p>
-<ul>
-<li>支持向量机的引入</li>
-<li>引入函数间距与几何间距</li>
-<li>在几何间距基础上定义最优边缘分类器</li>
-<li>引入拉格朗日对偶性(以解决最优边缘分类器的优化问题)
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/18/CS229-Note3-SVM-1/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1993,7 +2001,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2034,7 +2042,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2112,7 +2122,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
