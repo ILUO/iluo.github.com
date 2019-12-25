@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2019/12/25/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <lastmod>2019-12-25T07:01:34.776Z</lastmod>
+    <data>
+        <display>
+        <title>Java线程池</title>
+        <pubTime>2019-12-25T06:59:59.000Z</pubTime>
+        
+        <tag>Java 并发</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2019/11/11/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2019-11-11T13:56:14.352Z</lastmod>
     <data>
@@ -357,9 +374,9 @@
         
         <tag>CS229</tag>
          
-        <tag>概率论基础</tag>
-         
         <tag>Learning Theory</tag>
+         
+        <tag>概率论基础</tag>
          
          
            
