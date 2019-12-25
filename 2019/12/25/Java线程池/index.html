@@ -116,12 +116,14 @@
 <meta property="og:site_name" content="ILUO">
 <meta property="og:description" content="Java线程池说说进程和线程进程的引入多道程序设计允许多个程序进入内存运行，提高CPU利用率和效率，为了区分进入内存的不同程序，引入了“进程”概念。 进程是具有独立功能的程序关于某个数据集合上的一次运行活动。是系统进行资源分配和调度（不支持线程机制时）的独立单位，每个进程分配了独立的地址空间。 线程的引入进程切换开销大，且进程内部需要并行实现不同功能，如浏览器进程需要在播放视频时下载文件，由于线程">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://photogz.photo.store.qq.com/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr7UBbBJ6wAb1N11rGpOCQ50hU1cwRCag9siqznVo8nKlOD2T**srfU9H1hb6mK5oyg!!/b&ek=1&kp=1&pt=0&bo=.QLzAPkC8wARADc!&tl=1&tm=1577257200&sce=0-12-12&rf=viewer_311">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr1p6nuj8nCRDosAaiDiWghZshAqHyaZLpyQcnsh0YjIuTwtZQzqRhDeNHNcN96rb5Q!!/b&ek=1&kp=1&pt=0&bo=8gICAvICAgIRADc!&tl=1&vuin=1405591197&tm=1577257200&sce=50-1-1&rf=viewer_311">
 <meta property="og:image" content="http://r.photo.store.qq.com/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr3SM.0QXHUYlUFci6HYlCVW6UnEbcWqQVm8d17puuHAiOYrOQ5gB7f5uRukI0QHF1w!!/o&ek=1&kp=1&pt=0&bo=6wK7AesCuwERADc!&tl=1&tm=1577250000&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2019-12-25T07:05:03.423Z">
+<meta property="og:updated_time" content="2019-12-25T07:19:05.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java线程池">
 <meta name="twitter:description" content="Java线程池说说进程和线程进程的引入多道程序设计允许多个程序进入内存运行，提高CPU利用率和效率，为了区分进入内存的不同程序，引入了“进程”概念。 进程是具有独立功能的程序关于某个数据集合上的一次运行活动。是系统进行资源分配和调度（不支持线程机制时）的独立单位，每个进程分配了独立的地址空间。 线程的引入进程切换开销大，且进程内部需要并行实现不同功能，如浏览器进程需要在播放视频时下载文件，由于线程">
-<meta name="twitter:image" content="http://r.photo.store.qq.com/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr3SM.0QXHUYlUFci6HYlCVW6UnEbcWqQVm8d17puuHAiOYrOQ5gB7f5uRukI0QHF1w!!/o&ek=1&kp=1&pt=0&bo=6wK7AesCuwERADc!&tl=1&tm=1577250000&sce=0-12-12&rf=viewer_311">
+<meta name="twitter:image" content="http://photogz.photo.store.qq.com/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr7UBbBJ6wAb1N11rGpOCQ50hU1cwRCag9siqznVo8nKlOD2T**srfU9H1hb6mK5oyg!!/b&ek=1&kp=1&pt=0&bo=.QLzAPkC8wARADc!&tl=1&tm=1577257200&sce=0-12-12&rf=viewer_311">
 
 
 
@@ -384,7 +386,7 @@
                 
               
 
-              <time title="Created: 2019-12-25 14:59:59 / Modified: 15:05:03" itemprop="dateCreated datePublished" datetime="2019-12-25T14:59:59+08:00">2019-12-25</time>
+              <time title="Created: 2019-12-25 14:59:59 / Modified: 15:19:05" itemprop="dateCreated datePublished" datetime="2019-12-25T14:59:59+08:00">2019-12-25</time>
             
 
             
@@ -450,7 +452,15 @@
 <a id="more"></a>
 <h3 id="为什么要使用多线程"><a href="#为什么要使用多线程" class="headerlink" title="为什么要使用多线程"></a>为什么要使用多线程</h3><p>提高CPU和IO设备的利用率，在单核上，当一个线程因为IO等原因被阻塞时，可以切换到另一个线程执行任务，不会因为阻塞而浪费时间，在多核上，一个核可以执行一个线程，因此只有多线程才能发挥多核的优势。</p>
 <h3 id="进程的生命周期和状态"><a href="#进程的生命周期和状态" class="headerlink" title="进程的生命周期和状态"></a>进程的生命周期和状态</h3><p>就绪、运行、阻塞。其中只有就绪和运行可以双向转换。</p>
-<h3 id="线程的生命周期和状态"><a href="#线程的生命周期和状态" class="headerlink" title="线程的生命周期和状态"></a>线程的生命周期和状态</h3><h2 id="线程池又是什么"><a href="#线程池又是什么" class="headerlink" title="线程池又是什么"></a>线程池又是什么</h2><p>如果有一个待执行的任务，就为其新建一个线程去执行它。这种策略叫做“每任务每线程”，这种策略具有很大的缺陷：</p>
+<h3 id="线程的生命周期和状态"><a href="#线程的生命周期和状态" class="headerlink" title="线程的生命周期和状态"></a>线程的生命周期和状态</h3><div align="center">
+<img src="http://photogz.photo.store.qq.com/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr7UBbBJ6wAb1N11rGpOCQ50hU1cwRCag9siqznVo8nKlOD2T**srfU9H1hb6mK5oyg!!/b&ek=1&kp=1&pt=0&bo=.QLzAPkC8wARADc!&tl=1&tm=1577257200&sce=0-12-12&rf=viewer_311">
+</div>
+
+<div align="center">
+<img src="http://a1.qpic.cn/psc?/V12UJCGv0BAHHA/uVS5Tf*j2E72ITaZV5lOr1p6nuj8nCRDosAaiDiWghZshAqHyaZLpyQcnsh0YjIuTwtZQzqRhDeNHNcN96rb5Q!!/b&ek=1&kp=1&pt=0&bo=8gICAvICAgIRADc!&tl=1&vuin=1405591197&tm=1577257200&sce=50-1-1&rf=viewer_311">
+</div>
+
+<h2 id="线程池又是什么"><a href="#线程池又是什么" class="headerlink" title="线程池又是什么"></a>线程池又是什么</h2><p>如果有一个待执行的任务，就为其新建一个线程去执行它。这种策略叫做“每任务每线程”，这种策略具有很大的缺陷：</p>
 <ul>
 <li>线程的生命周期需要开销</li>
 <li>线程大于CPU核数时，多余的空闲线程会占用内存</li>
