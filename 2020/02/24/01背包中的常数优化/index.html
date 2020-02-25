@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="01基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
+  <meta name="description" content="0101背包中的常数优化基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01背包中的常数优化">
 <meta property="og:url" content="http://yoursite.com/2020/02/24/01背包中的常数优化/index.html">
 <meta property="og:site_name" content="ILUO">
-<meta property="og:description" content="01基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
+<meta property="og:description" content="0101背包中的常数优化基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-25T07:01:46.628Z">
+<meta property="og:updated_time" content="2020-02-25T07:08:34.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01背包中的常数优化">
-<meta name="twitter:description" content="01基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
+<meta name="twitter:description" content="0101背包中的常数优化基础01背包最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。">
 
 
 
@@ -399,7 +399,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-25 15:01:46" itemprop="dateModified" datetime="2020-02-25T15:01:46+08:00">2020-02-25</time>
+                <time title="Modified: 2020-02-25 15:08:34" itemprop="dateModified" datetime="2020-02-25T15:08:34+08:00">2020-02-25</time>
               
             
           </span>
@@ -453,12 +453,12 @@
       
 
       
-        <h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><h2 id="基础01背包"><a href="#基础01背包" class="headerlink" title="基础01背包"></a>基础01背包</h2><p>最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。</p>
+        <h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><h1 id="01背包中的常数优化"><a href="#01背包中的常数优化" class="headerlink" title="01背包中的常数优化"></a>01背包中的常数优化</h1><h2 id="基础01背包"><a href="#基础01背包" class="headerlink" title="基础01背包"></a>基础01背包</h2><p>最基础的01背包问题：一个背包的容量为V，现有N个物品，每个物品都具有一个体积$C_i$和重量$W_i$，把这些物品装入背包，求背包能下物品的最大重量。</p>
 <a id="more"></a>
 <p>通过动态规划求解此题，设数组$dp [N+1][V+1]$， $dp[i][j]$代表使用前i个物品放入体积为j的背包的最大重量。</p>
 <p>现在有状态转移方程：</p>
 <script type="math/tex; mode=display">dp[i][j] = max(dp[i-1][j] ,d[i-1][j-C_i]+W_i)</script><p>即在不使用第i个物品和使用第i个物品中取最大值。使用二重循环更新此方程，即i从1到N，j从$C_i$到V</p>
-<h2 id="空间压缩"><a href="#空间压缩" class="headerlink" title="空间压缩"></a>空间压缩</h2><p>观察上面的状态转移方程，$dp[i][j]​$依赖于二位数组中上一行的$dp[i-1][j] ​$和$d[i-1][j-C_i]​$，且一个在正上方一个在左上方，因此求dp数组第i行的值时，只需要dp数组i-1行的值，因此只需要一维的dp数组$dp[V+1]​$，就可以实现迭代更新。</p>
+<h2 id="空间压缩"><a href="#空间压缩" class="headerlink" title="空间压缩"></a>空间压缩</h2><p>观察上面的状态转移方程，$dp[i][j]$依赖于二位数组中上一行的$dp[i-1][j] $和$d[i-1][j-C_i]$，且一个在正上方一个在左上方，因此求dp数组第i行的值时，只需要dp数组i-1行的值，因此只需要一维的dp数组$dp[V+1]$，就可以实现迭代更新。</p>
 <p>此时状态转移方程为：</p>
 <script type="math/tex; mode=display">dp[j] = max(dp[j],dp[j-C_i] + W_i)</script><p>不过为了保证在更新dp[j]时，$dp[j - Ci]$对应的是$i-1$个物品放入容量为$j-C_i$的最大值，第二层循环需要逆序更新。即j从V到$C_i$，正序更新的话，由于$j - C_i$小于$j$,在更新dp[j]的时候,$dp[j - Ci]$已经被更新过了，对应着$i$个物品放入容量为$j-C_i$的最大值，与状态转移方程的含义不符。</p>
 <h2 id="常数优化"><a href="#常数优化" class="headerlink" title="常数优化"></a>常数优化</h2><p>在<a href="https://github.com/tianyicui/pack" target="_blank" rel="noopener">《背包九讲》</a>这一篇文章中，提到还可以常数级别优化。即第二层循环逆序更新时，j从V减少到$max(V - \sum_{idx=i+1}^NC_{idx},C_i)$</p>
@@ -713,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01"><span class="nav-number">1.</span> <span class="nav-text">01</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础01背包"><span class="nav-number">1.1.</span> <span class="nav-text">基础01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间压缩"><span class="nav-number">1.2.</span> <span class="nav-text">空间压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常数优化"><span class="nav-number">1.3.</span> <span class="nav-text">常数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">1.4.</span> <span class="nav-text">引用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01"><span class="nav-number">1.</span> <span class="nav-text">01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#01背包中的常数优化"><span class="nav-number">2.</span> <span class="nav-text">01背包中的常数优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础01背包"><span class="nav-number">2.1.</span> <span class="nav-text">基础01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间压缩"><span class="nav-number">2.2.</span> <span class="nav-text">空间压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常数优化"><span class="nav-number">2.3.</span> <span class="nav-text">常数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.4.</span> <span class="nav-text">引用</span></a></li></ol></li></ol></div>
             
 
           </div>
